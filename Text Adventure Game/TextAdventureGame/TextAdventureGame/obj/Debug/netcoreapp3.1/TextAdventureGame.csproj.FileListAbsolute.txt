@@ -1,0 +1,14 @@
+C:\Users\Student\source\repos\side-projects\practice-game\Text Adventure Game\TextAdventureGame\TextAdventureGame\bin\Debug\netcoreapp3.1\TextAdventureGame.exe
+C:\Users\Student\source\repos\side-projects\practice-game\Text Adventure Game\TextAdventureGame\TextAdventureGame\bin\Debug\netcoreapp3.1\TextAdventureGame.deps.json
+C:\Users\Student\source\repos\side-projects\practice-game\Text Adventure Game\TextAdventureGame\TextAdventureGame\bin\Debug\netcoreapp3.1\TextAdventureGame.runtimeconfig.json
+C:\Users\Student\source\repos\side-projects\practice-game\Text Adventure Game\TextAdventureGame\TextAdventureGame\bin\Debug\netcoreapp3.1\TextAdventureGame.runtimeconfig.dev.json
+C:\Users\Student\source\repos\side-projects\practice-game\Text Adventure Game\TextAdventureGame\TextAdventureGame\bin\Debug\netcoreapp3.1\TextAdventureGame.dll
+C:\Users\Student\source\repos\side-projects\practice-game\Text Adventure Game\TextAdventureGame\TextAdventureGame\bin\Debug\netcoreapp3.1\TextAdventureGame.pdb
+C:\Users\Student\source\repos\side-projects\practice-game\Text Adventure Game\TextAdventureGame\TextAdventureGame\obj\Debug\netcoreapp3.1\TextAdventureGame.csproj.AssemblyReference.cache
+C:\Users\Student\source\repos\side-projects\practice-game\Text Adventure Game\TextAdventureGame\TextAdventureGame\obj\Debug\netcoreapp3.1\TextAdventureGame.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Student\source\repos\side-projects\practice-game\Text Adventure Game\TextAdventureGame\TextAdventureGame\obj\Debug\netcoreapp3.1\TextAdventureGame.AssemblyInfoInputs.cache
+C:\Users\Student\source\repos\side-projects\practice-game\Text Adventure Game\TextAdventureGame\TextAdventureGame\obj\Debug\netcoreapp3.1\TextAdventureGame.AssemblyInfo.cs
+C:\Users\Student\source\repos\side-projects\practice-game\Text Adventure Game\TextAdventureGame\TextAdventureGame\obj\Debug\netcoreapp3.1\TextAdventureGame.csproj.CoreCompileInputs.cache
+C:\Users\Student\source\repos\side-projects\practice-game\Text Adventure Game\TextAdventureGame\TextAdventureGame\obj\Debug\netcoreapp3.1\TextAdventureGame.dll
+C:\Users\Student\source\repos\side-projects\practice-game\Text Adventure Game\TextAdventureGame\TextAdventureGame\obj\Debug\netcoreapp3.1\TextAdventureGame.pdb
+C:\Users\Student\source\repos\side-projects\practice-game\Text Adventure Game\TextAdventureGame\TextAdventureGame\obj\Debug\netcoreapp3.1\TextAdventureGame.genruntimeconfig.cache
