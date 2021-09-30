@@ -2,13 +2,14 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace TextAdventureGame
+namespace TextAdventureGame.Characters
 {
     public class Enemy : Character
     {
-        public Enemy(string name) : base(name)
+        public Enemy() : base()
         {
             Health = 10;
         }
+        
     }
 }
