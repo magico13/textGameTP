@@ -10,15 +10,26 @@ namespace TextAdventureGame.Gameplay
     {
         public bool InCombat { get; set; } = false;
         public Enemy Enemy { get; private set; }
-        
+        public Player CombatPC { get; set; }
 
-        public void Encounter()
+        /// <summary>
+        /// Creates enemy and starts battle
+        /// </summary>
+        /// <param name="encounter"></param>
+        public void Encounter(bool encounter)
         {
-            this.Spawn();
-            Console.WriteLine($"Oh, no! A {Enemy.Name} pop has appeared!");
-            InCombat = true;
-            this.Battle();
+            if (encounter)
+            {
+                CombatPC = base.PC;
+                this.Spawn();
+                Console.WriteLine($"Oh, no! A {Enemy.Name} pop has appeared!");
+                InCombat = true;
+                this.Battle();
+            }
         }
+        /// <summary>
+        /// Creates and names lolipop enemy prior to encounter
+        /// </summary>
         public void Spawn()
         {
             List<string> flavors = new List<string>
@@ -36,33 +47,29 @@ namespace TextAdventureGame.Gameplay
             Enemy = enemy;
             Enemy.Name = flavor;
         }
-
+        /// <summary>
+        /// Checks to begin and end battle (for now it checks if player or enemy is null)
+        /// </summary>
         public void Battle()
         {
+            CombatPC = new Player();
             if (Enemy == null)
             {
                 Console.WriteLine("The enemy disappeared");
             }
-            else if (PC == null)
+            else if (CombatPC == null)
             {
                 Console.WriteLine("You disappeared");
             }
-            while (InCombat)
+            if (base.PC == null)
             {
-                this.Prompt();
-                if (Enemy.Health < 1 || base.PC.SugarLevel > 99)
-                {
-                    InCombat = false;
-                }
+                Console.WriteLine("Your ghost disappeared");
             }
-            Console.WriteLine("Mmm! You've reached the delicious Tootsie Pop center!");
-            Console.WriteLine($"Your sugar level is at {base.PC.SugarLevel}%");
-            if (base.PC.SugarLevel > 50)
-            {
-                Console.WriteLine("Careful! If you're sugar level gets to 100, you'll crash! Try drinking some water.");
-            }
-            base.EatCandy(base.PC.SugarLevel);
+           
         }
+        /// <summary>
+        /// Handles combat inputs and resolves battle commands
+        /// </summary>
         public override void Prompt()
         {
             Console.Write("What do you do?: ");
@@ -92,7 +99,7 @@ namespace TextAdventureGame.Gameplay
                         }
                         else
                         {
-                            base.Travel(place);
+                            Travel(place);
                         }
 
                     }
@@ -102,20 +109,35 @@ namespace TextAdventureGame.Gameplay
 
             }
         }
+        /// <summary>
+        /// Rolls for critical, damages oppnent, and increments sugar level
+        /// </summary>
         public void Attack()
         {
+            
             Random critical = new Random();
             double criticalChance = critical.NextDouble();
             int criticalDamage = 0;
-            if (criticalChance > 0.7)
+
+            if (criticalChance > 0.7) //Deals critical damage
             {
-                criticalDamage = base.PC.DamageMod + (int)(10 * critical.NextDouble());
+                criticalDamage = CombatPC.DamageMod + (int)(10 * critical.NextDouble());
                 Console.Write("Chomp! ");
             }
-            int damage = base.PC.DamageMod + criticalDamage;
+
+            int damage = CombatPC.DamageMod + criticalDamage;
             Console.WriteLine($"You managed to get in {damage} licks!");
             Enemy.Health -= damage;
-            base.PC.SugarLevel += 1;
+            CombatPC.SugarLevel += 1;
+            while (InCombat)
+            {
+                this.Prompt();
+                if (Enemy.Health < 1 || CombatPC.SugarLevel > 99)
+                {
+                    InCombat = false;
+                }
+            }
+            EatCandy(CombatPC.SugarLevel);
         }
     }
 }

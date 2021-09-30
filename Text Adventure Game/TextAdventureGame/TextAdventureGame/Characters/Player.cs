@@ -10,9 +10,9 @@ namespace TextAdventureGame.Characters
         public Player() : base() 
         {
             SugarLevel = 0;
-            Health = 100;
+            Health = 100; //placeholder. use sugar level instead
             DamageMod = 1;
         }
-        public int SugarLevel { get; set; }
+        public int SugarLevel { get; set; } //if sugar level = 100, player crashes (maybe enter "sugar rush" at 100?)
     }
 }

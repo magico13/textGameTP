@@ -11,6 +11,7 @@ namespace TextAdventureGame
 {
     public class Program
     {
+        public bool Encounter { get; set; }
         public static void Main(string[] args)
         {
             //Ends game upon completion
@@ -25,11 +26,12 @@ namespace TextAdventureGame
 
             //Character Creation
             Gameplay.Gameplay game = new Gameplay.Gameplay();
+            Combat combat = new Combat();
             game.CreatePlayer();
             //Gameplay loop
             while (!gameOver)
             {
-                game.Prompt();
+                combat.Prompt();
             }
 
             //Closing Line
