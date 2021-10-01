@@ -50,5 +50,12 @@ namespace TextAdventureGame.MapLocations
             }
             return notIncluded;
         }
+        public void CheckMap()
+        {
+            foreach (Location item in MapList)
+            {
+                Console.WriteLine($"{item.Name} ");
+            }
+        }
     }
 }
