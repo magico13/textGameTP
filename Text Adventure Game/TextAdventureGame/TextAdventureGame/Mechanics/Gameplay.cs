@@ -152,6 +152,7 @@ namespace TextAdventureGame.Mechanics
             }
             else if (command == "help")
             {
+                Console.WriteLine();
                 this.Help();
             }
             else
