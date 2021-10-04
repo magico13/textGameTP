@@ -14,6 +14,8 @@ namespace TextAdventureGame.Mechanics
 
         public Combat Combat { get; set; }
 
+        public Gameplay Game { get; set; }
+
         public Location Map { get; set; }
 
         public Prompt Prompt { get; set; }
@@ -25,13 +27,23 @@ namespace TextAdventureGame.Mechanics
             switch (input)
             {
                 case 1:
-                Combat.Encounter();
+                    CreateCommands();
                     break;
                 case 2:
-                    Prompt.Execute(3);
+                    string name = Prompt.GetName();
+                    Player = Player.CreatePlayer(name);
                     break;
                 case 3:
-                    Prompt.Execute(2);
+                    string thingToDo = Prompt.GetAction();
+                    string command = Prompt.StringToInput(thingToDo, 1);
+                    string target = Prompt.StringToInput(thingToDo, 2);
+                    Game.ActOnInput(command, target);
+                    break;
+                case 4:
+                    Combat.Encounter();
+                    break;
+                case 5:
+                    Map.CreateMap();
                     break;
                 default:
                     break;
@@ -46,7 +58,7 @@ namespace TextAdventureGame.Mechanics
             Enemy = new Enemy();
             Map = new Location();
             Combat = new Combat();
-
+            Game = new Gameplay();
         }
     }
 }

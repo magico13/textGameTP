@@ -24,6 +24,41 @@ namespace TextAdventureGame.Mechanics
             //this.Prompt(PC);
         }
 
+        public void ActOnInput(string command, string target)
+        {
+            switch (command)
+            {
+                case "move": //checks input for location input
+                    string location = target switch
+                    {
+                        "" => Prompt.GetLocation(),
+                        null => Prompt.GetLocation(),
+                        _ => target,
+                    };
+                    Map.Execute(3, location);
+                    break;
+
+                case "lick":
+                    Combat.Attack();
+                    break;
+
+                case "help":
+                    break;
+
+                case "rooms":
+                    Map.CheckMap();
+                    Console.WriteLine();
+                    Execute(3);
+                    break;
+
+                default:
+                    Console.WriteLine("Sorry. Please try again.");
+                    Console.WriteLine();
+                    Execute(3);
+                    break;
+            }
+        }
+
         public override void Execute(int input) { }
     }
 }

@@ -14,21 +14,6 @@ namespace TextAdventureGame.Mechanics
         {
             switch (input)
             {
-                case 1:
-                    //CreateCommands();
-                    break;
-                case 2:
-                    Console.Write("Please enter a name for your character: ");
-                    string name = Console.ReadLine();
-                    Player.CreatePlayer(name);
-                    break;
-                case 3:
-                    Console.Write("What do you do?: ");
-                    string thingToDo = Console.ReadLine();
-                    string command = StringToInput(thingToDo, 1);
-                    string target = StringToInput(thingToDo, 2);
-                    ActOnInput(command, target);
-                    break;
                 case 4:
                     string location = GetLocation();
                     Map.Execute(3, location);
@@ -57,40 +42,7 @@ namespace TextAdventureGame.Mechanics
             }
         }
 
-        public void ActOnInput(string command, string target)
-        { 
-            switch (command)
-            {
-                case "move": //checks input for location input
-                    string location = target switch
-                    {
-                        "" => GetLocation(),
-                        null => GetLocation(),
-                        _ => target,
-                    };
-                    Map.Execute(3, location);
-                    break;
-
-                case "lick":
-                    Combat.Attack();     
-                    break;
-
-                case "help":
-                    break;
-
-                case "rooms":
-                    Map.CheckMap();
-                    Console.WriteLine();
-                    Execute(3);
-                    break;
-
-                default:
-                    Console.WriteLine("Sorry. Please try again.");
-                    Console.WriteLine();
-                    Execute(3);
-                    break;
-            }
-        }
+        
 
         public string GetLocation()
         {
@@ -99,7 +51,19 @@ namespace TextAdventureGame.Mechanics
             return location;
         }
 
-        
+        public string GetName()
+        {
+            Console.Write("Please enter a name for your character: ");
+            string name = Console.ReadLine();
+            return name;
+        }
+
+        public string GetAction()
+        {
+            Console.Write("What do you do?: ");
+            string input = Console.ReadLine();
+            return input;
+        }
     }
 }
 

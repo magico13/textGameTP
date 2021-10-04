@@ -22,13 +22,13 @@ namespace TextAdventureGame
             Prompt prompt = new Prompt();
             GameCommand command = new GameCommand();
             //Create classes
-            prompt.Execute(1);
+            command.Execute(1);
             //Create map
-            prompt.Execute(5);
+            command.Execute(5);
             //Create a player
-            command.Execute(3);
+            command.Execute(2);
 
-            prompt.Execute(3);
+            command.Execute(3);
 
             //Closing Line
             Console.WriteLine("Congratulations! You have answered the age old question!");
