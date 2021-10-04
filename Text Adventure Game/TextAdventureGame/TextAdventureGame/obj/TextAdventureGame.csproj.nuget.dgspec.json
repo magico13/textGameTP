@@ -8,7 +8,7 @@
       "version": "1.0.0",
       "restore": {
         "projectUniqueName": "C:\\Users\\Student\\source\\repos\\side-projects\\practice-game\\Text Adventure Game\\TextAdventureGame\\TextAdventureGame\\TextAdventureGame.csproj",
-        "projectName": "TextAdventureGame",
+        "projectName": "TootsiePopText",
         "projectPath": "C:\\Users\\Student\\source\\repos\\side-projects\\practice-game\\Text Adventure Game\\TextAdventureGame\\TextAdventureGame\\TextAdventureGame.csproj",
         "packagesPath": "C:\\Users\\Student\\.nuget\\packages\\",
         "outputPath": "C:\\Users\\Student\\source\\repos\\side-projects\\practice-game\\Text Adventure Game\\TextAdventureGame\\TextAdventureGame\\obj\\",
@@ -39,6 +39,16 @@
       "frameworks": {
         "netcoreapp3.1": {
           "targetAlias": "netcoreapp3.1",
+          "dependencies": {
+            "MSTest.TestAdapter": {
+              "target": "Package",
+              "version": "[2.2.7, )"
+            },
+            "MSTest.TestFramework": {
+              "target": "Package",
+              "version": "[2.2.7, )"
+            }
+          },
           "imports": [
             "net461",
             "net462",

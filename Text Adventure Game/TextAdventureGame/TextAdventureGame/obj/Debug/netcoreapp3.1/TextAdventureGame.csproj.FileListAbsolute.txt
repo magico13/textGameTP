@@ -12,3 +12,10 @@ C:\Users\Student\source\repos\side-projects\practice-game\Text Adventure Game\Te
 C:\Users\Student\source\repos\side-projects\practice-game\Text Adventure Game\TextAdventureGame\TextAdventureGame\obj\Debug\netcoreapp3.1\TextAdventureGame.dll
 C:\Users\Student\source\repos\side-projects\practice-game\Text Adventure Game\TextAdventureGame\TextAdventureGame\obj\Debug\netcoreapp3.1\TextAdventureGame.pdb
 C:\Users\Student\source\repos\side-projects\practice-game\Text Adventure Game\TextAdventureGame\TextAdventureGame\obj\Debug\netcoreapp3.1\TextAdventureGame.genruntimeconfig.cache
+C:\Users\Student\source\repos\side-projects\practice-game\Text Adventure Game\TextAdventureGame\TextAdventureGame\bin\Debug\netcoreapp3.1\Microsoft.VisualStudio.TestPlatform.MSTest.TestAdapter.dll
+C:\Users\Student\source\repos\side-projects\practice-game\Text Adventure Game\TextAdventureGame\TextAdventureGame\bin\Debug\netcoreapp3.1\Microsoft.VisualStudio.TestPlatform.MSTestAdapter.PlatformServices.Interface.dll
+C:\Users\Student\source\repos\side-projects\practice-game\Text Adventure Game\TextAdventureGame\TextAdventureGame\bin\Debug\netcoreapp3.1\Microsoft.VisualStudio.TestPlatform.MSTestAdapter.PlatformServices.dll
+C:\Users\Student\source\repos\side-projects\practice-game\Text Adventure Game\TextAdventureGame\TextAdventureGame\bin\Debug\netcoreapp3.1\Microsoft.TestPlatform.AdapterUtilities.dll
+C:\Users\Student\source\repos\side-projects\practice-game\Text Adventure Game\TextAdventureGame\TextAdventureGame\bin\Debug\netcoreapp3.1\Microsoft.VisualStudio.TestPlatform.TestFramework.Extensions.dll
+C:\Users\Student\source\repos\side-projects\practice-game\Text Adventure Game\TextAdventureGame\TextAdventureGame\bin\Debug\netcoreapp3.1\Microsoft.VisualStudio.TestPlatform.TestFramework.dll
+C:\Users\Student\source\repos\side-projects\practice-game\Text Adventure Game\TextAdventureGame\TextAdventureGame\obj\Debug\netcoreapp3.1\TextAdventureGame.csproj.CopyComplete

@@ -3,8 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using TextAdventureGame.MapLocations;
 using TextAdventureGame.Characters;
+using TextAdventureGame.MapLocations;
 using TextAdventureGame.Mechanics;
 
 namespace TextAdventureGame
@@ -13,25 +13,29 @@ namespace TextAdventureGame
     {
         public static void Main(string[] args)
         {
-            Start start = new Start();
             //Ends game upon completion
-            bool gameOver = false;
+            //bool gameOver = false;
 
             //Title Sequence
-            start.Title();
+            Title(); 
 
-            //Gameplay loop
-            Gameplay game = new Gameplay();
-            while (!gameOver)
-            {
-                game.Prompt();
-            }
+            Prompt prompt = new Prompt();
+            GameCommand command = new GameCommand();
+            //Create classes
+            prompt.Execute(1);
+            //Create map
+            prompt.Execute(5);
+            //Create a player
+            command.Execute(3);
+
+            prompt.Execute(3);
 
             //Closing Line
             Console.WriteLine("Congratulations! You have answered the age old question!");
             Console.Read();
         }
-        public void Title()
+
+        public static void Title()
         {
             string gameTitle = "Quest to the Center of a Tootsie Pop";
             Console.Clear();

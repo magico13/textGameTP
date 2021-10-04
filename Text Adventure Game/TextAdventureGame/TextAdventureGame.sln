@@ -3,7 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.31702.278
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TextAdventureGame", "TextAdventureGame\TextAdventureGame.csproj", "{9CA71DE9-1B76-4E31-8FDD-8BD61591082D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TextAdventureGame", "TextAdventureGame\TextAdventureGame.csproj", "{9CA71DE9-1B76-4E31-8FDD-8BD61591082D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TextGameTests", "TextGameTests\TextGameTests.csproj", "{57C5E00B-E86D-4DD8-85D2-2C47F7D559BE}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +17,10 @@ Global
 		{9CA71DE9-1B76-4E31-8FDD-8BD61591082D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9CA71DE9-1B76-4E31-8FDD-8BD61591082D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9CA71DE9-1B76-4E31-8FDD-8BD61591082D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{57C5E00B-E86D-4DD8-85D2-2C47F7D559BE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{57C5E00B-E86D-4DD8-85D2-2C47F7D559BE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{57C5E00B-E86D-4DD8-85D2-2C47F7D559BE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{57C5E00B-E86D-4DD8-85D2-2C47F7D559BE}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
