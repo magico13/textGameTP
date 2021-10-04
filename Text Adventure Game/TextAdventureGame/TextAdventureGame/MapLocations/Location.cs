@@ -13,13 +13,7 @@ namespace TextAdventureGame.MapLocations
         
         public double EncounterChance { get; set; }
 
-        public List<Location> MapList
-        {
-            get
-            {
-                return CreateMap();
-            }
-        }
+        public List<Location> MapList { get; set; }
 
         public void Execute(int input, string target)
         {
@@ -62,7 +56,10 @@ namespace TextAdventureGame.MapLocations
             foreach (Location item in mapList)
             {
                 if (item.Name == "Master Bedroom")
+                {
                     item.CurrentLocation = true;
+                    break;
+                }
             }
             return mapList;
         }
