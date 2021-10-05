@@ -156,9 +156,15 @@ namespace TextAdventureGame.Mechanics
                     break;
 
                 case "quit":
-
-                    Environment.("Bye! Thanks for playing!");
-                    break;
+                    Print("Are you sure you want to quit the game? \n There are no save games. You'd have to start over. Y/N: ");
+                    string quit = Console.ReadLine();
+                    if (quit.ToLower() == "y" || quit.ToLower() == "yes")
+                    {
+                        PrintLine("Bye! Thanks for playing!");
+                        Console.ReadKey();
+                        Environment.Exit(0);
+                    }
+                        break;
 
                 default: //Handles unrecognized inputs
                     PrintLine("Sorry. Please try again.");
@@ -187,10 +193,11 @@ namespace TextAdventureGame.Mechanics
         public void Help() //Needs implementing
         {
             Dictionary<string, string> helpDetails = new Dictionary<string, string>();
-            helpDetails["Move"] = "All done in this room. This will take you to another room.";
+            helpDetails["Move"] = "All done in this room? This will take you to another room.";
             helpDetails["Lick"] = "The only way to get to the center is to erode the candy coating. Get licking!";
             helpDetails["Rooms"] = "This house is so big that it's easy to get lost in. Use this to remember which rooms you can go to.";
             helpDetails["Help"] = "This... Well if you need an explanation, it lists the commands that will actually do things";
+            helpDetails["Quit"] = "Yeah, so this game doesn't have an ending yet. Use this if you want to stop playing for now.";
 
             foreach (KeyValuePair<string, string> item in helpDetails)
             {
