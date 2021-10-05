@@ -19,7 +19,9 @@ namespace TextAdventureGame.Mechanics
                 case 2://input is a target
                     if (inputSplit.Length > 1)
                     {
-                        return inputSplit[1].ToLower();
+                        string target = $"{inputSplit[1].ToLower()} {inputSplit[2].ToLower()}";
+                        
+                        return target;
                     }
                     return "";
                 default:

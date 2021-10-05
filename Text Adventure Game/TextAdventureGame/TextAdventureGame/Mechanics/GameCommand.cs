@@ -145,7 +145,9 @@ namespace TextAdventureGame.Mechanics
                     Console.WriteLine();
                     break;
 
-                case "help": //Needs implementing
+                case "help":
+                    Help();
+                    Console.WriteLine();
                     break;
 
                 case "rooms": //Displays list of rooms
@@ -174,6 +176,20 @@ namespace TextAdventureGame.Mechanics
             {
                 Console.Write(c);
                 System.Threading.Thread.Sleep(delay);
+            }
+        }
+
+        public void Help() //Needs implementing
+        {
+            Dictionary<string, string> helpDetails = new Dictionary<string, string>();
+            helpDetails["Move"] = "All done in this room. This will take you to another room.";
+            helpDetails["Lick"] = "The only way to get to the center is to erode the candy coating. Get licking!";
+            helpDetails["Rooms"] = "This house is so big that it's easy to get lost in. Use this to remember which rooms you can go to.";
+            helpDetails["Help"] = "This... Well if you need an explanation, it lists the commands that will actually do things";
+
+            foreach (KeyValuePair<string, string> item in helpDetails)
+            {
+                PrintLine($"{item.Key}: {item.Value}");
             }
         }
     }
