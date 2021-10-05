@@ -22,16 +22,18 @@ namespace TextAdventureGame
             GameCommand command = new GameCommand();
 
             //Create classes
-            command.Execute(1);
+            command.CreateCommands();
 
             //Create map
-            command.Execute(5);
+            command.Map.MapList = command.Map.CreateMap();
 
             //Create a player
             command.Execute(2);
 
             //Displays opening monologue
-            command.Execute(8);
+            GameCommand.PrintLine(command.Dialogue.OpeningMonologue);
+            Console.ReadKey();
+            Console.Clear();
 
             //gameOver condition needs implementing. game will loop back to prompt when all actions break
             while (!gameOver)

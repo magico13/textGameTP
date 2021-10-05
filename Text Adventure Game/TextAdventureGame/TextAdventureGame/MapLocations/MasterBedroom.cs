@@ -10,6 +10,7 @@ namespace TextAdventureGame.MapLocations
         {
             Name = "Master Bedroom";
             EncounterChance = 0.6;
+            Description = "You return to the Master Bedroom. Perhaps, you missed something before. Better safe than sorry.";
             Image = @"
          ()___ 
          //  /)_______________()

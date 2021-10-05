@@ -79,7 +79,12 @@ namespace TextAdventureGame.MapLocations
         {
             foreach (Location item in MapList)
             {
-                PrintLine($"{item.Name} ");
+                string name = item.Name;
+                if (item.CurrentLocation)
+                {
+                    name += " - Current Location";
+                }
+                PrintLine($"{name}");
             }
         }
 

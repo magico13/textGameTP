@@ -10,6 +10,7 @@ namespace TextAdventureGame.MapLocations
         {
             Name = "Pantry";
             EncounterChance = 0.9;
+            Description = "As you open the doors to the pantry, you hear rustling all over. There are almost certainly lolipops here.";
             Image = @"
                     _______________  _______________
                  .'               .'               .|

@@ -10,6 +10,7 @@ namespace TextAdventureGame.MapLocations
         {
             Name = "Dining Room";
             EncounterChance = 0.7;
+            Description = "The dining room is ornately decorated.\nThe table is set with lit candles and empty dishes.";
             Image = @"
                         (*)                  (*)
                          ^                    ^                    

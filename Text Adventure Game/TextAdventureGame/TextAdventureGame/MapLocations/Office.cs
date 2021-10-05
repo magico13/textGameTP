@@ -10,6 +10,8 @@ namespace TextAdventureGame.MapLocations
         {
             Name = "Office";
             EncounterChance = 0.4;
+            Description = "Small but cozy, you always feel at peace in your office.\nYour computer sits on a mahogany desk."; 
+                //"\nThe old girl is just as reliable as the day you got her, which is to say not very."
             Image = @"
               .........
             .'------.' |       

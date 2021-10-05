@@ -16,14 +16,24 @@ namespace TextAdventureGame.Mechanics
         public Prompt Prompt { get; set; }
         public bool InCombat { get; set; }
         public int Licks { get; set; } = 0;
-        public List<int> Entries { get; }
+        public Dialogue Dialogue { get; set; }
 
+        /// <summary>
+        /// Handles all methods (input)
+        /// (1) EMPTY
+        /// (2) Creates a new player
+        /// (3) Takes user input and redirects it
+        /// (4) Spawns enemy and starts combat
+        /// (5) EMPTY
+        /// (6) Checks and moves to different room and rolls for encounter
+        /// (7) Damages enemy and handles end of battle if enemy or player dies
+        /// </summary>
+        /// <param name="input"></param>
         public virtual void Execute(int input) 
         {
             switch (input)
             {
-                case 1: //Creates classes need to perform methods
-                    CreateCommands();
+                case 1:
                     break;
                 case 2: //Creates a player using user input as a name
                     string name = Prompt.GetName();
@@ -39,8 +49,7 @@ namespace TextAdventureGame.Mechanics
                     Enemy = Enemy.Spawn(); //Creates and names Enemy
                     InCombat = Combat.Encounter(); //Sets InCombat to true
                     break;
-                case 5: //Creates a list of room to populate the map
-                    Map.MapList = Map.CreateMap();
+                case 5:
                     break;
                 case 6: //Changes current location
                     Location place = Map.Move(Target); // Converts input to a location value and checks that location is viable
@@ -76,15 +85,6 @@ namespace TextAdventureGame.Mechanics
                         Execute(3);
                     }
                     break;
-                case 8:
-                    PrintLine("You awaken to a bright new day as the sunshine pours through your window.\n\"What a beautiful day!\" you think to yourself." +
-                        "\nIt's then that you hear suspicious rustling from the foot of your bed.\nAs you peer over the edge, you see wrappers strewn across your floor." +
-                        "\nYou have always kept a stash of delicious Tootsie pops around,\nbut it seems they have gained sentience and are looking to get their revenge." +
-                        "\nYou have trained for this moment so don't be scared.\nGather the supplies and figure out how your candies have turned so sour." +
-                        "\nIt's time to be a hero...\nThe journey of any good hero starts by pushing any key to continue.");
-                    Console.ReadKey();
-                    Console.Clear();
-                    break;
                 default: //If the input is null or not yet implemented, sends the user back through the prompt
                     Execute(3);
                     break;
@@ -99,6 +99,7 @@ namespace TextAdventureGame.Mechanics
             Enemy = new Enemy();
             Map = new Location();
             Combat = new Combat();
+            Dialogue = new Dialogue();
         }
 
         public void ActOnInput(string command, string target)
@@ -116,9 +117,15 @@ namespace TextAdventureGame.Mechanics
                         {
                             run = true;
                         }
+                        else
+                        {
+                            break;
+                        }
                     }
-                    if (!run)
+                    if (run)
                     {
+                        InCombat = false;
+                    }
                         string location;
                         switch (target)
                         {
@@ -134,11 +141,6 @@ namespace TextAdventureGame.Mechanics
                         };
                         Target = location;
                         Execute(6); //Executes movement commands
-                    }
-                    else 
-                    {
-                        InCombat = false;
-                    }
                     break;
 
                 case "lick": //Writes a lone of not in combat or starts damage process
@@ -163,12 +165,11 @@ namespace TextAdventureGame.Mechanics
                     break;
 
                 case "quit":
-                    Print("Are you sure you want to quit the game? \n There are no save games. You'd have to start over. Y/N: ");
+                    Print("Are you sure you want to quit the game?\nThere are no save games. You'd have to start over. Y/N: ");
                     string quit = Console.ReadLine();
                     if (quit.ToLower() == "y" || quit.ToLower() == "yes")
                     {
                         PrintLine("Bye! Thanks for playing!");
-                        Console.ReadKey();
                         Environment.Exit(0);
                     }
                         break;
