@@ -155,6 +155,11 @@ namespace TextAdventureGame.Mechanics
                     Console.WriteLine();
                     break;
 
+                case "quit":
+
+                    Environment.("Bye! Thanks for playing!");
+                    break;
+
                 default: //Handles unrecognized inputs
                     PrintLine("Sorry. Please try again.");
                     break;

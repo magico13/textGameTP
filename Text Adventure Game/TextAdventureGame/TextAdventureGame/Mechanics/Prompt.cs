@@ -17,10 +17,15 @@ namespace TextAdventureGame.Mechanics
                 case 1: //input is a command
                     return inputSplit[0].ToLower();
                 case 2://input is a target
-                    if (inputSplit.Length > 1)
+                    if (inputSplit.Length > 2)
                     {
                         string target = $"{inputSplit[1].ToLower()} {inputSplit[2].ToLower()}";
-                        
+
+                        return target;
+                    }
+                    else if (inputSplit.Length > 1)
+                    {
+                        string target = $"{inputSplit[1].ToLower()}";
                         return target;
                     }
                     return "";

@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "6zbu+aoCeTFan0JXx9ZukSTsXtBqKH3PytjMaYBj11C6XwG/xz9XmVxlzQr/zAU6Kt4y9SvbGso6nxIbzJ4kxQ==",
+  "dgSpecHash": "Vo80QtnninimZxp/z5ELXj22z9cG0gYDIRwi1ltuOQ8alN+HXA7rJ1Szvjc1AonMHG6NTN9fVhj3cs+Mubf8PQ==",
   "success": true,
-  "projectFilePath": "C:\\Users\\Student\\source\\repos\\side-projects\\practice-game\\practicegame\\Text Adventure Game\\TextAdventureGame\\TextGameTests\\TextGameTests.csproj",
+  "projectFilePath": "C:\\Users\\Student\\source\\repos\\side-projects\\practicegame\\Text Adventure Game\\TextAdventureGame\\TextGameTests\\TextGameTests.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Student\\.nuget\\packages\\coverlet.collector\\3.0.2\\coverlet.collector.3.0.2.nupkg.sha512",
     "C:\\Users\\Student\\.nuget\\packages\\microsoft.codecoverage\\16.9.4\\microsoft.codecoverage.16.9.4.nupkg.sha512",
