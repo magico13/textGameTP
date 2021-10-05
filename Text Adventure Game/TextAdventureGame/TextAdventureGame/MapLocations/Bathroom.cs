@@ -9,6 +9,24 @@ namespace TextAdventureGame.MapLocations
         public Bathroom() : base()
         {
             Name = "Bathroom";
+            Image = @" 
+           .--'""""""""""`--. 
+         ,'     .------.     `,
+         :     (        )     :
+         |\     `------'     /|
+         | `--.__________,--' |
+         |          /         |
+         |          \         |
+         |          /         |
+         |          \         |
+         |          /         |
+         |          \         |
+         |          /         |
+         |          \         |
+         |          /         |
+         |          \         |
+         `.         /        .'
+           `--._____\____,--' ";
             EncounterChance = 0.25;
         }
     }

@@ -7,6 +7,8 @@ namespace TextAdventureGame.MapLocations
 {
     public class Location : GameCommand
     {
+        public string Description { get; set; }
+        public string Image { get; set; }
         public bool CurrentLocation { get; set; }
         
         public string Name { get; protected set; }
@@ -51,7 +53,7 @@ namespace TextAdventureGame.MapLocations
                 {
                     if (place.CurrentLocation)
                     {
-                        Console.WriteLine("You're already there");
+                        PrintLine("You're already there");
                         return null;
                     }
 
@@ -68,7 +70,7 @@ namespace TextAdventureGame.MapLocations
                     return place;
                 }
             }
-            Console.WriteLine("Sorry. That's not a place you can go right now.");
+            PrintLine("Sorry. That's not a place you can go right now.");
             return null;
         }
         
@@ -77,7 +79,7 @@ namespace TextAdventureGame.MapLocations
         {
             foreach (Location item in MapList)
             {
-                Console.WriteLine($"{item.Name} ");
+                PrintLine($"{item.Name} ");
             }
         }
 

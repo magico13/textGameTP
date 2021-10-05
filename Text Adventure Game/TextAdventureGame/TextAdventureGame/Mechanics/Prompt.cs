@@ -29,21 +29,21 @@ namespace TextAdventureGame.Mechanics
 
         public string GetLocation()
         {
-            Console.WriteLine("Which room?");
+            PrintLine("Which room?");
             string location = Console.ReadLine().ToLower();
             return location;
         }
 
         public string GetName()
         {
-            Console.Write("Please enter a name for your character: ");
+            Print("Please enter a name for your character: ");
             string name = Console.ReadLine();
             return name;
         }
 
         public string GetAction()
         {
-            Console.Write("What do you do?: ");
+            Print("What do you do?: ");
             string input = Console.ReadLine();
             return input;
         }

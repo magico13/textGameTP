@@ -18,7 +18,7 @@ namespace TextAdventureGame.Mechanics
 
             foreach (KeyValuePair<string, string> item in helpDetails)
             {
-                Console.WriteLine($"{item.Key}: {item.Value}");
+                PrintLine($"{item.Key}: {item.Value}");
             }
             Console.WriteLine(); 
         }

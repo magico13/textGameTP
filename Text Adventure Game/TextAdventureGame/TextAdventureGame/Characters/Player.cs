@@ -25,19 +25,19 @@ namespace TextAdventureGame.Characters
             Player player = new Player(name);
             Player = player;
             Console.WriteLine();
-            Console.WriteLine($"Welcome to the world, {player.Name}!");
+            PrintLine($"Welcome to the world, {player.Name}!");
             Console.WriteLine();
             return Player;
         }
 
         public string EatCandy()
         {
-            Console.WriteLine("Mmm! You've reached the delicious Tootsie Pop center!");
+            PrintLine("Mmm! You've reached the delicious Tootsie Pop center!");
             Console.WriteLine();
-            Console.WriteLine($"Your sugar level is at {SugarLevel}%");
+            PrintLine($"Your sugar level is at {SugarLevel}%");
             if (SugarLevel > 50)
             {
-                Console.WriteLine("Careful! If you're sugar level gets to 100, you'll crash! Try drinking some water.");
+                PrintLine("Careful! If you're sugar level gets to 100, you'll crash! Try drinking some water.");
             }
             Console.WriteLine();
             Experience++;

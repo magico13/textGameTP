@@ -27,7 +27,7 @@ namespace TextAdventureGame.Characters
             string flavor = flavors[flavorIndex];
             Enemy Enemy = new Enemy();
             Enemy.Name = flavor;
-            Console.WriteLine($"Oh, no! A {Enemy.Name} pop has appeared!");
+            PrintLine($"Oh, no! A {Enemy.Name} pop has appeared!");
             return Enemy;
         }
 

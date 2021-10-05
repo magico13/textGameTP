@@ -48,6 +48,10 @@ namespace TextAdventureGame.Mechanics
                     {
                         break;
                     }
+                    Console.WriteLine($"{place.Image}");
+                    PrintLine($"You are now in the {place.Name}");
+                    PrintLine($"{place.Description}");
+                    Console.WriteLine();
                     bool encounter = Map.RollEncounter(place); //Rolls to see if a combat encounter begins
                     if (encounter)
                     {
@@ -57,13 +61,15 @@ namespace TextAdventureGame.Mechanics
                 case 7:
                     int damage = Combat.RollDamage(); //Rolls for chance to critical. Writes "Chomp" if critical
                     damage += Player.DamageMod;
-                    Console.WriteLine($"You managed to get in {damage} licks!");
+                    PrintLine($"You managed to get in {damage} licks!");
+                    Console.WriteLine();
                     Enemy.Health = Enemy.DamageEnemy(damage); //Reduces enemy health
                     Player.SugarLevel = Player.GainSugar(); //Increments sugar level after every attack
                     if (Enemy.Health < 1 || Player.SugarLevel > 99) //Checks if enemy is dead or player crashes
                     {
                         InCombat = false;
-                        Console.WriteLine(Player.EatCandy()); //Writes end of battle text including sugar level and experience
+                        PrintLine(Player.EatCandy()); //Writes end of battle text including sugar level and experience
+                        Console.WriteLine();
                     }
                     else 
                     {
@@ -97,7 +103,7 @@ namespace TextAdventureGame.Mechanics
                     bool run = false;
                     if (InCombat)
                     {
-                        Console.Write("Do you want to run away? (Y/N): ");
+                        Print("Do you want to run away? (Y/N): ");
                         string input = Console.ReadLine();
                         if (input.ToLower() == "y" || input.ToLower() == "yes")
                         {
@@ -135,7 +141,7 @@ namespace TextAdventureGame.Mechanics
                         Execute(7);
                         break;
                     }
-                    Console.WriteLine("Save your licks for the candies.");
+                    PrintLine("Save your licks for the candies.");
                     Console.WriteLine();
                     break;
 
@@ -148,9 +154,26 @@ namespace TextAdventureGame.Mechanics
                     break;
 
                 default: //Handles unrecognized inputs
-                    Console.WriteLine("Sorry. Please try again.");
-                    Console.WriteLine();
+                    PrintLine("Sorry. Please try again.");
                     break;
+            }
+        }
+
+        public static void PrintLine(string text, int delay = 30) //Causes text to be written at a delay simulating a typewriter effect and starts new line
+        {
+            foreach (char c in text)
+            {
+                Console.Write(c);
+                System.Threading.Thread.Sleep(delay);
+            }
+            Console.WriteLine();
+        }
+        public static void Print(string text, int delay = 30) //Causes text to be written at a delay simulating a typewriter effect
+        {
+            foreach (char c in text)
+            {
+                Console.Write(c);
+                System.Threading.Thread.Sleep(delay);
             }
         }
     }
