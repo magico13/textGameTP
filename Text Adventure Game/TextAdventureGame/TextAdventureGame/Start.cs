@@ -30,6 +30,9 @@ namespace TextAdventureGame
             //Create a player
             command.Execute(2);
 
+            //Displays opening monologue
+            command.Execute(8);
+
             //gameOver condition needs implementing. game will loop back to prompt when all actions break
             while (!gameOver)
             {

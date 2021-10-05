@@ -25,6 +25,7 @@ namespace TextAdventureGame.Characters
             Player player = new Player(name);
             Player = player;
             Console.WriteLine();
+            Console.Clear();
             PrintLine($"Welcome to the world, {player.Name}!");
             Console.WriteLine();
             return Player;
