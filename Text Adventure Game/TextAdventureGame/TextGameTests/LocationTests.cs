@@ -30,8 +30,8 @@ namespace TextGameTests
             string location = "bathroom";
 
             //Act
-            Map.CreateMap();
-            Location result = Map.StringToLocation(location);
+            Map.MapList = Map.CreateMap();
+            Location result = Map.Move(location);
 
             //Assert
             Assert.IsNotNull(Map.MapList);
@@ -47,7 +47,7 @@ namespace TextGameTests
             Location Map = new Location { EncounterChance = num };
 
             //Act
-            Map.CreateMap();
+            Map.MapList = Map.CreateMap();
             bool result = Map.RollEncounter(Map);
 
             //Assert
@@ -60,7 +60,7 @@ namespace TextGameTests
         {
             //Arrange
             Location Map = new Location();
-            Map.CreateMap();
+            Map.MapList = Map.CreateMap();
             string location = "bathroom";
             Location place = null;
             foreach (Location item in Map.MapList)
@@ -72,7 +72,7 @@ namespace TextGameTests
             }
 
             //Act
-            Location result = Map.StringToLocation(location);
+            Location result = Map.Move(location);
 
             //Assert
             Assert.IsNotNull(Map.MapList);
@@ -88,7 +88,7 @@ namespace TextGameTests
             Location place = null;
 
             //Act
-            Map.CreateMap();
+            Map.MapList = Map.CreateMap();
 
             foreach (Location item in Map.MapList)
             {

@@ -14,24 +14,30 @@ namespace TextAdventureGame
         public static void Main(string[] args)
         {
             //Ends game upon completion
-            //bool gameOver = false;
+            bool gameOver = false;
 
             //Title Sequence
             Title(); 
 
-            Prompt prompt = new Prompt();
             GameCommand command = new GameCommand();
+            
             //Create classes
             command.Execute(1);
+            
             //Create map
             command.Execute(5);
+            
             //Create a player
             command.Execute(2);
-
-            command.Execute(3);
+            
+            //gameOver condition needs implementing. game will loop back to prompt when all actions break
+            while (!gameOver)
+            {
+                command.Execute(3);
+            }
 
             //Closing Line
-            Console.WriteLine("Congratulations! You have answered the age old question!");
+            Console.WriteLine($"Congratulations! You have answered the age old question! It took {command.Licks} licks to get to the center of yourself.");
             Console.Read();
         }
 

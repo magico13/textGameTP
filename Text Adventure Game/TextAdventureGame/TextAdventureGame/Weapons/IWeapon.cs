@@ -5,7 +5,7 @@ using TextAdventureGame.Mechanics;
 
 namespace TextAdventureGame.Weapons
 {
-    public class Weapon : IGameCommand
+    public class Weapon
     {
         public int DamageMod { get; set; }
     }

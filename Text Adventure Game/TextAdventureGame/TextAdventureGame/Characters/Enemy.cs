@@ -12,8 +12,6 @@ namespace TextAdventureGame.Characters
             Health = 10;
         }
 
-        public override void Execute(int input) { }
-
         public Enemy Spawn()
         {
             List<string> flavors = new List<string>
@@ -27,18 +25,16 @@ namespace TextAdventureGame.Characters
             Random flavorChoice = new Random();
             int flavorIndex = flavorChoice.Next(0, 4);
             string flavor = flavors[flavorIndex];
+            Enemy Enemy = new Enemy();
             Enemy.Name = flavor;
             Console.WriteLine($"Oh, no! A {Enemy.Name} pop has appeared!");
             return Enemy;
         }
 
-        public void DamageEnemy(int damage)
+        public int DamageEnemy(int damage)
         {
-            Health -= damage;
-            if (Health < 1)
-            {
-                Combat.EndCombat();
-            }
+            this.Health -= damage;
+            return this.Health;
         }
 
     }

@@ -6,7 +6,7 @@ using TextAdventureGame.Mechanics;
 namespace TextGameTests
 {
     /*[TestClass]
-    public class GameplayTests
+    public class CombatTests
     {
         [TestMethod]
         public void (string input)

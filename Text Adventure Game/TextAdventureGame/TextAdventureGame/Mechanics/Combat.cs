@@ -6,49 +6,22 @@ using TextAdventureGame.Characters;
 
 namespace TextAdventureGame.Mechanics
 {
-    public class Combat : Gameplay
+    public class Combat : GameCommand
     {
-        public bool InCombat { get; set; }
-
         /// <summary>
         /// Creates enemy and starts battle
         /// </summary>
         /// <param name="encounter"></param>
-        public Enemy Encounter()
+        public bool Encounter()
         {
-            Enemy = Enemy.Spawn();
             this.InCombat = true;
-            return Enemy;
-        }
-
-        /// <summary>
-        /// Rolls for critical, damages oppnent, and increments sugar level
-        /// </summary>
-        public void Attack()
-        {
-            if (!this.InCombat)
-            {
-                Console.WriteLine("Save your licks for the candies.");
-                Console.WriteLine();
-                Prompt.Execute(3);
-            }
-            else
-            {
-                int damage = RollDamage();
-                Enemy.DamageEnemy(damage);
-                Player.Execute(2);
-                Prompt.Execute(3);
-                if (Enemy.Health < 1)
-                {
-                    Execute(3);
-                }
-            }
+            return InCombat;
         }
 
         /// <summary>
         /// Lists available commands at the time
         /// </summary>
-        public override void Help() //Needs implementing
+        public void Help() //Needs implementing
         {
             Dictionary<string, string> helpDetails = new Dictionary<string, string>();
             helpDetails["Move"] = "This lolipop is too thick! Run away!";
@@ -73,41 +46,12 @@ namespace TextAdventureGame.Mechanics
 
             if (criticalChance > 0.7) //Deals critical damage
             {
-                criticalDamage = Player.DamageMod + (int)(10 * critical.NextDouble());
+                criticalDamage =(int)(10 * critical.NextDouble());
                 Console.Write("Chomp! ");
             }
 
-            int damage = Player.DamageMod + criticalDamage;
-            Console.WriteLine($"You managed to get in {damage} licks!");
-            return damage;
-        }
-
-        public bool EndCombat()
-        {
-            Player.EatCandy();
-            this.InCombat = false;
-            return this.InCombat;
-        }
-
-        public override void Execute(int input)
-        {
-            switch (input)
-            {
-                case 1:
-                    Encounter();
-                    break;
-                case 2:
-                    Attack();
-                    break;
-                case 3:
-                    RollDamage();
-                    break;
-                case 4:
-                    EndCombat();
-                    break;
-                default:
-                    break;
-            }
+            return criticalDamage;
+            
         }
     }
 }

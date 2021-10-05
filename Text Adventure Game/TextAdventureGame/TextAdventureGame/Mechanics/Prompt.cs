@@ -7,23 +7,8 @@ using TextAdventureGame.Weapons;
 
 namespace TextAdventureGame.Mechanics
 {
-    public class Prompt : Gameplay
+    public class Prompt : GameCommand
     {
-
-        public override void Execute(int input)
-        {
-            switch (input)
-            {
-                case 4:
-                    string location = GetLocation();
-                    Map.Execute(3, location);
-                    break;
-                case 5:
-                    Map.Execute(1);
-                    break;
-            }
-        }
-
         public string StringToInput(string input, int ComOrTar)
         {
             string[] inputSplit = input.Split(" ");
@@ -41,8 +26,6 @@ namespace TextAdventureGame.Mechanics
                     return null;
             }
         }
-
-        
 
         public string GetLocation()
         {

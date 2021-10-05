@@ -15,29 +15,6 @@ namespace TextAdventureGame.MapLocations
 
         public List<Location> MapList { get; set; }
 
-        public void Execute(int input, string target)
-        {
-            switch (input)
-            {
-                case 1:
-                    CreateMap();
-                    break;
-                case 2:
-                    CheckMap();
-                    break;
-                case 3:
-                    Location place = StringToLocation(target);
-                    Move(place);
-                    bool encounter = RollEncounter(place);
-                    if (encounter)
-                    {
-                        base.Execute(1);
-                    }
-                    base.Execute(2);
-                    break;
-            }
-        }
-
         public List<Location> CreateMap()
         {
             List<Location> mapList = new List<Location>();
@@ -64,17 +41,18 @@ namespace TextAdventureGame.MapLocations
             return mapList;
         }
 
-        public Location StringToLocation(string location)
+        public Location Move(string location)
         {
             foreach (Location place in MapList)
             {
                 string placeString = place.Name.ToLower();
-                
+
                 if (placeString == location)
                 {
                     if (place.CurrentLocation)
                     {
-                        return new Location() { Name = "same" };
+                        Console.WriteLine("You're already there");
+                        return null;
                     }
 
                     foreach (Location item in MapList)
@@ -90,8 +68,10 @@ namespace TextAdventureGame.MapLocations
                     return place;
                 }
             }
-           return null;
+            Console.WriteLine("Sorry. That's not a place you can go right now.");
+            return null;
         }
+        
 
         public void CheckMap()
         {
@@ -111,24 +91,6 @@ namespace TextAdventureGame.MapLocations
                 encounter = true;
             }
             return encounter;
-        }
-
-        public void Move(Location place)
-        {
-            if (place == null)
-            {
-                Console.WriteLine("Sorry. That's not a place you can go right now.");
-                //Prompt.Execute(3);
-            }
-            else if (place.Name == "same")
-            {
-                Console.WriteLine("You're already there");
-                Prompt.Execute(3);
-            }
-        }
-
-        public override void Execute(int input)
-        {
         }
     }
 }

@@ -18,29 +18,7 @@ namespace TextAdventureGame.Characters
 
         public int SugarLevel { get; set; } //if sugar level = 100, player crashes (maybe enter "sugar rush" at 100?)
 
-        public int Experience { get; private set; }
-
-        /// <summary>
-        /// Creates and names the player character then saves the created player to the PC property
-        /// </summary>
-        /// <returns></returns>
-
-        public override void Execute(int input)
-        {
-            switch (input)
-            {
-                case 1:
-                    EatCandy();
-                    break;
-                case 2:
-                    SugarLevel++;
-                    if (SugarLevel > 99)
-                    {
-                        Combat.EndCombat();
-                    }
-                    break;
-            }
-        }
+        public int Experience { get; set; } //Needs expanding
 
         public Player CreatePlayer(string name)
         {
@@ -64,8 +42,13 @@ namespace TextAdventureGame.Characters
             Console.WriteLine();
             Experience++;
             string experienceGain = $"You now have {Experience} lolipop sticks!";
-            Console.WriteLine(experienceGain);
             return experienceGain;
+        }
+
+        public int GainSugar()
+        {
+            this.SugarLevel++;
+            return this.SugarLevel;
         }
     }
 }

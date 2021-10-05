@@ -8,7 +8,7 @@ namespace TextAdventureGame.Mechanics
 {
     public class Gameplay : GameCommand
     {
-        public virtual void Help()
+        public void Help()
         {
             Dictionary<string, string> helpDetails = new Dictionary<string, string>();
             helpDetails["Move"] = "Go to a different room";
@@ -20,12 +20,7 @@ namespace TextAdventureGame.Mechanics
             {
                 Console.WriteLine($"{item.Key}: {item.Value}");
             }
-            Console.WriteLine();
-            //this.Prompt(PC);
+            Console.WriteLine(); 
         }
-
-        
-
-        public override void Execute(int input) { }
     }
 }
