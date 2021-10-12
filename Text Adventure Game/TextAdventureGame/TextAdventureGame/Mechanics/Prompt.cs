@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Text;
 using TextAdventureGame.Characters;
 using TextAdventureGame.MapLocations;
-using TextAdventureGame.Weapons;
 
 namespace TextAdventureGame.Mechanics
 {
@@ -38,7 +37,7 @@ namespace TextAdventureGame.Mechanics
         {
             PrintLine("Which room?");
             string location = Console.ReadLine().ToLower();
-            return location;
+            return location.ToLower();
         }
 
         public string GetName()
@@ -52,7 +51,21 @@ namespace TextAdventureGame.Mechanics
         {
             Print("What do you do?: ");
             string input = Console.ReadLine();
-            return input;
+            return input.ToLower();
+        }
+
+        public string GetItem()
+        {
+            Print("What item do you want to use: ");
+            string input = Console.ReadLine();
+            return input.ToLower();
+        }
+
+        public string GetUse()
+        {
+            Print("What do you want to do with it?: ");
+            string input = Console.ReadLine();
+            return input.ToLower();
         }
     }
 }

@@ -8,7 +8,6 @@ namespace TextAdventureGame.Characters
 {
     public class Player : Character
     {
-        public Player() : base() { }
         public Player(string name) : base()
         {
             Name = name;
@@ -24,10 +23,6 @@ namespace TextAdventureGame.Characters
         {
             Player player = new Player(name);
             Player = player;
-            Console.WriteLine();
-            Console.Clear();
-            PrintLine($"Welcome to the world, {player.Name}!");
-            Console.WriteLine();
             return Player;
         }
 
@@ -48,8 +43,8 @@ namespace TextAdventureGame.Characters
 
         public int GainSugar()
         {
-            this.SugarLevel++;
-            return this.SugarLevel;
+            SugarLevel++;
+            return SugarLevel;
         }
     }
 }

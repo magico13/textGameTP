@@ -13,11 +13,10 @@ namespace TextGameTests
         public void CreatePlayerHasName()
         {
             //Arrange
-            Player player = new Player();
             string name = "Steve";
 
             //Act
-            player = player.CreatePlayer(name);
+            Player player = new Player(name);
             string result = player.Name;
 
             //Assert
@@ -28,10 +27,11 @@ namespace TextGameTests
         public void SugarLevelIncrements()
         {
             //Arrange
-            Player player = new Player();
+            string name = "Steve";
+            Player player = new Player(name);
 
             //Act
-            player.Execute(2);
+            player.GainSugar();
             int result = player.SugarLevel;
 
             //Assert
@@ -42,7 +42,8 @@ namespace TextGameTests
         public void EatCandyReturnsCorrectString()
         {
             //Arrange
-            Player player = new Player();
+            string name = "Steve";
+            Player player = new Player(name);
             
 
             //Act
