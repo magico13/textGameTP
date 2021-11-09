@@ -13,10 +13,10 @@ namespace TextGameTests
         public void CanCreateMap()
         {
             //Arrange
-            Location Map = new Location();
+            Room Map = new Room();
 
             //Act
-            List<Location> result = Map.CreateMap();
+            List<Room> result = Map.CreateMap();
 
             //Assert
             Assert.IsNotNull(result);
@@ -26,12 +26,12 @@ namespace TextGameTests
         public void CanConvertLocationToString()
         {
             //Arrange
-            Location Map = new Location();
+            Room Map = new Room();
             string location = "bathroom";
 
             //Act
             Map.MapList = Map.CreateMap();
-            Location result = Map.Move(location);
+            Room result = Map.CheckInput(location);
 
             //Assert
             Assert.IsNotNull(Map.MapList);
@@ -44,7 +44,7 @@ namespace TextGameTests
         public void EncounterChecksCorrectly(double num, bool expected)
         {
             //Arrange
-            Location Map = new Location { EncounterChance = num };
+            Room Map = new Room { EncounterChance = num };
 
             //Act
             Map.MapList = Map.CreateMap();
@@ -59,11 +59,11 @@ namespace TextGameTests
         public void CurrentLocationChanges()
         {
             //Arrange
-            Location Map = new Location();
+            Room Map = new Room();
             Map.MapList = Map.CreateMap();
             string location = "bathroom";
-            Location place = null;
-            foreach (Location item in Map.MapList)
+            Room place = null;
+            foreach (Room item in Map.MapList)
             {
                 if (item.Name == "Master Bedroom")
                 {
@@ -72,7 +72,7 @@ namespace TextGameTests
             }
 
             //Act
-            Location result = Map.Move(location);
+            Room result = Map.CheckInput(location);
 
             //Assert
             Assert.IsNotNull(Map.MapList);
@@ -84,13 +84,13 @@ namespace TextGameTests
         public void CurrentLocationStartsinMB()
         {
             //Arrange
-            Location Map = new Location();
-            Location place = null;
+            Room Map = new Room();
+            Room place = null;
 
             //Act
             Map.MapList = Map.CreateMap();
 
-            foreach (Location item in Map.MapList)
+            foreach (Room item in Map.MapList)
             {
                 if (item.CurrentLocation == true)
                 {

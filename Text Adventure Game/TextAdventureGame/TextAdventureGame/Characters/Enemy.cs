@@ -12,22 +12,17 @@ namespace TextAdventureGame.Characters
             Health = 10;
         }
 
+        private List<string> Flavors { get { return new List<string>() {"cherry", "chocolate", "orange", "grape", "raspberry"}; } }
+
         public Enemy Spawn()
         {
-            List<string> flavors = new List<string>
-            {
-                "cherry",
-                "chocolate",
-                "orange",
-                "grape",
-                "raspberry",
-            };
             Random flavorChoice = new Random();
-            int flavorIndex = flavorChoice.Next(0, 4);
-            string flavor = flavors[flavorIndex];
-            Enemy = new Enemy();
-            Enemy.Name = flavor;
-            return Enemy;
+            string flavor = Flavors[flavorChoice.Next(0, 5)];
+            Enemy enemy = new Enemy
+            {
+                Name = flavor
+            };
+            return enemy;
         }
 
         public int DamageEnemy(int damage)
@@ -35,6 +30,5 @@ namespace TextAdventureGame.Characters
             this.Health -= damage;
             return this.Health;
         }
-
     }
 }

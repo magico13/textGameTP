@@ -1,0 +1,5 @@
+C:\Users\Student\source\repos\side-projects\practicegame\Text Adventure Game\TextAdventureGame\TextAdventureGame\obj\Release\netcoreapp3.1\TextAdventureGame.csproj.AssemblyReference.cache
+C:\Users\Student\source\repos\side-projects\practicegame\Text Adventure Game\TextAdventureGame\TextAdventureGame\obj\Release\netcoreapp3.1\TextAdventureGame.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Student\source\repos\side-projects\practicegame\Text Adventure Game\TextAdventureGame\TextAdventureGame\obj\Release\netcoreapp3.1\TextAdventureGame.AssemblyInfoInputs.cache
+C:\Users\Student\source\repos\side-projects\practicegame\Text Adventure Game\TextAdventureGame\TextAdventureGame\obj\Release\netcoreapp3.1\TextAdventureGame.AssemblyInfo.cs
+C:\Users\Student\source\repos\side-projects\practicegame\Text Adventure Game\TextAdventureGame\TextAdventureGame\obj\Release\netcoreapp3.1\TextAdventureGame.csproj.CoreCompileInputs.cache
