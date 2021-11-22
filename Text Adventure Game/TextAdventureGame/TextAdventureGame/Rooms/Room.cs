@@ -8,14 +8,11 @@ namespace TextAdventureGame.MapLocations
     {
         public string Description { get; set; }
         public string Image { get; set; }
-        public Room CurrentLocation { get; set; }
-        public string Name { get; protected set; }
+        public string Name { get; set; }
         public double EncounterChance { get; set; }
-        public List<Room> MapList { get; set; }
-
-        public List<Room> CreateMap()
-        {
-            List<Room> mapList = new List<Room>
+        public List<Room> MapList { get 
+            {
+                List<Room> mapList = new List<Room>
             {
                 new Attic(),
                 new Backyard(),
@@ -30,35 +27,20 @@ namespace TextAdventureGame.MapLocations
                 new Office(),
                 new Pantry()
             };
-            return mapList;
+                return mapList;
+            } 
         }
 
-        public Room CheckInput(string location)
-        {
-            foreach (Room place in MapList)
-            {
-                string placeString = place.Name.ToLower();
-
-                if (placeString == location)
-                {
-                    if (place == CurrentLocation)
-                    {
-                        Room sameRoom = new Room() { Name = "" };
-                        return sameRoom;
-                    }
-
-                    CurrentLocation = place;
-                    return CurrentLocation;
-                }
-            }
-            return null;
-        }
-
-        public bool RollEncounter()
+        /// <summary>
+        /// Gets a random number and checks it agains the current locations encounter chance
+        /// If the result is higher than 0.3, an encounter occurs
+        /// </summary>
+        /// <returns></returns>
+        public bool RollEncounter(Room currentLocation)
         {
             bool encounter = false;
             Random encounterRandom = new Random();
-            double encounterDouble = CurrentLocation.EncounterChance * encounterRandom.NextDouble();
+            double encounterDouble = currentLocation.EncounterChance * encounterRandom.NextDouble();
             if (encounterDouble > 0.3)
             {
                 encounter = true;

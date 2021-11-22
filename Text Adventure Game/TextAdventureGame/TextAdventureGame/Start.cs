@@ -12,7 +12,12 @@ namespace TextAdventureGame
             Game.StartGame();
         }
 
-        public static void PrintLine(string text, int delay = 25) //Causes text to be written at a delay simulating a typewriter effect and starts new line
+        /// <summary>
+        /// Writes the text at a delay, simulating a typewriter effect and starts a new line
+        /// </summary>
+        /// <param name="text"></param>
+        /// <param name="delay"></param>
+        public static void PrintLine(string text, int delay = 10)
         {
             foreach (char c in text)
             {
@@ -21,7 +26,13 @@ namespace TextAdventureGame
             }
             Console.WriteLine();
         }
-        public static void Print(string text, int delay = 25) //Causes text to be written at a delay simulating a typewriter effect
+
+        /// <summary>
+        /// Writes the text at a delay, simulating a typewriter effect
+        /// </summary>
+        /// <param name="text"></param>
+        /// <param name="delay"></param>
+        public static void Print(string text, int delay = 10) //Causes text to be written at a delay simulating a typewriter effect
         {
             foreach (char c in text)
             {
@@ -30,6 +41,9 @@ namespace TextAdventureGame
             }
         }
 
+        /// <summary>
+        /// Displays the title screen
+        /// </summary>
         public static void Title()
         {
             string gameTitle = @"

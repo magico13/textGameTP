@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
+using TextAdventureGame.Commands;
 using TextAdventureGame.MapLocations;
 
 namespace TextGameTests
@@ -13,10 +14,10 @@ namespace TextGameTests
         public void CanCreateMap()
         {
             //Arrange
-            Room Map = new Room();
+            RoomCommand rc = new RoomCommand();
 
             //Act
-            List<Room> result = Map.CreateMap();
+            List<Room> result = rc.Map.MapList;
 
             //Assert
             Assert.IsNotNull(result);
@@ -26,15 +27,15 @@ namespace TextGameTests
         public void CanConvertLocationToString()
         {
             //Arrange
-            Room Map = new Room();
+            RoomCommand rc = new RoomCommand();
             string location = "bathroom";
 
             //Act
-            Map.MapList = Map.CreateMap();
-            Room result = Map.CheckInput(location);
+            //Map.MapList = Map.CreateMap();
+            Room result = rc.CheckInput(location);
 
             //Assert
-            Assert.IsNotNull(Map.MapList);
+            Assert.IsNotNull(rc.Map.MapList);
             Assert.AreEqual("Bathroom", result.Name);
         }
 
@@ -44,11 +45,11 @@ namespace TextGameTests
         public void EncounterChecksCorrectly(double num, bool expected)
         {
             //Arrange
-            Room Map = new Room { EncounterChance = num };
+            RoomCommand rc = new RoomCommand { CurrentLocation = new Room { EncounterChance = num } };
+            Room Map = new Room();
 
             //Act
-            Map.MapList = Map.CreateMap();
-            bool result = Map.RollEncounter(Map);
+            bool result = Map.RollEncounter(rc.CurrentLocation);
 
             //Assert
             Assert.IsNotNull(Map.MapList);
@@ -59,40 +60,29 @@ namespace TextGameTests
         public void CurrentLocationChanges()
         {
             //Arrange
-            Room Map = new Room();
-            Map.MapList = Map.CreateMap();
+            RoomCommand rc = new RoomCommand();
             string location = "bathroom";
-            Room place = null;
-            foreach (Room item in Map.MapList)
-            {
-                if (item.Name == "Master Bedroom")
-                {
-                    place = item;
-                }
-            }
 
             //Act
-            Room result = Map.CheckInput(location);
+            rc.CurrentLocation = rc.CheckInput(location);
 
             //Assert
-            Assert.IsNotNull(Map.MapList);
-            Assert.IsTrue(result.CurrentLocation);
-            Assert.IsFalse(place.CurrentLocation);
+            Assert.IsNotNull(rc.Map.MapList);
+            Assert.AreEqual("Bathroom", rc.CurrentLocation.Name);
+            Assert.AreNotEqual("Master Bedroom", rc.CurrentLocation.Name);
         }
 
         [TestMethod]
         public void CurrentLocationStartsinMB()
         {
             //Arrange
-            Room Map = new Room();
+            RoomCommand rc = new RoomCommand();
             Room place = null;
 
             //Act
-            Map.MapList = Map.CreateMap();
-
-            foreach (Room item in Map.MapList)
+            foreach (Room item in rc.Map.MapList)
             {
-                if (item.CurrentLocation == true)
+                if (item.Name == rc.CurrentLocation.Name)
                 {
                     place = item;
                 }
@@ -100,7 +90,7 @@ namespace TextGameTests
 
 
             //Assert
-            Assert.IsNotNull(Map.MapList);
+            Assert.IsNotNull(rc.Map.MapList);
             Assert.AreEqual("Master Bedroom", place.Name);
         }
     }

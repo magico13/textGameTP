@@ -39,3 +39,4 @@ C:\Users\Student\source\repos\side-projects\practicegame\Text Adventure Game\Tex
 C:\Users\Student\source\repos\side-projects\practicegame\Text Adventure Game\TextAdventureGame\TextAdventureGame\obj\Debug\netcoreapp3.1\TextAdventureGame.dll
 C:\Users\Student\source\repos\side-projects\practicegame\Text Adventure Game\TextAdventureGame\TextAdventureGame\obj\Debug\netcoreapp3.1\TextAdventureGame.pdb
 C:\Users\Student\source\repos\side-projects\practicegame\Text Adventure Game\TextAdventureGame\TextAdventureGame\obj\Debug\netcoreapp3.1\TextAdventureGame.genruntimeconfig.cache
+C:\Users\Student\source\repos\side-projects\practicegame\Text Adventure Game\TextAdventureGame\TextAdventureGame\obj\Debug\netcoreapp3.1\TextAdventureGame.csproj.CopyComplete

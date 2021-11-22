@@ -7,15 +7,27 @@ namespace TextAdventureGame.Mechanics
 {
     public static class UserInput
     {
+        /// <summary>
+        /// Prints message and prompts user for string input
+        /// </summary>
+        /// <param name="message"></param>
+        /// <returns></returns>
         public static string GetString(string message)
         {
             Start.Print(message + " ");
             return Console.ReadLine();
         }
 
-        public static InputAction GetAction()
+        /// <summary>
+        /// Prompts the user for action, breaks down space seperated input
+        /// First word = Command
+        /// Second word = Target
+        /// </summary>
+        /// <param name="action"></param>
+        /// <returns></returns>
+        public static InputAction GetAction(InputAction action)
         {
-            InputAction action = new InputAction();
+            action = new InputAction();
             Start.Print("What do you do?: ");
             string input = Console.ReadLine().ToLower();
             string[] inputSplit = input.Split(" ");
@@ -27,6 +39,11 @@ namespace TextAdventureGame.Mechanics
             return action;
         }
 
+        /// <summary>
+        /// Displays message and prompts user for yes or no repsonse
+        /// </summary>
+        /// <param name="message"></param>
+        /// <returns></returns>
         public static bool GetBool(string message)
         {
             bool validInput = false;

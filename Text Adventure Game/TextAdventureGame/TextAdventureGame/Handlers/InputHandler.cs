@@ -22,19 +22,16 @@ namespace TextAdventureGame.Mechanics
         {
             switch (action.Command)
             {
-                case "lick": 
+                case "lick":
+                case "spawn":
                     return 1;
 
-                case "move": 
-                    return 2;
-
+                case "move":
                 case "view":
                     return 2;
 
                 case "check":
-                    return 3;
-
-                case "use": 
+                case "use":
                     return 3;
 
                 case "help":
@@ -46,11 +43,14 @@ namespace TextAdventureGame.Mechanics
                     bool quit = QuitGame();
                     if (quit)
                     {
-
+#if RELEASE
                         Start.PrintLine($"Congratulations! You have answered the age old question! It took  licks to get to the center of yourself.");
                         Console.Read();
+#endif
                         return 4;
                     }
+                    return 0;
+                case "end":
                     return 0;
 
                 default: //Handles unrecognized inputs
@@ -59,6 +59,9 @@ namespace TextAdventureGame.Mechanics
             }
         }
 
+        /// <summary>
+        /// Lists the possible help commands
+        /// </summary>
         public static void ListHelp()
         {
             Dictionary<string, string> helpDetails = new Dictionary<string, string>
@@ -78,6 +81,10 @@ namespace TextAdventureGame.Mechanics
             }
         }
 
+        /// <summary>
+        /// Ends the game prematurely
+        /// </summary>
+        /// <returns></returns>
         private static bool QuitGame()
         {
             Start.Print("Are you sure you want to quit the game?\nThere are no save games. You'd have to start over. Y/N: ");

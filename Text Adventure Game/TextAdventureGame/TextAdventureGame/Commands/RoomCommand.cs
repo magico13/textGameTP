@@ -9,67 +9,104 @@ namespace TextAdventureGame.Commands
 {
     public class RoomCommand : IRoomCommand
     {
-        private readonly Room Map = new Room();
-        public bool InCombat = false;
+        public Room Map = new Room();
+        public Room CurrentLocation { get; set; } = new MasterBedroom();
 
-        public void Execute(InputAction action)
+        /// <summary>
+        /// Handles create (creates map), move (changes rooms), roll (checks for encounter), and check (displays map) commands
+        /// </summary>
+        /// <param name="action"></param>
+        public InputAction Execute(InputAction action, bool combat = false)
         {
             switch (action.Command)
             {
-                case "create":
-                    Map.MapList = Map.CreateMap();
-                    break;
                 case "move":
-                    if (InCombat)
+                    if (combat)
                     {
-                        bool run = UserInput.GetBool("Do you want to run? (Y/N) ");
-                        if (!run)
+                        if (UserInput.GetBool("Do you want to run? (Y/N) "))
                         {
-                            break;
+                            action = null;
+                            return action;
                         }
-                        InCombat = false;
+                        action.Command = "end";
                     }
-                    Room place = Map.CheckInput(action.Target); // Converts input to a location value and checks that location is viable
-                    ChangeRoom(place);
-                    break;
-                case "roll":
-                    Map.RollEncounter();
-                    break; //Rolls to see if a combat encounter begins
-                case "check":
+                    Room place = CheckInput(action.Target); // Converts input to a location value and checks that location is viable
+                    if (place != null)
+                    {
+                        CurrentLocation = place;
+                        action = ChangeRoom(action);
+                    }
+                    else
+                    {
+                        action = null;
+                    }
+                    return action;
+                case "view":
                     CheckMap();
-                    break;
+                    action = null;
+                    return action;
+                default:
+                    action = null;
+                    return action;
             }
         }
 
-        private void ChangeRoom(Room place)
+        /// <summary>
+        /// Verifies that input is a valid room
+        /// </summary>
+        /// <param name="location"></param>
+        /// <returns></returns>
+        public Room CheckInput(string location)
         {
-            if (place.Name == "")
+            foreach (Room place in Map.MapList)
             {
-                Start.PrintLine("You're already there");
+                if (place.Name.ToLower() == location)
+                {
+                    if (place.Name == CurrentLocation.Name)
+                    {
+                        Start.PrintLine("You're already there");
+                        return null;
+                    }
+                    return place;
+                }
             }
-            else if (place == null)
+            Start.PrintLine("Sorry. That's not a place you can go right now.");
+            return null;
+        }
+
+        /// <summary>
+        /// Changes the current location and didsplays room information
+        /// </summary>
+        /// <param name="place"></param>
+        public InputAction ChangeRoom(InputAction action)
+        {
+            Console.WriteLine($"{CurrentLocation.Image}");
+            Start.PrintLine($"You are now in the {CurrentLocation.Name}");
+            Start.PrintLine($"{CurrentLocation.Description}");
+            Console.WriteLine();
+            if (Map.RollEncounter(CurrentLocation)) //Rolls to see if a combat encounter begins
             {
-                Start.PrintLine("Sorry. That's not a place you can go right now.");
+                action.Command = "fight";
             }
             else
             {
-                Start.PrintLine($"{place.Image}");
-                Start.PrintLine($"You are now in the {place.Name}");
-                Start.PrintLine($"{place.Description}");
+                action = null;
             }
-            Console.WriteLine();
+            return action;
         }
 
+        /// <summary>
+        /// Lists the rooms and current location
+        /// </summary>
         private void CheckMap()
         {
             foreach (Room room in Map.MapList)
             {
-                string name = room.Name;
-                if (room == Map.CurrentLocation)
+                if (room.Name == CurrentLocation.Name)
                 {
-                    name += " - Current Location";
+                    room.Name += " - Current Location";
                 }
-                Start.PrintLine($"{name}");
+                Start.PrintLine($"{room.Name}");
             }
         }
     }

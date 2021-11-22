@@ -9,36 +9,47 @@ namespace TextAdventureGame.Commands
 {
     public class CharacterCommand : ICharacterCommand
     {
-        private Player Player = new Player("");
-        private Enemy Enemy = new Enemy();
-        public bool InCombat = false;
+        public Player Player = new Player("");
+        public Enemy Enemy = new Enemy();
 
-        public void Execute(InputAction action)
+        public InputAction Execute(InputAction action, bool combat = false)
         {
             switch (action.Command)
             {
                 case "create":
                     Player = CreatePlayer();
-                    break;
+                    action = null;
+                    return action;
                 case "spawn":
                     Enemy = SpawnEnemy();
-                    break;
+                    action = null;
+                    return action;
                 case "lick":
-                    AttackEnemy();
-                    break;
+                    if (AttackEnemy(combat))
+                    {
+                        action = null;
+                    }
+                    else
+                    {
+                        action.Command = "end";
+                    }
+                    return action;
                 default:
-                    break;
+                    action = null;
+                    return action;
             }
         }
 
-        private void AttackEnemy()
+        private bool AttackEnemy(bool combat)
         {
-            if (!InCombat)
-            { 
-            Start.PrintLine("Save your licks for the candies.");
-            Console.WriteLine();
+            if (!combat)
+            {
+                Start.PrintLine("Save your licks for the candies.");
+                Console.WriteLine();
+                return false;
+
             }
-            else if (Enemy.Health > 0 || Player.SugarLevel < 100)
+            else
             {
                 Player.Licks = Player.Licks++;
                 int damage = Player.RollDamage(); //Rolls for chance to critical. Writes "Chomp" if critical
@@ -47,11 +58,14 @@ namespace TextAdventureGame.Commands
                 Console.WriteLine();
                 Enemy.Health = Enemy.DamageEnemy(damage); //Reduces enemy health
                 Player.SugarLevel = Player.GainSugar(); //Increments sugar level after every attack
-            }
-            else
-            {
-                Start.PrintLine(Player.EatCandy()); //Writes end of battle text including sugar level and experience
-                Console.WriteLine();
+
+                if (Enemy.Health < 1 || Player.SugarLevel > 99)
+                {
+                    Start.PrintLine(Player.EatCandy()); //Writes end of battle text including sugar level and experience
+                    Console.WriteLine();
+                    return false;
+                }
+                return true;
             }
         }
 
@@ -67,6 +81,7 @@ namespace TextAdventureGame.Commands
         {
             string name = UserInput.GetString("Please enter your name:");
             Player = Player.CreatePlayer(name);
+            Console.WriteLine();
             Start.PrintLine($"Welcome to the world, {Player.Name}!");
             Console.WriteLine();
             return Player;
