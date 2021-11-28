@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using TextAdventureGame.Models;
-using TextAdventureGame.Objects;
+using TextAdventureGame.Items;
 
 namespace TextAdventureGame.Mechanics
 {
@@ -32,10 +32,11 @@ namespace TextAdventureGame.Mechanics
             string input = Console.ReadLine().ToLower();
             string[] inputSplit = input.Split(" ");
             action.Command = inputSplit[0].ToLower();
-            if (inputSplit.Length > 1)
+            for (int i = 1; i < 3; i ++)
             {
-                action.Target = $"{inputSplit[1].ToLower()}";
+                action.Target += inputSplit[i].ToLower() + " ";
             }
+            action.Target.Trim();
             return action;
         }
 

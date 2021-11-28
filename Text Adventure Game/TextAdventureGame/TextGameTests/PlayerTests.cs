@@ -10,25 +10,10 @@ namespace TextGameTests
     public class PlayerTests
     {
         [TestMethod]
-        public void CreatePlayerHasName()
-        {
-            //Arrange
-            string name = "Steve";
-
-            //Act
-            Player player = new Player(name);
-            string result = player.Name;
-
-            //Assert
-            Assert.AreEqual("Steve", result, "Player does not take inputted name");
-        }
-
-        [TestMethod]
         public void SugarLevelIncrements()
         {
             //Arrange
-            string name = "Steve";
-            Player player = new Player(name);
+            Player player = new Player();
 
             //Act
             player.GainSugar();
@@ -42,8 +27,7 @@ namespace TextGameTests
         public void EatCandyReturnsCorrectString()
         {
             //Arrange
-            string name = "Steve";
-            Player player = new Player(name);
+            Player player = new Player();
             
 
             //Act

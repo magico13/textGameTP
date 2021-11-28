@@ -2,41 +2,31 @@
 using System.Collections.Generic;
 using System.Text;
 using TextAdventureGame.Characters;
-using TextAdventureGame.Mechanics;
 using TextAdventureGame.Models;
 
 namespace TextAdventureGame.Commands
 {
     public class CharacterCommand : ICharacterCommand
     {
-        public Player Player = new Player("");
+        public Player Player = new Player();
         public Enemy Enemy = new Enemy();
 
         public InputAction Execute(InputAction action, bool combat = false)
         {
             switch (action.Command)
             {
-                case "create":
-                    Player = CreatePlayer();
-                    action = null;
-                    return action;
                 case "spawn":
                     Enemy = SpawnEnemy();
-                    action = null;
-                    return action;
+                    return null;
                 case "lick":
-                    if (AttackEnemy(combat))
-                    {
-                        action = null;
-                    }
-                    else
-                    {
-                        action.Command = "end";
-                    }
+                    if (AttackEnemy(combat)) { action = null; }
+                    else { action.Command = "end"; }
                     return action;
+                case "heal":
+                    Player.SugarLevel = Player.LowerSugar();
+                    return null;
                 default:
-                    action = null;
-                    return action;
+                    return null;
             }
         }
 
@@ -47,7 +37,6 @@ namespace TextAdventureGame.Commands
                 Start.PrintLine("Save your licks for the candies.");
                 Console.WriteLine();
                 return false;
-
             }
             else
             {
@@ -75,16 +64,6 @@ namespace TextAdventureGame.Commands
             Start.PrintLine($"Oh, no! A {Enemy.Name} pop has appeared!");
             Console.WriteLine();
             return Enemy;
-        }
-
-        private Player CreatePlayer()
-        {
-            string name = UserInput.GetString("Please enter your name:");
-            Player = Player.CreatePlayer(name);
-            Console.WriteLine();
-            Start.PrintLine($"Welcome to the world, {Player.Name}!");
-            Console.WriteLine();
-            return Player;
         }
     }
 }

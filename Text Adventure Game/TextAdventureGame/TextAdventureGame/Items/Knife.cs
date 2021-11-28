@@ -2,10 +2,15 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace TextAdventureGame.Objects
+namespace TextAdventureGame.Items
 {
-    public class Knife : Inventory
+    public class Knife : Item
     {
-
+        public Knife() 
+        {
+            Name = "Irish Army Knife";
+            Description = "";
+            Location = "Kitchen";
+        }
     }
 }

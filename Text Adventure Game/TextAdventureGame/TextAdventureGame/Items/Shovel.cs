@@ -2,9 +2,15 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace TextAdventureGame.Objects
+namespace TextAdventureGame.Items
 {
-    public class Shovel : Inventory 
+    public class Shovel : Item
     {
+        public Shovel() 
+        {
+            Name = "Shovel";
+            Description = "";
+            Location = "Garage";
+        }
     }
 }

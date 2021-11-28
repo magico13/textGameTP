@@ -2,9 +2,15 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace TextAdventureGame.Objects
+namespace TextAdventureGame.Items
 {
-    public class MetalDetector : Inventory
+    public class MetalDetector : Item
     {
+        public MetalDetector() 
+        {
+            Name = "Metal Detector";
+            Description = "";
+            Location = "Basement";
+        }
     }
 }

@@ -24,14 +24,17 @@ namespace TextAdventureGame.Mechanics
             {
                 case "lick":
                 case "spawn":
+                case "heal":
                     return 1;
 
                 case "move":
                 case "view":
+                case "unlock":
                     return 2;
 
                 case "check":
                 case "use":
+                case "get":
                     return 3;
 
                 case "help":

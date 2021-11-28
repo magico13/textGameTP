@@ -21,33 +21,12 @@ namespace TextAdventureGame.Commands
             switch (action.Command)
             {
                 case "move":
-                    if (combat)
-                    {
-                        if (UserInput.GetBool("Do you want to run? (Y/N) "))
-                        {
-                            action = null;
-                            return action;
-                        }
-                        action.Command = "end";
-                    }
-                    Room place = CheckInput(action.Target); // Converts input to a location value and checks that location is viable
-                    if (place != null)
-                    {
-                        CurrentLocation = place;
-                        action = ChangeRoom(action);
-                    }
-                    else
-                    {
-                        action = null;
-                    }
-                    return action;
+                    return HandleMove(action, combat);
                 case "view":
                     CheckMap();
-                    action = null;
-                    return action;
+                    return null;
                 default:
-                    action = null;
-                    return action;
+                    return null;
             }
         }
 
@@ -78,7 +57,7 @@ namespace TextAdventureGame.Commands
         /// Changes the current location and didsplays room information
         /// </summary>
         /// <param name="place"></param>
-        public InputAction ChangeRoom(InputAction action)
+        private InputAction ChangeRoom(InputAction action)
         {
             Console.WriteLine($"{CurrentLocation.Image}");
             Start.PrintLine($"You are now in the {CurrentLocation.Name}");
@@ -90,8 +69,9 @@ namespace TextAdventureGame.Commands
             }
             else
             {
-                action = null;
+                action.Command = "";
             }
+            action.Target = CurrentLocation.Name;
             return action;
         }
 
@@ -108,6 +88,32 @@ namespace TextAdventureGame.Commands
                 }
                 Start.PrintLine($"{room.Name}");
             }
+        }
+
+        private InputAction HandleMove(InputAction action, bool combat = false)
+        {
+            if (combat)
+            {
+                if (UserInput.GetBool("Do you want to run? (Y/N) "))
+                {
+                    return null;
+                }
+                action.Command = "end";
+            }
+            else
+            {
+                Room place = CheckInput(action.Target); // Converts input to a location value and checks that location is viable
+                if (place != null)
+                {
+                    CurrentLocation = place;
+                    action = ChangeRoom(action);
+                }
+                else
+                {
+                    action = null;
+                }
+            }
+            return action;
         }
     }
 }

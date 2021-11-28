@@ -3,36 +3,15 @@ using System.Collections.Generic;
 using System.IO;
 using System.Text;
 
-namespace TextAdventureGame.Objects
+namespace TextAdventureGame.Items
 {
-    public class Computer : Inventory
+    public class Computer : Item
     {
-        public string itemLocation = "Office";
-
-        public override bool UseItem(string use)
+        public Computer()
         {
-            switch (use)
-            {
-                case "print cheats":
-                    Cheat();
-                    return true;
-
-                case "search":
-                    return true;
-
-                default:
-                    return false;
-            }
-        }
-
-        public void Cheat()
-        {
-            Taxes taxes = new Taxes();
-            List<string> cheats = taxes.GetCheats();
-            foreach (string line in cheats)
-            {
-                Start.PrintLine(line);
-            }
+            Name = "Computer";
+            Description = "The old girl is just as reliable as the day you got her, which is to say not very.";
+            Location = "Office";
         }
     }
 }

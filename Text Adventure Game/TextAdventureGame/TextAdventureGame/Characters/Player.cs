@@ -8,22 +8,14 @@ namespace TextAdventureGame.Characters
 {
     public class Player : Character
     {
-        public Player(string name) : base()
+        public Player() : base()
         {
-            Name = name;
-            Health = 100 - SugarLevel;
             DamageMod = 1;
         }
 
         public int SugarLevel { get; set; } //if sugar level = 100, player crashes (maybe enter "sugar rush" at 100?)
         public int Experience { get; set; } //Needs expanding
         public int Licks { get; set; } = 0;
-
-        public Player CreatePlayer(string name)
-        {
-            Player player = new Player(name);
-            return player;
-        }
 
         /// <summary>
         ///Rolls for critical and applies damage to enemy and increases player sugar level 
@@ -62,6 +54,16 @@ namespace TextAdventureGame.Characters
         public int GainSugar()
         {
             SugarLevel++;
+            return SugarLevel;
+        }
+
+        public int LowerSugar()
+        {
+            SugarLevel -= 30;
+            if (SugarLevel < 0)
+            {
+                SugarLevel = 0;
+            }
             return SugarLevel;
         }
     }

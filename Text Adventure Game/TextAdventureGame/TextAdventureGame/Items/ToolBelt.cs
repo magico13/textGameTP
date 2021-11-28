@@ -2,9 +2,15 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace TextAdventureGame.Objects
+namespace TextAdventureGame.Items
 {
-    public class ToolBelt : Inventory
+    public class ToolBelt : Item
     {
+        public ToolBelt()
+        {
+            Name = "Tool Belt";
+            Description = "";
+            Location = "Master Bedroom";
+        }
     }
 }

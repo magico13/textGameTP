@@ -4,7 +4,7 @@ using TextAdventureGame.Characters;
 using TextAdventureGame.Commands;
 using TextAdventureGame.MapLocations;
 using TextAdventureGame.Models;
-using TextAdventureGame.Objects;
+using TextAdventureGame.Items;
 
 namespace TextAdventureGame.Mechanics
 {
@@ -15,6 +15,7 @@ namespace TextAdventureGame.Mechanics
         private readonly IInventoryCommand Inventory = new InventoryCommand();
         private InputAction Action = new InputAction();
         public bool InCombat = false;
+        public string CurrentRoom = "Master Bedroom";
         private bool GameOver = false;
 
         /// <summary>
@@ -62,9 +63,10 @@ namespace TextAdventureGame.Mechanics
                         break;
                     case 2:
                         Action = Map.Execute(Action);
+                        Action = CheckLocation();
                         break;
                     case 3:
-                        Inventory.Execute(Action);
+                        Action = Inventory.Execute(Action, CurrentRoom);
                         break;
                     case 4:
                         GameOver = true;
@@ -77,6 +79,19 @@ namespace TextAdventureGame.Mechanics
                 }
                 Console.WriteLine();
             }
+        }
+
+        private InputAction CheckLocation()
+        {
+            if (Action != null && Action.Target != null && Action.Target != "")
+            {
+                CurrentRoom = Action.Target;
+            }
+            if (Action != null && Action.Command == "")
+            {
+                Action = null;
+            }
+            return Action;
         }
 
         /// <summary>
