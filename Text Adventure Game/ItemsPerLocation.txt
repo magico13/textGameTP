@@ -1,0 +1,31 @@
+Items per room [Non-story Items]
+
+#Attic - Camping Lantern
+Backyard - Buried Switch (requires metal detector and shovel)
+#*Basement - Metal Detector (requires lantern to see)
+*Bathroom - Break (Toilet Water) 
+Dining Room - Water Bottle
+*Garage- Shovel (requires tool belt) (Boss battle can be beaten with belt sander)
+*Guest Bedroom- Army Knife
+*Hidden Room - Endgame switch (requires Buried switch)
+Kitchen- Water from Dog Bowl
+Living Room- Key to garage (hidden in couch cushions) [Mints (Useless)]
+*Master Bedroom - Battle vest [Item Checklist]
+*Office - Batteries (Locked drawer needs lockpicked)
+*Pantry - Guaranteed encounter in case player needs sticks?
+
+Item hierarchy
+-Battle vest
+-Water Bottle
+-Knife
+-Key to Garage
+-Shovel
+-Camping Lantern
+-Batteries
+-Metal Detector
+-Hidden Room Switch
+-Endgame Switch
+
+* = Locked
+# = Boss fight
+ 
