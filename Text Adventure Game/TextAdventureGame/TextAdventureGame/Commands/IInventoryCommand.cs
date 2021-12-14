@@ -7,6 +7,6 @@ namespace TextAdventureGame.Commands
 {
     public interface IInventoryCommand
     {
-        public InputAction Execute(InputAction action, string roomName);
+        public void Execute(InputAction action, string roomName);
     }
 }

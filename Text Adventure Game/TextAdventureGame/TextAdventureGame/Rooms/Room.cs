@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using TextAdventureGame.Mechanics;
+using TextAdventureGame.Handlers;
 
 namespace TextAdventureGame.MapLocations
 {

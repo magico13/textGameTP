@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 using TextAdventureGame.MapLocations;
-using TextAdventureGame.Mechanics;
+using TextAdventureGame.Handlers;
 
 namespace TextAdventureGame.Characters
 {
@@ -38,12 +38,12 @@ namespace TextAdventureGame.Characters
 
         public string EatCandy()
         {
-            Start.PrintLine("Mmm! You've reached the delicious Tootsie Pop center!");
+            DialogueHandler.PrintLine("Mmm! You've reached the delicious Tootsie Pop center!");
             Console.WriteLine();
-            Start.PrintLine($"Your sugar level is at {SugarLevel}%");
+            DialogueHandler.PrintLine($"Your sugar level is at {SugarLevel}%");
             if (SugarLevel > 50)
             {
-                Start.PrintLine("Careful! If you're sugar level gets to 100, you'll crash! Try drinking some water.");
+                DialogueHandler.PrintLine("Careful! If you're sugar level gets to 100, you'll crash! Try drinking some water.");
             }
             Console.WriteLine();
             Experience++;

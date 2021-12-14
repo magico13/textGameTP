@@ -13,6 +13,10 @@ namespace TextAdventureGame.Items
             Description = "The old girl is just as reliable as the day you got her, which is to say not very.";
             Location = "Office";
         }
+
+        private CheatsHandler cheats = new CheatsHandler();
+
+
     }
 }
 

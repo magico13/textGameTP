@@ -10,11 +10,5 @@ namespace TextAdventureGame.Models
 
         public string Command { get; set; }
         public string Target { get; set; }
-
-        public InputAction SetAction(string command)
-        {
-            InputAction action = new InputAction { Command = command };
-            return action;
-        }
     }
 }

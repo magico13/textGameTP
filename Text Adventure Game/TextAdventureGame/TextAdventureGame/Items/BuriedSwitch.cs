@@ -4,13 +4,13 @@ using System.Text;
 
 namespace TextAdventureGame.Items
 {
-    public class ToolBelt : Item
+    public class BuriedSwitch : Item
     {
-        public ToolBelt()
+        public BuriedSwitch()
         {
-            Name = "Tool Belt";
+            Name = "Buried Switch";
             Description = "";
-            Location = "Master Bedroom";
+            Location = "Backyard";
         }
     }
 }

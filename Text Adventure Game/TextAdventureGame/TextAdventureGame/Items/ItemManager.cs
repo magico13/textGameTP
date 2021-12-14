@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using TextAdventureGame.Handlers;
 using TextAdventureGame.Models;
 
 namespace TextAdventureGame.Items
@@ -8,9 +9,21 @@ namespace TextAdventureGame.Items
     public class ItemManager
     {
         public ItemManager() { }
-        public string Name { get; }
-        public string Description { get; set; }
-        public Dictionary<string, Item> Inventory { get; set; } = new Dictionary<string, Item>();
+
+        public Dictionary<string, Item> Inventory = new Dictionary<string, Item>();
+
+        public Dictionary<string, Item> AllItems = new Dictionary<string, Item>()
+        {
+            ["buried switch"] = new BuriedSwitch(),
+            ["camping lantern"] = new CampingLantern(),
+            ["cheats"] = new Cheats(),
+            ["computer"] = new Computer(),
+            ["garage key"] = new GarageKey(),
+            ["knife"] = new Knife(),
+            ["metal detector"] = new MetalDetector(),
+            ["shovel"] = new Shovel(),
+            ["water bottle"] = new WaterBottle(),
+        };
 
         /// <summary>
         /// Returns the description of an item
@@ -27,16 +40,15 @@ namespace TextAdventureGame.Items
             return $"You don't have a {item.Name.ToLower()}";
         }
 
-        public InputAction UseItem(Item item, string roomName)
+        public bool UseItem(Item item, string roomName)
         {
-            InputAction action = null;
             if (item != null && roomName != "")
             {
-                action = item.Use(Inventory, roomName);
+                action.Command = item.Use(Inventory, roomName);
             }
             else if (item != null) 
             {
-                action.Command = "reject";
+                return false;
             }
             return action;
         }
@@ -47,20 +59,20 @@ namespace TextAdventureGame.Items
             {
                 foreach (KeyValuePair<string, Item> item in Inventory)
                 {
-                    Start.PrintLine(item.Value.Name);
+                    DialogueHandler.PrintLine(item.Value.Name);
                 }
             }
             else
             {
-                Start.PrintLine("You don't have anything on you right now");
+                DialogueHandler.PrintLine("You don't have anything on you right now");
             }
         }
 
         public Item CheckForItem(string itemName)
         {
-            if (itemName != null && Inventory.ContainsKey(itemName))
+            if (itemName != null && AllItems.ContainsKey(itemName))
             {
-                Item item = Inventory[itemName];
+                Item item = AllItems[itemName];
                 return item;
             }
             return null;

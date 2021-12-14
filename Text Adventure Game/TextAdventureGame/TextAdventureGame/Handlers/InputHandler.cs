@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using TextAdventureGame.Models;
 
-namespace TextAdventureGame.Mechanics
+namespace TextAdventureGame.Handlers
 {
     public static class InputHandler
     {
@@ -23,13 +23,10 @@ namespace TextAdventureGame.Mechanics
             switch (action.Command)
             {
                 case "lick":
-                case "spawn":
-                case "heal":
                     return 1;
 
                 case "move":
                 case "view":
-                case "unlock":
                     return 2;
 
                 case "check":
@@ -57,7 +54,7 @@ namespace TextAdventureGame.Mechanics
                     return 0;
 
                 default: //Handles unrecognized inputs
-                    Start.PrintLine("Sorry. Please try again.");
+                    DialogueHandler.PrintLine("Sorry. Please try again.");
                     return 0;
             }
         }
@@ -74,13 +71,14 @@ namespace TextAdventureGame.Mechanics
                 ["View"] = "(Map) This house is so big that it's easy to get lost in. View the map to see where to go next.",
                 ["Check"] = "(Item) You remember that thing you picked up earlier? It might be useful. Check it out just to be sure.",
                 ["Use"] = "(Item) Those items in your pack aren't just there to look pretty. Put them to good use",
+                ["Get"] = "(Item) Your supplies have been scattered. You must recover them. If you come across one, use this to add it to your tool belt.",
                 ["Help"] = "It helps to take time to reflect on your options. Help yourself out by stopping for a breather.",
                 ["Quit"] = "Yeah, so this game doesn't have an ending yet. Quitting is not always the best option, but, for now, it's the only option."
             };
 
             foreach (KeyValuePair<string, string> item in helpDetails)
             {
-                Start.PrintLine($"({item.Key}) {item.Value}");
+                DialogueHandler.PrintLine($"({item.Key}) {item.Value}");
             }
         }
 
@@ -90,11 +88,11 @@ namespace TextAdventureGame.Mechanics
         /// <returns></returns>
         private static bool QuitGame()
         {
-            Start.Print("Are you sure you want to quit the game?\nThere are no save games. You'd have to start over. Y/N: ");
+            DialogueHandler.Print("Are you sure you want to quit the game?\nThere are no save games. You'd have to start over. Y/N: ");
             string quit = Console.ReadLine();
             if (quit.ToLower() == "y" || quit.ToLower() == "yes")
             {
-                Start.PrintLine("Bye! Thanks for playing!");
+                DialogueHandler.PrintLine("Bye! Thanks for playing!");
                 return true;
             }
             return false;

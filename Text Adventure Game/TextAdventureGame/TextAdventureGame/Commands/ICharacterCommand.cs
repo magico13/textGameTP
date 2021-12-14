@@ -7,6 +7,6 @@ namespace TextAdventureGame.Commands
 {
     public interface ICharacterCommand
     {
-        public InputAction Execute(InputAction action, bool combat = false);
+        public void Execute(InputAction action, bool combat = false);
     }
 }

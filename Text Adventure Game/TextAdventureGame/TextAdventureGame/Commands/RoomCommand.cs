@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 using TextAdventureGame.MapLocations;
-using TextAdventureGame.Mechanics;
+using TextAdventureGame.Handlers;
 using TextAdventureGame.Models;
 
 namespace TextAdventureGame.Commands
@@ -16,17 +16,26 @@ namespace TextAdventureGame.Commands
         /// Handles create (creates map), move (changes rooms), roll (checks for encounter), and check (displays map) commands
         /// </summary>
         /// <param name="action"></param>
-        public InputAction Execute(InputAction action, bool combat = false)
+        public void Execute(InputAction action, bool combat = false)
         {
             switch (action.Command)
             {
                 case "move":
-                    return HandleMove(action, combat);
+                    action.Command =  HandleMove(action, combat);
+                    if (action.Command != "")
+                    {
+                        bool startCombat = action.Command == "fight"; 
+                        CommandHandler.Execute(action, 5, startCombat, CurrentLocation.Name); // Changes room
+                        CommandHandler.Execute(action, 4, startCombat, CurrentLocation.Name); // Start or ends combat
+                    }
+                    break;
                 case "view":
                     CheckMap();
-                    return null;
+                    break;
+                case "unlock":
+                    break;
                 default:
-                    return null;
+                    break;
             }
         }
 
@@ -43,13 +52,13 @@ namespace TextAdventureGame.Commands
                 {
                     if (place.Name == CurrentLocation.Name)
                     {
-                        Start.PrintLine("You're already there");
+                        DialogueHandler.PrintLine("You're already there");
                         return null;
                     }
                     return place;
                 }
             }
-            Start.PrintLine("Sorry. That's not a place you can go right now.");
+            DialogueHandler.PrintLine("Sorry. That's not a place you can go right now.");
             return null;
         }
 
@@ -57,22 +66,20 @@ namespace TextAdventureGame.Commands
         /// Changes the current location and didsplays room information
         /// </summary>
         /// <param name="place"></param>
-        private InputAction ChangeRoom(InputAction action)
+        private string ChangeRoom()
         {
             Console.WriteLine($"{CurrentLocation.Image}");
-            Start.PrintLine($"You are now in the {CurrentLocation.Name}");
-            Start.PrintLine($"{CurrentLocation.Description}");
+            DialogueHandler.PrintLine($"You are now in the {CurrentLocation.Name}");
+            DialogueHandler.PrintLine($"{CurrentLocation.Description}");
             Console.WriteLine();
             if (Map.RollEncounter(CurrentLocation)) //Rolls to see if a combat encounter begins
             {
-                action.Command = "fight";
+                return "fight";
             }
             else
             {
-                action.Command = "";
+                return "";
             }
-            action.Target = CurrentLocation.Name;
-            return action;
         }
 
         /// <summary>
@@ -86,19 +93,19 @@ namespace TextAdventureGame.Commands
                 {
                     room.Name += " - Current Location";
                 }
-                Start.PrintLine($"{room.Name}");
+                DialogueHandler.PrintLine($"{room.Name}");
             }
         }
 
-        private InputAction HandleMove(InputAction action, bool combat = false)
+        private string HandleMove(InputAction action, bool combat = false)
         {
             if (combat)
             {
                 if (UserInput.GetBool("Do you want to run? (Y/N) "))
                 {
-                    return null;
+                    return "";
                 }
-                action.Command = "end";
+                return "end";
             }
             else
             {
@@ -106,14 +113,13 @@ namespace TextAdventureGame.Commands
                 if (place != null)
                 {
                     CurrentLocation = place;
-                    action = ChangeRoom(action);
+                    return ChangeRoom();
                 }
                 else
                 {
-                    action = null;
+                    return "";
                 }
             }
-            return action;
         }
     }
 }

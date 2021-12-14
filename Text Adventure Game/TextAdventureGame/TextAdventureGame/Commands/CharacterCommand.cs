@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 using TextAdventureGame.Characters;
+using TextAdventureGame.Handlers;
 using TextAdventureGame.Models;
 
 namespace TextAdventureGame.Commands
@@ -11,22 +12,24 @@ namespace TextAdventureGame.Commands
         public Player Player = new Player();
         public Enemy Enemy = new Enemy();
 
-        public InputAction Execute(InputAction action, bool combat = false)
+        public void Execute(InputAction action, bool combat = false)
         {
             switch (action.Command)
             {
                 case "spawn":
                     Enemy = SpawnEnemy();
-                    return null;
+                    break;
                 case "lick":
-                    if (AttackEnemy(combat)) { action = null; }
-                    else { action.Command = "end"; }
-                    return action;
+                    if (!AttackEnemy(combat))
+                    {
+                        CommandHandler.Execute(action, 4, false); 
+                    }
+                    break;
                 case "heal":
                     Player.SugarLevel = Player.LowerSugar();
-                    return null;
+                    break;
                 default:
-                    return null;
+                    break;
             }
         }
 
@@ -34,7 +37,7 @@ namespace TextAdventureGame.Commands
         {
             if (!combat)
             {
-                Start.PrintLine("Save your licks for the candies.");
+                DialogueHandler.PrintLine("Save your licks for the candies.");
                 Console.WriteLine();
                 return false;
             }
@@ -43,14 +46,14 @@ namespace TextAdventureGame.Commands
                 Player.Licks = Player.Licks++;
                 int damage = Player.RollDamage(); //Rolls for chance to critical. Writes "Chomp" if critical
                 damage += Player.DamageMod;
-                Start.PrintLine($"You managed to get in {damage} licks!");
+                DialogueHandler.PrintLine($"You managed to get in {damage} licks!");
                 Console.WriteLine();
                 Enemy.Health = Enemy.DamageEnemy(damage); //Reduces enemy health
                 Player.SugarLevel = Player.GainSugar(); //Increments sugar level after every attack
 
                 if (Enemy.Health < 1 || Player.SugarLevel > 99)
                 {
-                    Start.PrintLine(Player.EatCandy()); //Writes end of battle text including sugar level and experience
+                    DialogueHandler.PrintLine(Player.EatCandy()); //Writes end of battle text including sugar level and experience
                     Console.WriteLine();
                     return false;
                 }
@@ -61,7 +64,7 @@ namespace TextAdventureGame.Commands
         private Enemy SpawnEnemy()
         {
             Enemy = Enemy.Spawn(); //Creates and names Enemy
-            Start.PrintLine($"Oh, no! A {Enemy.Name} pop has appeared!");
+            DialogueHandler.PrintLine($"Oh, no! A {Enemy.Name} pop has appeared!");
             Console.WriteLine();
             return Enemy;
         }

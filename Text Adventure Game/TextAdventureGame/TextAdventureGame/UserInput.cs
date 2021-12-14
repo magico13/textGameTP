@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using TextAdventureGame.Models;
 using TextAdventureGame.Items;
 
-namespace TextAdventureGame.Mechanics
+namespace TextAdventureGame.Handlers
 {
     public static class UserInput
     {
@@ -14,7 +14,7 @@ namespace TextAdventureGame.Mechanics
         /// <returns></returns>
         public static string GetString(string message)
         {
-            Start.Print(message + " ");
+            DialogueHandler.Print(message + " ");
             return Console.ReadLine();
         }
 
@@ -25,18 +25,24 @@ namespace TextAdventureGame.Mechanics
         /// </summary>
         /// <param name="action"></param>
         /// <returns></returns>
-        public static InputAction GetAction(InputAction action)
+        public static InputAction GetAction()
         {
-            action = new InputAction();
-            Start.Print("What do you do?: ");
+
+            DialogueHandler.Print("What do you do?: ");
             string input = Console.ReadLine().ToLower();
             string[] inputSplit = input.Split(" ");
-            action.Command = inputSplit[0].ToLower();
-            for (int i = 1; i < 3; i ++)
+            InputAction action = new InputAction
             {
-                action.Target += inputSplit[i].ToLower() + " ";
+                Command = inputSplit[0].ToLower(),
+            };
+            if (inputSplit.Length > 1)
+            {
+                for (int i = 1; i < 3 && i < inputSplit.Length; i++)
+                {
+                    action.Target += inputSplit[i].ToLower() + " ";
+                }
+                action.Target = action.Target.Trim();
             }
-            action.Target.Trim();
             return action;
         }
 
@@ -50,7 +56,7 @@ namespace TextAdventureGame.Mechanics
             bool validInput = false;
             while (!validInput)
             {
-                Start.Print(message);
+                DialogueHandler.Print(message);
                 string input = Console.ReadLine().ToLower();
                 if (input == "y" || input == "yes")
                 {
@@ -60,7 +66,7 @@ namespace TextAdventureGame.Mechanics
                 {
                     return false;
                 }
-                Start.Print("Invalid input. Please try again");
+                DialogueHandler.Print("Invalid input. Please try again");
                 Console.WriteLine();
             }
             return false;

@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
-using TextAdventureGame.Mechanics;
+using TextAdventureGame.Handlers;
 
 namespace TextAdventureGame.Characters
 {

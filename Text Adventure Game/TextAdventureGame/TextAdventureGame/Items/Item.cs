@@ -12,6 +12,6 @@ namespace TextAdventureGame.Items
         public string Location;
         public bool UsedUp;
 
-        public virtual InputAction Use(Dictionary<string, Item> inventory, string roomName) { return null; }
+        public virtual string Use(Dictionary<string, Item> inventory, string roomName) { return ""; }
     }
 }
