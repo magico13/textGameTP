@@ -8,5 +8,7 @@ namespace TextAdventureGame.Commands
     public interface ICharacterCommand
     {
         public void Execute(InputAction action, bool combat = false);
+
+        public void SpawnEnemy();
     }
 }

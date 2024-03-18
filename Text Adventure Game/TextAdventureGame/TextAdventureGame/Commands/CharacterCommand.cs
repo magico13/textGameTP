@@ -16,9 +16,6 @@ namespace TextAdventureGame.Commands
         {
             switch (action.Command)
             {
-                case "spawn":
-                    Enemy = SpawnEnemy();
-                    break;
                 case "lick":
                     if (!AttackEnemy(combat))
                     {
@@ -61,12 +58,11 @@ namespace TextAdventureGame.Commands
             }
         }
 
-        private Enemy SpawnEnemy()
+        public void SpawnEnemy()
         {
             Enemy = Enemy.Spawn(); //Creates and names Enemy
-            DialogueHandler.PrintLine($"Oh, no! A {Enemy.Name} pop has appeared!");
+            DialogueHandler.PrintLine($"Oh, no! A" + (Enemy.Name == "orange"?"n":"") + $" {Enemy.Name} pop has appeared!");
             Console.WriteLine();
-            return Enemy;
         }
     }
 }

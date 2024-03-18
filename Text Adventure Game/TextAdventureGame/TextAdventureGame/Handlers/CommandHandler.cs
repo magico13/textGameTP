@@ -10,7 +10,7 @@ namespace TextAdventureGame.Handlers
 {
     public static class CommandHandler
     {
-        private static UserCommandHandler UserCommand = new UserCommandHandler();
+        private static bool GameOver = false;
 
         /// <summary>
         /// Displays the title, creates the map, prompts the user for a player name, and displays opnening monologue
@@ -19,18 +19,16 @@ namespace TextAdventureGame.Handlers
         {
 #if RELEASE
             Start.Title();
-#endif
-            InputAction action = new InputAction()
-            {
-                Command = "create"
-            };
-            Character.Execute(action);
-#if RELEASE
             DialogueHandler.OpeningMonologue();
 #endif
             Console.ReadKey();
             Console.Clear();
-            UserCommand.Execute();
+
+            while (!GameOver)
+            {
+                int input = InputHandler.GetInputFromAction(UserInput.GetAction());
+                Console.WriteLine();
+            }
         }
     }
 }

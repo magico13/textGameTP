@@ -47,7 +47,7 @@ namespace TextAdventureGame.Characters
             }
             Console.WriteLine();
             Experience++;
-            string experienceGain = $"You now have {Experience} lolipop sticks!";
+            string experienceGain = $"You now have {Experience} lolipop stick" + (Experience > 1?"s":"") + "!";
             return experienceGain;
         }
 
