@@ -44,13 +44,13 @@ namespace TextAdventureGame.Items
         {
             if (item != null && roomName != "")
             {
-                action.Command = item.Use(Inventory, roomName);
+                item.Use(Inventory, roomName);
             }
             else if (item != null) 
             {
                 return false;
             }
-            return action;
+            return true;
         }
 
         public void CheckInventory()
@@ -68,20 +68,18 @@ namespace TextAdventureGame.Items
             }
         }
 
-        public Item CheckForItem(string itemName)
-        {
-            if (itemName != null && AllItems.ContainsKey(itemName))
-            {
-                Item item = AllItems[itemName];
-                return item;
-            }
-            return null;
-        }
+        public Item VerifyItem(string itemName) => AllItems[itemName];
 
-        public Dictionary<string, Item> AddItem(Item item)
+        public void AddItem(Item item) 
         {
-            Inventory[item.Name] = item;
-            return Inventory;
-        }
+            if (Inventory[item.Name] == null)
+            { 
+                Inventory[item.Name] = item;
+            } 
+            else
+            {
+                DialogueHandler.PrintLine($"You already have a {item.Name}");
+            }
+        } 
     }
 }

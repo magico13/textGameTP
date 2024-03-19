@@ -40,3 +40,11 @@ C:\Users\Student\source\repos\side-projects\practicegame\Text Adventure Game\Tex
 C:\Users\Student\source\repos\side-projects\practicegame\Text Adventure Game\TextAdventureGame\TextAdventureGame\obj\Debug\netcoreapp3.1\TextAdventureGame.pdb
 C:\Users\Student\source\repos\side-projects\practicegame\Text Adventure Game\TextAdventureGame\TextAdventureGame\obj\Debug\netcoreapp3.1\TextAdventureGame.genruntimeconfig.cache
 C:\Users\Student\source\repos\side-projects\practicegame\Text Adventure Game\TextAdventureGame\TextAdventureGame\obj\Debug\netcoreapp3.1\TextAdventureGame.csproj.CopyComplete
+C:\Users\user\Source\Repos\textGameTP\Text Adventure Game\TextAdventureGame\TextAdventureGame\obj\Debug\netcoreapp3.1\TextAdventureGame.csproj.AssemblyReference.cache
+C:\Users\user\Source\Repos\textGameTP\Text Adventure Game\TextAdventureGame\TextAdventureGame\obj\Debug\netcoreapp3.1\TextAdventureGame.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\user\Source\Repos\textGameTP\Text Adventure Game\TextAdventureGame\TextAdventureGame\obj\Debug\netcoreapp3.1\TextAdventureGame.AssemblyInfoInputs.cache
+C:\Users\user\Source\Repos\textGameTP\Text Adventure Game\TextAdventureGame\TextAdventureGame\obj\Debug\netcoreapp3.1\TextAdventureGame.AssemblyInfo.cs
+C:\Users\user\Source\Repos\textGameTP\Text Adventure Game\TextAdventureGame\TextAdventureGame\obj\Debug\netcoreapp3.1\TextAdventureGame.csproj.CoreCompileInputs.cache
+C:\Users\user\Source\Repos\textGameTP\Text Adventure Game\TextAdventureGame\TextAdventureGame\obj\Debug\netcoreapp3.1\TextAdventureGame.sourcelink.json
+C:\Users\user\Source\Repos\textGameTP\Text Adventure Game\TextAdventureGame\TextAdventureGame\obj\Debug\netcoreapp3.1\TextAdventureGame.dll
+C:\Users\user\Source\Repos\textGameTP\Text Adventure Game\TextAdventureGame\TextAdventureGame\obj\Debug\netcoreapp3.1\TextAdventureGame.pdb

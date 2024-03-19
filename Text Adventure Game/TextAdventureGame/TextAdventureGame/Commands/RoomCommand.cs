@@ -4,6 +4,7 @@ using System.Text;
 using TextAdventureGame.MapLocations;
 using TextAdventureGame.Handlers;
 using TextAdventureGame.Models;
+using System.Reflection.Metadata.Ecma335;
 
 namespace TextAdventureGame.Commands
 {
@@ -11,31 +12,27 @@ namespace TextAdventureGame.Commands
     {
         public Room Map = new Room();
         public Room CurrentLocation { get; set; } = new MasterBedroom();
-
-        /// <summary>
-        /// Handles create (creates map), move (changes rooms), roll (checks for encounter), and check (displays map) commands
-        /// </summary>
-        /// <param name="action"></param>
-        public void Execute(InputAction action, bool combat = false)
+        public bool InCombat { get; set; } = false;
+        private List<Room> MapList
         {
-            switch (action.Command)
+            get
             {
-                case "move":
-                    action.Command =  HandleMove(action, combat);
-                    if (action.Command != "")
-                    {
-                        bool startCombat = action.Command == "fight"; 
-                        CommandHandler.Execute(action, 5, startCombat, CurrentLocation.Name); // Changes room
-                        CommandHandler.Execute(action, 4, startCombat, CurrentLocation.Name); // Start or ends combat
-                    }
-                    break;
-                case "view":
-                    CheckMap();
-                    break;
-                case "unlock":
-                    break;
-                default:
-                    break;
+                List<Room> mapList = new List<Room>
+            {
+                new Attic(),
+                new Backyard(),
+                new Basement(),
+                new Bathroom(),
+                new DiningRoom(),
+                new Garage(),
+                new GuestBedroom(),
+                new Kitchen(),
+                new LivingRoom(),
+                new MasterBedroom(),
+                new Office(),
+                new Pantry()
+            };
+                return mapList;
             }
         }
 
@@ -44,50 +41,60 @@ namespace TextAdventureGame.Commands
         /// </summary>
         /// <param name="location"></param>
         /// <returns></returns>
-        public Room CheckInput(string location)
+        public bool VerifyRoom(string target)
         {
-            foreach (Room place in Map.MapList)
+            foreach (Room room in MapList)
             {
-                if (place.Name.ToLower() == location)
+                if (room.Name.ToLower() == target)
                 {
-                    if (place.Name == CurrentLocation.Name)
+                    if (room.Name == CurrentLocation.Name)
                     {
                         DialogueHandler.PrintLine("You're already there");
-                        return null;
+                        return false;
                     }
-                    return place;
+                    CurrentLocation = room;
+                    return true;
                 }
             }
             DialogueHandler.PrintLine("Sorry. That's not a place you can go right now.");
-            return null;
+            return false;
         }
 
         /// <summary>
         /// Changes the current location and didsplays room information
         /// </summary>
         /// <param name="place"></param>
-        private string ChangeRoom()
+        public bool ChangeRoom(string target)
         {
-            Console.WriteLine($"{CurrentLocation.Image}");
-            DialogueHandler.PrintLine($"You are now in the {CurrentLocation.Name}");
-            DialogueHandler.PrintLine($"{CurrentLocation.Description}");
-            Console.WriteLine();
-            if (Map.RollEncounter(CurrentLocation)) //Rolls to see if a combat encounter begins
+            if (InCombat)
             {
-                return "fight";
+                if (!UserInput.GetBool("Do you want to run? (Y/N) "))
+                {
+                    InCombat = false;
+                    return false;
+                }
+            }
+            if (VerifyRoom(target))
+            {
+                Console.WriteLine($"{CurrentLocation.Image}");
+                DialogueHandler.PrintLine($"You are now in the {CurrentLocation.Name}");
+                DialogueHandler.PrintLine($"{CurrentLocation.Description}");
+                Console.WriteLine();
+                InCombat = CurrentLocation.RollEncounter(); //Rolls to see if a combat encounter begins
+                return true;
             }
             else
             {
-                return "";
+                return false;
             }
         }
 
         /// <summary>
         /// Lists the rooms and current location
         /// </summary>
-        private void CheckMap()
+        public void ViewMap()
         {
-            foreach (Room room in Map.MapList)
+            foreach (Room room in MapList)
             {
                 if (room.Name == CurrentLocation.Name)
                 {
@@ -97,29 +104,6 @@ namespace TextAdventureGame.Commands
             }
         }
 
-        private string HandleMove(InputAction action, bool combat = false)
-        {
-            if (combat)
-            {
-                if (UserInput.GetBool("Do you want to run? (Y/N) "))
-                {
-                    return "";
-                }
-                return "end";
-            }
-            else
-            {
-                Room place = CheckInput(action.Target); // Converts input to a location value and checks that location is viable
-                if (place != null)
-                {
-                    CurrentLocation = place;
-                    return ChangeRoom();
-                }
-                else
-                {
-                    return "";
-                }
-            }
-        }
+        public bool CheckCombat() => InCombat;
     }
 }

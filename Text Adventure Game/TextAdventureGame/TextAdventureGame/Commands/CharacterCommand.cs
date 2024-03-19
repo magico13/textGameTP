@@ -12,57 +12,49 @@ namespace TextAdventureGame.Commands
         public Player Player = new Player();
         public Enemy Enemy = new Enemy();
 
-        public void Execute(InputAction action, bool combat = false)
-        {
-            switch (action.Command)
-            {
-                case "lick":
-                    if (!AttackEnemy(combat))
-                    {
-                        CommandHandler.Execute(action, 4, false); 
-                    }
-                    break;
-                case "heal":
-                    Player.SugarLevel = Player.LowerSugar();
-                    break;
-                default:
-                    break;
-            }
-        }
-
-        private bool AttackEnemy(bool combat)
+        public void AttackEnemy(bool combat)
         {
             if (!combat)
             {
                 DialogueHandler.PrintLine("Save your licks for the candies.");
                 Console.WriteLine();
-                return false;
             }
             else
             {
-                Player.Licks = Player.Licks++;
+                Player.Licks++;
                 int damage = Player.RollDamage(); //Rolls for chance to critical. Writes "Chomp" if critical
-                damage += Player.DamageMod;
                 DialogueHandler.PrintLine($"You managed to get in {damage} licks!");
                 Console.WriteLine();
-                Enemy.Health = Enemy.DamageEnemy(damage); //Reduces enemy health
-                Player.SugarLevel = Player.GainSugar(); //Increments sugar level after every attack
+                Enemy.Health -= damage; //Reduces enemy health
+                Player.SugarLevel++; //Increments sugar level after every attack
 
-                if (Enemy.Health < 1 || Player.SugarLevel > 99)
+                if (Enemy.Health < 1)
                 {
                     DialogueHandler.PrintLine(Player.EatCandy()); //Writes end of battle text including sugar level and experience
                     Console.WriteLine();
-                    return false;
                 }
-                return true;
+
+                if (Player.SugarLevel > 99)
+                {
+                    CommandHandler.GameOver = true;
+                }
             }
         }
 
         public void SpawnEnemy()
         {
-            Enemy = Enemy.Spawn(); //Creates and names Enemy
-            DialogueHandler.PrintLine($"Oh, no! A" + (Enemy.Name == "orange"?"n":"") + $" {Enemy.Name} pop has appeared!");
+            Enemy = new Enemy(); //Creates and names Enemy
+            DialogueHandler.PrintLine($"Oh, no! A" + (Enemy.Name == "orange" ? "n" : "") + $" {Enemy.Name} pop has appeared!");
             Console.WriteLine();
+        }
+
+        public void LowerSugar()
+        {
+            Player.SugarLevel -= 30;
+            if (Player.SugarLevel < 0)
+            {
+                Player.SugarLevel = 0;
+            }
         }
     }
 }

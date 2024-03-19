@@ -1,14 +1,18 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using TextAdventureGame.Commands;
 using TextAdventureGame.Models;
 
 namespace TextAdventureGame.Handlers
 {
     public static class InputHandler
     {
+        private readonly static ICharacterCommand Character = new CharacterCommand();
+        private readonly static IRoomCommand Map = new RoomCommand();
+        private readonly static InventoryCommand InventoryCommand = new InventoryCommand();
 
-        private static Dictionary<string, string> ValidInputs = new Dictionary<string, string>
+        private readonly static Dictionary<string, string> ValidInputs = new Dictionary<string, string>
         {
             ["Move"] = "(Room) All done in this room? Move on to the next room, but watch out for potential tootsie pops.",
             ["Lick"] = "The only way to get to the center is to erode the candy coating. Get licking!",
@@ -22,53 +26,52 @@ namespace TextAdventureGame.Handlers
 
         /// <summary>
         /// Checks action command and redirects to appropriate command
-        /// -1 = Not implemented
-        /// 0 = Break from menu and get new action
-        /// 1 = Character Command
-        /// 2 = Room Command
-        /// 3 = Inventory Command
-        /// 4 = Quit Game
         /// </summary>
-        /// <param name="action"></param>
-        /// <returns></returns>
-        public static int GetInputFromAction(InputAction action)
+        public static void HandleAction(InputAction action)
         {
             switch (action.Command)
             {
                 case "lick":
-                    return 1;
-
+                    Character.AttackEnemy(Map.CheckCombat());
+                    break;
                 case "move":
+                    if (Map.ChangeRoom(action.Target) && Map.CheckCombat()) 
+                    {
+                        Character.SpawnEnemy();
+                    }
+                    break;
                 case "view":
-                    return 2;
-
+                    Map.ViewMap();
+                    break;
                 case "check":
+                    InventoryCommand.CheckItem(action.Target);
+                    break;
                 case "use":
+                    InventoryCommand.UseItem(action, Map.CurrentLocation.Name);
+                    break;
                 case "get":
-                    return 3;
+                    InventoryCommand.GetItem(action.Target, Map.CurrentLocation.Name);
+                    break;
 
                 case "help":
                     ListHelp();
                     Console.WriteLine();
-                    return 0;
+                    break;
 
                 case "quit":
-                    bool quit = QuitGame();
+                    CommandHandler.GameOver = QuitGame();
+#if RELEASE
                     if (quit)
                     {
-#if RELEASE
                         Start.PrintLine($"Congratulations! You have answered the age old question! It took  licks to get to the center of yourself.");
                         Console.Read();
-#endif
-                        return 4;
                     }
-                    return 0;
-                case "end":
-                    return 0;
+#endif
+                    break;
 
                 default: //Handles unrecognized inputs
                     DialogueHandler.PrintLine("Sorry. Please try again.");
-                    return 0;
+                    break;
             }
         }
 
@@ -86,7 +89,6 @@ namespace TextAdventureGame.Handlers
         /// <summary>
         /// Ends the game prematurely
         /// </summary>
-        /// <returns></returns>
         private static bool QuitGame()
         {
             DialogueHandler.Print("Are you sure you want to quit the game?\nThere are no save games. You'd have to start over. Y/N: ");

@@ -10,7 +10,7 @@ namespace TextAdventureGame.Handlers
 {
     public static class CommandHandler
     {
-        private static bool GameOver = false;
+        public static bool GameOver = false;
 
         /// <summary>
         /// Displays the title, creates the map, prompts the user for a player name, and displays opnening monologue
@@ -26,7 +26,7 @@ namespace TextAdventureGame.Handlers
 
             while (!GameOver)
             {
-                int input = InputHandler.GetInputFromAction(UserInput.GetAction());
+                InputHandler.HandleAction(UserInput.GetAction());
                 Console.WriteLine();
             }
         }

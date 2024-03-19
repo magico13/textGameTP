@@ -7,7 +7,7 @@ using TextAdventureGame.Items;
 
 namespace TextAdventureGame.Commands
 {
-    public class InventoryCommand : IInventoryCommand
+    public class InventoryCommand
     {
         private readonly ItemManager ItemManager = new ItemManager();
 
@@ -19,22 +19,19 @@ namespace TextAdventureGame.Commands
                     UseItem(action, roomName);
                     break;
                 case "check":
-                    CheckItem(action);
-                    break;
-                case "get":
-                    AddItemToInventory(action, roomName);
+                    CheckItem(action.Target);
                     break;
                 default:
                     break;
             }
         }
 
-        private void CheckItem(InputAction action)
+        public void CheckItem(string target)
         {
-            Item item = ItemManager.CheckForItem(action.Target);
+            Item item = ItemManager.VerifyItem(target);
             if (item == null)
             {
-                DialogueHandler.PrintLine($"You don't have a {action.Target}");
+                DialogueHandler.PrintLine($"You don't have a {target}");
             }
             else
             {
@@ -43,9 +40,13 @@ namespace TextAdventureGame.Commands
         }
 
 
-        private InputAction UseItem(InputAction action, string roomName)
+        public InputAction UseItem(InputAction action, string roomName)
         {
-            Item item = CheckForTarget(action);
+            if (action.Target == null)
+            {
+                action.Target = UserInput.GetString("What item do you want to use?");
+            }
+            Item item = ItemManager.VerifyItem(action.Target);
             if (item == null)
             {
                 DialogueHandler.PrintLine($"You don't have a {action.Target}");
@@ -53,7 +54,7 @@ namespace TextAdventureGame.Commands
             }
             else
             {
-                action = ItemManager.UseItem(item, roomName);
+                ItemManager.UseItem(item, roomName);
                 if (action != null && action.Command == "reject")
                 {
                     DialogueHandler.PrintLine($"You can't use the {item.Name.ToLower()} here");
@@ -64,12 +65,16 @@ namespace TextAdventureGame.Commands
             }
         }
 
-        private void AddItemToInventory(InputAction action, string roomName)
+        public void GetItem(string target, string roomName)
         {
-            Item item = CheckForTarget(action);
+            if (target == null)
+            {
+                target = UserInput.GetString("What item do you want to use?");
+            }
+            Item item = ItemManager.VerifyItem(target);
             if (item == null)
             {
-                DialogueHandler.PrintLine($"The {roomName} doesn't have a {action.Target}");
+                DialogueHandler.PrintLine($"The {roomName} doesn't have a {target}");
                 Console.WriteLine();
             }
             else if (item.Location != roomName)
@@ -87,15 +92,6 @@ namespace TextAdventureGame.Commands
                 DialogueHandler.PrintLine($"You strap the {item.Name} to your tool belt.");
                 Console.WriteLine();
             }
-        }
-
-        private Item CheckForTarget(InputAction action)
-        {
-            if (action.Target == null)
-            {
-                action.Target = UserInput.GetString("What item do you want to use?");
-            }
-            return ItemManager.CheckForItem(action.Target);
         }
     }
 }

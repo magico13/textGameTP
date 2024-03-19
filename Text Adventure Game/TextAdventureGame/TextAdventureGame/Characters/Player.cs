@@ -32,7 +32,7 @@ namespace TextAdventureGame.Characters
                 Console.Write("Chomp! ");
             }
 
-            return criticalDamage;
+            return criticalDamage + DamageMod;
 
         }
 
@@ -49,22 +49,6 @@ namespace TextAdventureGame.Characters
             Experience++;
             string experienceGain = $"You now have {Experience} lolipop stick" + (Experience > 1?"s":"") + "!";
             return experienceGain;
-        }
-
-        public int GainSugar()
-        {
-            SugarLevel++;
-            return SugarLevel;
-        }
-
-        public int LowerSugar()
-        {
-            SugarLevel -= 30;
-            if (SugarLevel < 0)
-            {
-                SugarLevel = 0;
-            }
-            return SugarLevel;
         }
     }
 }
