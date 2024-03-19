@@ -9,7 +9,7 @@ namespace TextAdventureGame.Items
         public Shovel() 
         {
             Name = "Shovel";
-            Description = "";
+            Description = "This line left intentionally blank";
             Location = "Garage";
         }
     }

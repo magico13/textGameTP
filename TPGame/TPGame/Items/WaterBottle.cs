@@ -16,7 +16,7 @@ namespace TextAdventureGame.Items
         }
 
         private bool HasWater = false;
-        private string WaterStatus = "The bottle is currently empty. There has to be water around here somwhere...";
+        private string WaterStatus = "The bottle is currently empty. There has to be water around here somewhere...";
         private int Fills = 0;
 
 

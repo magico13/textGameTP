@@ -12,7 +12,7 @@ namespace TextAdventureGame.Handlers
         private readonly static IRoomCommand Map = new RoomCommand();
         private readonly static InventoryCommand InventoryCommand = new InventoryCommand();
 
-        private readonly static Dictionary<string, string> ValidInputs = new Dictionary<string, string>
+        private readonly static Dictionary<string, string> ValidInputs = new()
         {
             ["Move"] = "(Room) All done in this room? Move on to the next room, but watch out for potential tootsie pops.",
             ["Lick"] = "The only way to get to the center is to erode the candy coating. Get licking!",
