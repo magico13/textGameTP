@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
-using TextAdventureGame.Handlers;
+using TPGame.Handlers;
 
-namespace TextAdventureGame.Characters
+namespace TPGame.Characters
 {
     public class Enemy : Character
     {

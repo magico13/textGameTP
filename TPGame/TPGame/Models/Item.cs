@@ -1,9 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using TextAdventureGame.Models;
+﻿using System.Collections.Generic;
 
-namespace TextAdventureGame.Items
+namespace TPGame.Models
 {
     public class Item
     {

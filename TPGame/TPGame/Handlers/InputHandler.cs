@@ -1,10 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Text;
-using TextAdventureGame.Commands;
-using TextAdventureGame.Models;
+using TPGame.Commands;
+using TPGame.Models;
 
-namespace TextAdventureGame.Handlers
+namespace TPGame.Handlers
 {
     public static class InputHandler
     {

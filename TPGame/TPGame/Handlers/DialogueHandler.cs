@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace TextAdventureGame.Handlers
+namespace TPGame.Handlers
 {
     public static class DialogueHandler
     {

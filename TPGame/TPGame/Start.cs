@@ -1,7 +1,7 @@
 ﻿using System;
-using TextAdventureGame.Handlers;
+using TPGame.Handlers;
 
-namespace TextAdventureGame
+namespace TP
 {
     public class Start
     {

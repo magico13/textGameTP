@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace TextAdventureGame.Models
+namespace TPGame.Models
 {
     public class InputAction
     {

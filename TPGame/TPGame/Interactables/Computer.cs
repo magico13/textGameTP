@@ -2,8 +2,9 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Text;
+using TPGame.Models;
 
-namespace TextAdventureGame.Items
+namespace TPGame.Interactables
 {
     public class Computer : Item
     {

@@ -1,4 +1,4 @@
-﻿namespace TextAdventureGame.Commands
+﻿namespace TPGame.Commands
 {
     public interface ICharacterCommand
     {

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace TextAdventureGame.MapLocations
+namespace TPGame.MapLocations
 {
     public class Kitchen : Room
     {

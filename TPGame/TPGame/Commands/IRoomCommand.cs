@@ -1,6 +1,6 @@
-﻿using TextAdventureGame.MapLocations;
+﻿using TPGame.MapLocations;
 
-namespace TextAdventureGame.Commands
+namespace TPGame.Commands
 {
     public interface IRoomCommand
     {

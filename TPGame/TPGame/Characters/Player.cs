@@ -1,10 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
-using TextAdventureGame.MapLocations;
-using TextAdventureGame.Handlers;
+using TPGame.MapLocations;
+using TPGame.Handlers;
 
-namespace TextAdventureGame.Characters
+namespace TPGame.Characters
 {
     public class Player : Character
     {

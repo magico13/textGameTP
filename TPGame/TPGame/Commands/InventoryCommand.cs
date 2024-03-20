@@ -1,10 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
-using TextAdventureGame.Handlers;
-using TextAdventureGame.Models;
-using TextAdventureGame.Items;
+using TPGame.Handlers;
+using TPGame.Models;
+using TPGame.Items;
 
-namespace TextAdventureGame.Commands
+namespace TPGame.Commands
 {
     public class InventoryCommand
     {
@@ -12,10 +12,9 @@ namespace TextAdventureGame.Commands
 
         public Dictionary<string, Item> AllItems = new()
         {
-            ["buried switch"] = new BuriedSwitch(),
+            ["batteries"] = new Batteries(),
             ["camping lantern"] = new CampingLantern(),
             ["tool belt"] = new ToolBelt(),
-            ["computer"] = new Computer(),
             ["key"] = new Key(),
             ["knife"] = new Knife(),
             ["metal detector"] = new MetalDetector(),

@@ -1,12 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
-using TextAdventureGame.MapLocations;
-using TextAdventureGame.Handlers;
-using TextAdventureGame.Models;
+using TPGame.MapLocations;
+using TPGame.Handlers;
+using TPGame.Models;
 using System.Reflection.Metadata.Ecma335;
 
-namespace TextAdventureGame.Commands
+namespace TPGame.Commands
 {
     public class RoomCommand : IRoomCommand
     {

@@ -1,10 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
-using TextAdventureGame.Handlers;
-using TextAdventureGame.Models;
+using TPGame.Handlers;
+using TPGame.Models;
+using TPGame.Models;
 
-namespace TextAdventureGame.Items
+namespace TPGame.Items
 {
     public class WaterBottle : Item
     {

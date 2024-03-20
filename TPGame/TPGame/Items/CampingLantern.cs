@@ -1,9 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using TextAdventureGame.MapLocations;
+﻿using TPGame.Models;
 
-namespace TextAdventureGame.Items
+namespace TPGame.Items
 {
     public class CampingLantern : Item
     {

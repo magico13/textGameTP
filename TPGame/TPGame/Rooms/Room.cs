@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
-using TextAdventureGame.Handlers;
+using TPGame.Handlers;
 
-namespace TextAdventureGame.MapLocations
+namespace TPGame.MapLocations
 {
     public class Room
     {

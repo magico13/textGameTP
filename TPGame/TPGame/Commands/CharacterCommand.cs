@@ -1,11 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
-using TextAdventureGame.Characters;
-using TextAdventureGame.Handlers;
-using TextAdventureGame.Models;
+using TPGame.Characters;
+using TPGame.Handlers;
+using TPGame.Models;
 
-namespace TextAdventureGame.Commands
+namespace TPGame.Commands
 {
     public class CharacterCommand : ICharacterCommand
     {

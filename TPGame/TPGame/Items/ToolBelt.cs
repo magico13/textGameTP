@@ -1,8 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using TPGame.Models;
 
-namespace TextAdventureGame.Items
+namespace TPGame.Items
 {
     public class ToolBelt : Item
     {

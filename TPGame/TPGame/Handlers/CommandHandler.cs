@@ -1,12 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
-using TextAdventureGame.Characters;
-using TextAdventureGame.Commands;
-using TextAdventureGame.MapLocations;
-using TextAdventureGame.Models;
-using TextAdventureGame.Items;
+using TPGame.Characters;
+using TPGame.Commands;
+using TPGame.MapLocations;
+using TPGame.Models;
+using TPGame.Items;
 
-namespace TextAdventureGame.Handlers
+namespace TPGame.Handlers
 {
     public static class CommandHandler
     {
