@@ -6,9 +6,9 @@ namespace TPGame.Items
     {
         public Batteries() 
         {
-            Name = "Batteries";
+            Name = "batteries";
             Description = "Four C batteries that should have enough juice to power the camping lantern for as long as you need.";
-            Location = "Office";
+            GetLocation = "Office";
         }
     }
 }

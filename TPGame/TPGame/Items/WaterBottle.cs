@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using TPGame.Handlers;
-using TPGame.Models;
+﻿using TPGame.Handlers;
 using TPGame.Models;
 
 namespace TPGame.Items
@@ -11,9 +7,9 @@ namespace TPGame.Items
     {
         public WaterBottle()
         {
-            Name = "Water Bottle";
+            Name = "water bottle";
             Description = "A tall, thin, green water bottle you stored for an emergency like this." + WaterStatus;
-            Location = "Dining Room";
+            GetLocation = "Dining Room";
         }
 
         private bool HasWater = false;
@@ -58,7 +54,6 @@ namespace TPGame.Items
                     {
                         DialogueHandler.PrintLine("You guzzle the water voraciously. So voraciously, that you crumple your water bottle. Thanks for your help, old friend, but this is where your journey ends." +
                             "You discard the bottle and press on.");
-                        UsedUp = true;
                     }
                     WaterStatus = "You flip the bottle but get only a few drops.";
                     action.Command = "heal";

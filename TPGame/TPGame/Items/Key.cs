@@ -6,9 +6,9 @@ namespace TPGame.Items
     {
         public Key()
         {
-            Name = "Key";
+            Name = "key";
             Description = "A bronze key with a green rubber cap to identify it as the garage key. The rubber is worn down where you have picked at it.";
-            Location = "Living Room";
+            GetLocation = "Living Room";
         }
     }
 }

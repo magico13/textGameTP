@@ -20,14 +20,14 @@ namespace TPGame.Handlers
 #if RELEASE
             Start.Title();
             DialogueHandler.OpeningMonologue();
-#endif
             Console.ReadKey();
             Console.Clear();
+#endif
 
             while (!GameOver)
             {
                 InputHandler.HandleAction(UserInput.GetAction());
-                Console.WriteLine();
+                DialogueHandler.PrintLine("");
             }
         }
     }

@@ -12,7 +12,7 @@ namespace TPGame.Interactables
         {
             Name = "Computer";
             Description = "The old girl is just as reliable as the day you got her, which is to say not very.";
-            Location = "Office";
+            GetLocation = "Office";
         }
     }
 }

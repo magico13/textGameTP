@@ -1,7 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
 using TPGame.Models;
-using TPGame.Items;
 
 namespace TPGame.Handlers
 {
@@ -66,8 +64,7 @@ namespace TPGame.Handlers
                 {
                     return false;
                 }
-                DialogueHandler.Print("Invalid input. Please try again");
-                Console.WriteLine();
+                DialogueHandler.PrintLine("Invalid input. Please try again");
             }
             return false;
         }

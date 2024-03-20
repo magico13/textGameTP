@@ -29,7 +29,7 @@ namespace TPGame.Characters
             if (criticalChance > 0.7) //Deals critical damage
             {
                 criticalDamage = (int)(10 * critical.NextDouble());
-                Console.Write("Chomp! ");
+                DialogueHandler.Print("Chomp! ");
             }
 
             return criticalDamage + DamageMod;
@@ -39,13 +39,11 @@ namespace TPGame.Characters
         public string EatCandy()
         {
             DialogueHandler.PrintLine("Mmm! You've reached the delicious Tootsie Pop center!");
-            Console.WriteLine();
             DialogueHandler.PrintLine($"Your sugar level is at {SugarLevel}%");
             if (SugarLevel > 50)
             {
                 DialogueHandler.PrintLine("Careful! If you're sugar level gets to 100, you'll crash! Try drinking some water.");
             }
-            Console.WriteLine();
             Experience++;
             string experienceGain = $"You now have {Experience} lolipop stick" + (Experience > 1?"s":"") + "!";
             return experienceGain;

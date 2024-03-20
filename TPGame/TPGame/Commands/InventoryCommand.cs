@@ -1,8 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using TPGame.Handlers;
-using TPGame.Models;
 using TPGame.Items;
+using TPGame.Models;
 
 namespace TPGame.Commands
 {
@@ -37,19 +36,6 @@ namespace TPGame.Commands
             return $"You don't have a {target.Name.ToLower()}";
         }
 
-        public bool UseItem(Item item, string roomName)
-        {
-            if (item != null && roomName != "")
-            {
-                item.Use(Inventory, roomName);
-            }
-            else if (item != null)
-            {
-                return false;
-            }
-            return true;
-        }
-
         public void CheckInventory()
         {
             if (Inventory.Count > 0)
@@ -65,86 +51,48 @@ namespace TPGame.Commands
             }
         }
 
-        public Item VerifyItem(string itemName)
-        {
-            if (AllItems.TryGetValue(itemName, out Item item)) 
-            { 
-                return item;
-            }
-            return null;
-        }
-
-        public void AddItem(Item item)
-        {
-            if (Inventory.TryGetValue(item.Name, out Item value))
-            {
-                DialogueHandler.PrintLine($"You already have a {item.Name}");
-            }
-            else
-            {
-                Inventory[item.Name] = item;
-            }
-        }
-
         public void CheckItem(string target)
         {
-            Item item = VerifyItem(target);
-            if (item == null)
+            target ??= UserInput.GetString("What item do you want to check?");
+            if (AllItems.ContainsKey(target) && Inventory.TryGetValue(target, out Item item))
+            {
+                item.CheckItem();
+            }
+            else
             {
                 DialogueHandler.PrintLine($"You don't have a {target}");
             }
-            else
-            {
-                DialogueHandler.PrintLine(item.Description);
-            }
         }
 
 
-        public void UseItem(InputAction action, string roomName)
+        public void UseItem(string target, string roomName)
         {
-            if (action.Target == null)
+            target ??= UserInput.GetString("What item do you want to use?");
+            if (AllItems.ContainsKey(target) && Inventory.TryGetValue(target, out Item item))
             {
-                action.Target = UserInput.GetString("What item do you want to use?");
-            }
-            Item item = VerifyItem(action.Target);
-            if (item == null)
-            {
-                DialogueHandler.PrintLine($"You don't have a {action.Target}");
+                item.UseItem(roomName);
             }
             else
             {
-                if (action != null && action.Command == "reject")
-                {
-                    DialogueHandler.PrintLine($"You can't use the {item.Name.ToLower()} here");
-                }
-                Console.WriteLine();
+                DialogueHandler.PrintLine($"You don't have a {target}");
             }
         }
 
         public void GetItem(string target, string roomName)
         {
-            if (target == null)
+            target ??= UserInput.GetString("What item do you want to take?");
+            if (AllItems.TryGetValue(target, out Item item))
             {
-                target = UserInput.GetString("What item do you want to use?");
-            }
-            Item item = VerifyItem(target);
-            if (item == null || item.Location != roomName)
-            {
-                DialogueHandler.PrintLine($"The {roomName.ToLower()} doesn't have a {target.ToLower()}");
-                Console.WriteLine();
+                item.GetItem(roomName);
+
+                if (!Inventory.TryAdd(item.Name, item))
+                {
+                    DialogueHandler.PrintLine($"You already have a {item.Name}");
+                }
             }
             else
             {
-                AddItem(item);
-                if (item.Name == "Tool Belt")
-                {
-                    DialogueHandler.PrintLine("You strap your tool belt around your waist and adjust the size to acccount for your recent weight loss.\nYou look great.\nYou feel great.");
-                }
-                else 
-                { 
-                    DialogueHandler.PrintLine($"You strap the {item.Name.ToLower()} to your tool belt.");
-                }
-                Console.WriteLine();
+                DialogueHandler.PrintLine($"The {roomName.ToLower()} doesn't have a {target.ToLower()}");
             }
         }
     }

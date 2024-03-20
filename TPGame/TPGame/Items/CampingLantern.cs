@@ -6,9 +6,9 @@ namespace TPGame.Items
     {
         public CampingLantern()
         {
-            Name = "Camping Lantern";
+            Name = "camping lantern";
             Description = "\"For Use In Emergencies\" feels very appropriate right now. The lantern requires 4 'C' batteries, which are not included currently.";
-            Location = "Attic";
+            GetLocation = "Attic";
         }
     }
 }

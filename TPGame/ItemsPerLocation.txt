@@ -1,4 +1,4 @@
-Items per room [Non-story Items]
+Items per room
 
 #Attic - Camping Lantern, dusty chest, workout equipment, insulation
 Backyard - lawn mower, Buried Switch (requires metal detector and shovel)

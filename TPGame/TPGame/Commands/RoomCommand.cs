@@ -76,10 +76,9 @@ namespace TPGame.Commands
             }
             if (VerifyRoom(target))
             {
-                Console.WriteLine($"{CurrentLocation.Image}");
+                DialogueHandler.PrintLine($"{CurrentLocation.Image}", 0);
                 DialogueHandler.PrintLine($"You are now in the {CurrentLocation.Name}");
                 DialogueHandler.PrintLine($"{CurrentLocation.Description}");
-                Console.WriteLine();
                 InCombat = CurrentLocation.RollEncounter(); //Rolls to see if a combat encounter begins
                 return true;
             }

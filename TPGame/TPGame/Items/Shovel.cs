@@ -9,9 +9,9 @@ namespace TPGame.Items
     {
         public Shovel() 
         {
-            Name = "Shovel";
+            Name = "shovel";
             Description = "This line left intentionally blank";
-            Location = "Garage";
+            GetLocation = "Garage";
         }
     }
 }
