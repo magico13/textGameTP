@@ -9,7 +9,7 @@ namespace TPGame.Items
         {
             Name = "water bottle";
             Description = "A tall, thin, green water bottle you stored for an emergency like this." + WaterStatus;
-            GetLocation = "Dining Room";
+            // GetLocation = "Dining Room";
         }
 
         private bool HasWater = false;

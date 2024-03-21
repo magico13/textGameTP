@@ -1,4 +1,4 @@
-﻿using TPGame.MapLocations;
+﻿using TPGame.Models;
 
 namespace TPGame.Commands
 {

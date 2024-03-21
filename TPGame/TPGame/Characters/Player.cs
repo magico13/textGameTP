@@ -1,7 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using TPGame.MapLocations;
 using TPGame.Handlers;
 
 namespace TPGame.Characters

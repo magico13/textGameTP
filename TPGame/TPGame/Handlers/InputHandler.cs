@@ -7,8 +7,8 @@ namespace TPGame.Handlers
 {
     public static class InputHandler
     {
-        private readonly static ICharacterCommand Character = new CharacterCommand();
         private readonly static IRoomCommand Map = new RoomCommand();
+        private readonly static ICharacterCommand Character = new CharacterCommand();
         private readonly static InventoryCommand InventoryCommand = new InventoryCommand();
 
         private readonly static Dictionary<string, string> ValidInputs = new()
@@ -32,12 +32,12 @@ namespace TPGame.Handlers
             switch (action.Command)
             {
                 case "lick":
-                    Character.AttackEnemy(Map.CheckCombat());
+                    Character.AttackEnemy(Map.InCombat);
                     break;
                 case "move":
-                    if (Map.ChangeRoom(action.Target) && Map.CheckCombat()) 
+                    if (Map.ChangeRoom(action.Target) && Map.InCombat && !Map.CurrentLocation.BossDefeated) 
                     {
-                        Character.SpawnEnemy();
+                        Character.SpawnEnemy(Map.CurrentLocation.Name);
                     }
                     break;
                 case "map":
@@ -47,10 +47,10 @@ namespace TPGame.Handlers
                     InventoryCommand.CheckItem(action.Target);
                     break;
                 case "use":
-                    InventoryCommand.UseItem(action.Target, Map.CurrentLocation.Name);
+                    InventoryCommand.UseItem(action.Target, Map.CurrentLocation);
                     break;
                 case "get":
-                    InventoryCommand.GetItem(action.Target, Map.CurrentLocation.Name);
+                    InventoryCommand.GetItem(action.Target, Map.CurrentLocation);
                     break;
                 case "help":
                     ListHelp();

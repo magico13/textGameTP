@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using TPGame.Handlers;
-
-namespace TPGame.Characters
+﻿namespace TPGame.Characters
 {
     public abstract class Character
     {

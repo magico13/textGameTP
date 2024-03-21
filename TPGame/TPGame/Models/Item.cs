@@ -5,9 +5,6 @@ namespace TPGame.Models
     public class Item
     {
         public string Name;
-        public string GetLocation;
-        public string GetError;
-        public string UseLocation = "Any";
         public string Description;
         public string UseText;
         public int Uses;
@@ -15,25 +12,18 @@ namespace TPGame.Models
 
         public virtual void CheckItem() => DialogueHandler.PrintLine(Description);
 
-        public virtual void GetItem(string roomName) 
+        public virtual void GetItem()
         {
-            DialogueHandler.PrintLine(GetLocation == roomName ? $"You strap the {Name.ToLower()} to your tool belt." : $"The {roomName.ToLower()} doesn't have a {Name.ToLower()}");
+            DialogueHandler.PrintLine($"You strap the {Name.ToLower()} to your tool belt.");
         }
-        
-        public void HandleUse(string roomName) 
+
+        public void HandleUse()
         {
-            if (UseLocation == "Any" || UseLocation == roomName)
+            if (Uses > 0)
             {
-                if (Uses > 0)
-                {
-                    UseItem();
-                    Uses --;
-                    Description = Uses < 1 ? UsedDescription : Description;
-                }
-            }
-            else
-            {
-                DialogueHandler.PrintLine($"You can't use the {Name.ToLower()} here");
+                UseItem();
+                Uses--;
+                Description = Uses < 1 ? UsedDescription : Description;
             }
         }
 

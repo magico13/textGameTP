@@ -1,26 +1,13 @@
 ﻿using System.Collections.Generic;
 using TPGame.Handlers;
-using TPGame.Items;
 using TPGame.Models;
+using TPGame.Dictionaries;
+using System.Linq;
 
 namespace TPGame.Commands
 {
     public class InventoryCommand
     {
-        public Dictionary<string, Item> Inventory = new Dictionary<string, Item>();
-
-        public Dictionary<string, Item> AllItems = new()
-        {
-            ["batteries"] = new Batteries(),
-            ["camping lantern"] = new CampingLantern(),
-            ["tool belt"] = new ToolBelt(),
-            ["key"] = new Key(),
-            ["knife"] = new Knife(),
-            ["metal detector"] = new MetalDetector(),
-            ["shovel"] = new Shovel(),
-            ["water bottle"] = new WaterBottle(),
-        };
-
         /// <summary>
         /// Returns the description of an item
         /// </summary>
@@ -28,7 +15,7 @@ namespace TPGame.Commands
         /// <returns></returns>a
         public string CheckItem(Item target)
         {
-            if (Inventory.TryGetValue(target.Name, out Item item))
+            if (Collections.Inventory.TryGetValue(target.Name, out Item item))
             {
                 return item.Description;
             }
@@ -38,9 +25,9 @@ namespace TPGame.Commands
 
         public void CheckInventory()
         {
-            if (Inventory.Count > 0)
+            if (Collections.Inventory.Count > 0)
             {
-                foreach (KeyValuePair<string, Item> item in Inventory)
+                foreach (KeyValuePair<string, Item> item in Collections.Inventory)
                 {
                     DialogueHandler.PrintLine(item.Value.Name);
                 }
@@ -54,7 +41,7 @@ namespace TPGame.Commands
         public void CheckItem(string target)
         {
             target ??= UserInput.GetString("What item do you want to check?");
-            if (AllItems.ContainsKey(target) && Inventory.TryGetValue(target, out Item item))
+            if (Collections.AllItems.ContainsKey(target) && Collections.Inventory.TryGetValue(target, out Item item))
             {
                 item.CheckItem();
             }
@@ -65,12 +52,30 @@ namespace TPGame.Commands
         }
 
 
-        public void UseItem(string target, string roomName)
+        public void UseItem(string target, Room currentLocation)
         {
             target ??= UserInput.GetString("What item do you want to use?");
-            if (AllItems.ContainsKey(target) && Inventory.TryGetValue(target, out Item item))
+            if (Collections.Inventory.TryGetValue(target, out Item item))
             {
-                item.UseItem(roomName);
+                if (currentLocation.UsableItems.Contains(target))
+                {
+                    item.HandleUse();
+                }
+                else
+                {
+                    DialogueHandler.PrintLine($"You can't use your {item.Name} here.");
+                }
+            }
+            else if (Collections.AllInteractables.TryGetValue(target, out Interactable interactable))
+            {
+                if (currentLocation.Interactables.Contains(target))
+                {
+                    interactable.UseInteractable();
+                }
+                else 
+                {
+                    DialogueHandler.PrintLine($"You can't find a {interactable.Name} here.");
+                }
             }
             else
             {
@@ -78,21 +83,28 @@ namespace TPGame.Commands
             }
         }
 
-        public void GetItem(string target, string roomName)
+        public void GetItem(string target, Room currentLocation)
         {
             target ??= UserInput.GetString("What item do you want to take?");
-            if (AllItems.TryGetValue(target, out Item item))
+            if (Collections.AllItems.TryGetValue(target, out Item item) && currentLocation.GetItems.Contains(target))
             {
-                item.GetItem(roomName);
-
-                if (!Inventory.TryAdd(item.Name, item))
+                if (Collections.Inventory.TryAdd(item.Name, item))
+                {
+                    item.GetItem();
+                }
+                else
                 {
                     DialogueHandler.PrintLine($"You already have a {item.Name}");
                 }
+
+            }
+            else if (Collections.AllInteractables.ContainsKey(target)) 
+            {
+                DialogueHandler.PrintLine($"You can't take the {target} with you.");
             }
             else
             {
-                DialogueHandler.PrintLine($"The {roomName.ToLower()} doesn't have a {target.ToLower()}");
+                DialogueHandler.PrintLine($"The {currentLocation.Name.ToLower()} doesn't have a {target.ToLower()}");
             }
         }
     }

@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using TPGame.Models;
 
 namespace TPGame.MapLocations
 {
@@ -11,6 +9,7 @@ namespace TPGame.MapLocations
             Name = "Master Bedroom";
             EncounterChance = 0.6;
             Description = "You return to the Master Bedroom. Perhaps, you missed something before. Better safe than sorry.";
+            GetItems = ["tool belt"];
             Image = @"
     |))
     |))

@@ -1,20 +1,30 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using TPGame.Handlers;
 
 namespace TPGame.Characters
 {
     public class Enemy : Character
     {
+        private readonly string[] Flavors = ["cherry", "chocolate", "orange", "grape", "raspberry"];
+        
         public Enemy() : base()
         {
-            Random flavorChoice = new Random();
-            string flavor = Flavors[flavorChoice.Next(0, 5)];
+            string flavor = Flavors[new Random().Next(0, 5)];
             Name = flavor;
             Health = 10;
         }
 
-        private List<string> Flavors { get { return new List<string>() {"cherry", "chocolate", "orange", "grape", "raspberry"}; } }
+        public Enemy(string bossName) 
+        {
+            Name = bossName;
+            Health = bossName switch
+            {
+                "Bishop" => 20,
+                "Knight" => 40,
+                "Rook" => 60,
+                "King" => 100,
+                _ => 0
+            };
+        }
+
     }
 }

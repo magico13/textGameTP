@@ -1,16 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using TPGame.Characters;
+﻿using TPGame.Characters;
 using TPGame.Handlers;
-using TPGame.Models;
 
 namespace TPGame.Commands
 {
     public class CharacterCommand : ICharacterCommand
     {
         public Player Player = new Player();
-        public Enemy Enemy = new Enemy();
+        public Enemy Enemy;
 
         public void AttackEnemy(bool combat)
         {
@@ -38,11 +34,33 @@ namespace TPGame.Commands
             }
         }
 
-        public void SpawnEnemy()
+        public void SpawnEnemy(string roomName)
         {
-            Enemy = new Enemy(); //Creates and names Enemy
+            Enemy = roomName switch
+            {
+                "Garage" => new Enemy("Bishop"),
+                "Attic" => new Enemy("Knight"),
+                "Basement" => new Enemy("Rook"),
+                "Hidden Room" => new Enemy("King"),
+                _ => new Enemy(),
+            };
             DialogueHandler.PrintLine("");
-            DialogueHandler.PrintLine($"Oh, no! A" + (Enemy.Name == "orange" ? "n" : "") + $" {Enemy.Name} pop has appeared!");
+            switch (Enemy.Name) 
+            {
+                case "Bishop":
+                case "Knight":
+                case "Rook":
+                    DialogueHandler.PrintLine($"Oh, no! It's the {Enemy.Name}!");
+                    break;
+                case "King":
+                    DialogueHandler.PrintLine($"The legends are true...", 80);
+                    DialogueHandler.AddPause(500);
+                    DialogueHandler.PrintLine($"It's the {Enemy.Name}!");
+                    break;
+                default:
+                    DialogueHandler.PrintLine($"Oh, no! A" + (Enemy.Name == "orange" ? "n" : "") + $" {Enemy.Name} pop has appeared!");
+                    break;
+            }
         }
 
         public void LowerSugar()

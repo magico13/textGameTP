@@ -1,12 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using TPGame.Characters;
-using TPGame.Commands;
-using TPGame.MapLocations;
-using TPGame.Models;
-using TPGame.Items;
-
-namespace TPGame.Handlers
+﻿namespace TPGame.Handlers
 {
     public static class CommandHandler
     {

@@ -1,8 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using TPGame.Handlers;
 
-namespace TPGame.MapLocations
+namespace TPGame.Models
 {
     public class Room
     {
@@ -11,21 +10,20 @@ namespace TPGame.MapLocations
         public string Name { get; set; }
         public double EncounterChance { get; set; }
 
+        public List<string> GetItems { get; set; } = new List<string>();
+
+        public List<string> UsableItems { get; set; } = new List<string>();
+
+        public string[] Interactables { get; set; } = [];
+
+        public bool BossDefeated { get; set; } = false;
+
+        public bool Hidden { get; set; } = false;
+
         /// <summary>
         /// Gets a random number and checks it agains the current locations encounter chance
         /// If the result is higher than 0.3, an encounter occurs
         /// </summary>
-        /// <returns></returns>
-        public bool RollEncounter()
-        {
-            bool encounter = false;
-            Random encounterRandom = new Random();
-            double encounterDouble = EncounterChance * encounterRandom.NextDouble();
-            if (encounterDouble > 0.3)
-            {
-                encounter = true;
-            }
-            return encounter;
-        }
+        public virtual bool RollEncounter() => (EncounterChance * new Random().NextDouble()) > 0.3;
     }
 }

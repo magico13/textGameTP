@@ -11,7 +11,7 @@ Dining Room - dining table, candles, chairs
 Kitchen- dog bowl, utility knife, sink, fridge, cabinet, Water from Dog Bowl
 Living Room- Couch, coffee table,  Key to garage (hidden in couch cushions) [Mints (Useless)]
 Master Bedroom - Tool belt, bed, nightstand, dresser, closet [Item Checklist]
-*Office - Batteries (Locked drawer needs lockpicked)
+*Office - computer, desk, Batteries (Locked drawer needs lockpicked)
 *Pantry - Guaranteed encounter
 
 Item hierarchy
@@ -28,4 +28,6 @@ Item hierarchy
 
 * = Locked
 # = Boss fight
+
+Garage > Attic > Basement > Hidden Room
  

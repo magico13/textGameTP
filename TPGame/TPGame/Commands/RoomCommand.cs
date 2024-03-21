@@ -1,40 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using TPGame.MapLocations;
+﻿using TPGame.MapLocations;
 using TPGame.Handlers;
 using TPGame.Models;
-using System.Reflection.Metadata.Ecma335;
+using TPGame.Dictionaries;
 
 namespace TPGame.Commands
 {
     public class RoomCommand : IRoomCommand
     {
-        public Room Map = new Room();
         public Room CurrentLocation { get; set; } = new MasterBedroom();
         public bool InCombat { get; set; } = false;
-        private List<Room> MapList
-        {
-            get
-            {
-                List<Room> mapList = new List<Room>
-            {
-                new Attic(),
-                new Backyard(),
-                new Basement(),
-                new Bathroom(),
-                new DiningRoom(),
-                new Garage(),
-                new GuestBedroom(),
-                new Kitchen(),
-                new LivingRoom(),
-                new MasterBedroom(),
-                new Office(),
-                new Pantry()
-            };
-                return mapList;
-            }
-        }
 
         /// <summary>
         /// Verifies that input is a valid room
@@ -43,7 +17,7 @@ namespace TPGame.Commands
         /// <returns></returns>
         public bool VerifyRoom(string target)
         {
-            foreach (Room room in MapList)
+            foreach (Room room in Collections.Rooms)
             {
                 if (room.Name.ToLower() == target)
                 {
@@ -93,13 +67,16 @@ namespace TPGame.Commands
         /// </summary>
         public void ViewMap()
         {
-            foreach (Room room in MapList)
+            foreach (Room room in Collections.Rooms)
             {
-                if (room.Name == CurrentLocation.Name)
+                if (!room.Hidden)
                 {
-                    room.Name += " - Current Location";
+                    if (room.Name == CurrentLocation.Name)
+                    {
+                        room.Name += " - Current Location";
+                    }
+                    DialogueHandler.PrintLine($"{room.Name}");
                 }
-                DialogueHandler.PrintLine($"{room.Name}");
             }
         }
 

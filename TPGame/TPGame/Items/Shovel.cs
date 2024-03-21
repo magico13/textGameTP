@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using TPGame.Models;
+﻿using TPGame.Models;
 
 namespace TPGame.Items
 {
@@ -11,7 +8,7 @@ namespace TPGame.Items
         {
             Name = "shovel";
             Description = "This line left intentionally blank";
-            GetLocation = "Garage";
+            // GetLocation = "Garage";
         }
     }
 }
