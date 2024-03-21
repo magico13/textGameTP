@@ -6,16 +6,16 @@ Backyard - lawn mower, Buried Switch (requires metal detector and shovel)
 *Bathroom - sink, bathtub, towel, medicine cabinet, toilet (Toilet Water) 
 Dining Room - dining table, candles, chairs
 #*Garage- tool bench (craft and items), Shovel (requires tool belt) (Boss battle can be beaten with belt sander)
-*Guest Bedroom- ?
+*Guest Bedroom- bed, nightstand
 *Hidden Room - Endgame switch (requires Buried switch)
 Kitchen- dog bowl, utility knife, sink, fridge, cabinet, Water from Dog Bowl
 Living Room- Couch, coffee table,  Key to garage (hidden in couch cushions) [Mints (Useless)]
-Master Bedroom - Tool belt, bed, nightstand, dresser, closet [Item Checklist]
+Master Bedroom - Tool belt, bed, dresser, closet [Item Checklist]
 *Office - computer, desk, Batteries (Locked drawer needs lockpicked)
 *Pantry - Guaranteed encounter
 
-Item hierarchy
--Battle vest
+Items
+-Tool Belt
 -Water Bottle
 -Knife
 -Key to Garage
@@ -23,11 +23,34 @@ Item hierarchy
 -Camping Lantern
 -Batteries
 -Metal Detector
--Hidden Room Switch
+-Ladder to Attic
+
+Interactables
+-Computer
+-Water Bowl
+-Bathroom Sink
+-Toilet
+-Kitchen Sink
+-Couch
+-Desk
+-Nightstand
+-Dresser
+-Closet
+-Craft Bench
+-Fridge
+-Lawn Mower
+-Dusty Chest
+-Workout Equipment
+-Master Bedroom Bed
+-Guest Bedroom
+-Buried Switch
 -Endgame Switch
+
+Power Ups (Included in Interactables)
+-False teeth
 
 * = Locked
 # = Boss fight
 
-Garage > Attic > Basement > Hidden Room
+Garage (Bishop)> Attic (Knight)> Basement (Rook)> Hidden Room (King)
  

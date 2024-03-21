@@ -31,18 +31,34 @@ namespace TPGame.Dictionaries
         {
             ["batteries"] = new Batteries(),
             ["camping lantern"] = new CampingLantern(),
-            ["tool belt"] = new ToolBelt(),
             ["key"] = new Key(),
             ["knife"] = new Knife(),
+            ["ladder"] = new Ladder(),
             ["metal detector"] = new MetalDetector(),
             ["shovel"] = new Shovel(),
+            ["tool belt"] = new ToolBelt(),
             ["water bottle"] = new WaterBottle(),
         };
 
         public static readonly Dictionary<string, Interactable> AllInteractables = new()
         {
+            ["bed"] = new Bed(),
+            ["buried switch"] = new BuriedSwitch(),
+            ["chest"] = new Chest(),
+            ["closet"] = new Closet(),
             ["computer"] = new Computer(),
-            ["buried switch"] = new BuriedSwitch()
+            ["couch"] = new Couch(),
+            ["desk"] = new Desk(),
+            ["dresser"] = new Dresser(),
+            ["false teeth"] = new FalseTeeth(),
+            ["fridge"] = new Fridge(),
+            ["lawn mower"] = new LawnMower(),
+            ["lever"] = new EndGame(),
+            ["nightstand"] = new Nightstand(),
+            ["sink"] = new Sink(),
+            ["toilet"] = new Toilet(),
+            ["water bowl"] = new WaterBowl(),
+            ["workout equipment"] = new WorkoutEquipment()
         };
     }
 }
