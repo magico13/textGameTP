@@ -5,13 +5,11 @@ namespace TPGame.Characters
 {
     public class Player : Character
     {
-        public Player() : base()
-        {
-            DamageMod = 1;
-        }
+        public Player() : base() {}
 
+        public int DamageMod = 1;
         public int SugarLevel { get; set; } //if sugar level = 100, player crashes (maybe enter "sugar rush" at 100?)
-        public int Experience { get; set; } //Needs expanding
+        private int Experience { get; set; } //Needs expanding
         public int Licks { get; set; } = 0;
 
         /// <summary>
@@ -26,6 +24,10 @@ namespace TPGame.Characters
             if (criticalChance > 0.7) //Deals critical damage
             {
                 criticalDamage = (int)(10 * critical.NextDouble());
+                if (criticalDamage < 1)
+                {
+                    criticalDamage = 1;
+                }
                 DialogueHandler.Print("Chomp! ");
             }
 
@@ -33,7 +35,7 @@ namespace TPGame.Characters
 
         }
 
-        public string EatCandy()
+        public void EatCandy()
         {
             DialogueHandler.PrintLine("Mmm! You've reached the delicious Tootsie Pop center!");
             DialogueHandler.PrintLine($"Your sugar level is at {SugarLevel}%");
@@ -42,8 +44,7 @@ namespace TPGame.Characters
                 DialogueHandler.PrintLine("Careful! If you're sugar level gets to 100, you'll crash! Try drinking some water.");
             }
             Experience++;
-            string experienceGain = $"You now have {Experience} lolipop stick" + (Experience > 1?"s":"") + "!";
-            return experienceGain;
+            DialogueHandler.PrintLine($"You now have {Experience} lolipop stick" + (Experience > 1?"s":"") + "!");
         }
     }
 }

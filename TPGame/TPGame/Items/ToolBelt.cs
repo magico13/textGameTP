@@ -1,4 +1,6 @@
-﻿using TPGame.Handlers;
+﻿using System.Collections.Generic;
+using TPGame.Dictionaries;
+using TPGame.Handlers;
 using TPGame.Models;
 
 namespace TPGame.Items
@@ -9,7 +11,6 @@ namespace TPGame.Items
         {
             Name = "tool belt";
             Description = "A modified utilty belt prepared to hold any items you find that seem useful, no matter how impratically sized.";
-            // GetLocation = "Master Bedroom";
             Uses = 999;
             UsedDescription = Description;
         }
@@ -25,7 +26,22 @@ namespace TPGame.Items
 
         public override void UseItem()
         {
+            DialogueHandler.PrintLine("You look at your belt to see what all you've collected.");
 
+            if (Collections.Inventory.Count > 0)
+            {
+                foreach (KeyValuePair<string, Item> item in Collections.Inventory)
+                {
+                    if (item.Key != "tool belt" && item.Value.Uses > 0) 
+                    { 
+                        DialogueHandler.PrintLine($"{item.Key}");
+                    }
+                }
+            }
+            else
+            {
+                DialogueHandler.PrintLine("Just a bunch of empty pockets, holsters, and straps.");
+            }
         }
     }
 }

@@ -7,7 +7,7 @@ namespace TPGame.MapLocations
         public Pantry() : base()
         {
             Name = "Pantry";
-            EncounterChance = 0.9;
+            EncounterChance = 0.95;
             Description = "As you open the doors to the pantry, you hear rustling all over. There are almost certainly lolipops here.";
             Image = @"
  ||--------------------------------------||                                

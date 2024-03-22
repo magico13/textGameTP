@@ -10,7 +10,7 @@ namespace TPGame.MapLocations
             EncounterChance = 0.5;
             Description = "You pull down the ladder to the attic.\nThe stairs creak beneath your feet as you climb.";
             GetItems = ["camping lantern"];
-            Interactables = ["chest", "workout equipment"];
+            Interactables = ["light switch", "chest", "workout equipment"];
             Image = @"
                                     
                                  //,,&&&&&&&&&&&&&&&&,,\\                               
@@ -33,5 +33,7 @@ namespace TPGame.MapLocations
     &&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&   
     &&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&";
         }
+
+        public override bool RollEncounter() => true;
     }
 }

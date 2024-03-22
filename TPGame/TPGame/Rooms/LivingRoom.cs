@@ -10,7 +10,7 @@ namespace TPGame.MapLocations
             EncounterChance = 0.6;
             Description = "The sofa in your living room looks like lolipops have been jumping on it. The TV has been knocked off the entertainment stand.";
             GetItems = ["key", "mints"];
-            Interactables = ["couch", "coffee table"];
+            Interactables = ["light switch", "couch", "coffee table"];
             Image = @"
                /,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,\               
              /,,,..................................................................,,,\              

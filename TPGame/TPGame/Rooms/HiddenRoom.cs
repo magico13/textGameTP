@@ -10,7 +10,7 @@ namespace TPGame.Rooms
             EncounterChance = 1000;
             Description = "";
             Hidden = true;
-            Interactables = ["lever"];
+            Interactables = ["light switch", "lever"];
         }
 
         public override bool RollEncounter() => true;

@@ -10,7 +10,7 @@ namespace TPGame.MapLocations
             EncounterChance = 0.4;
             Description = "Small but cozy, you always feel at peace in your office.\nYour computer sits on a mahogany desk.";
             GetItems = ["batteries"];
-            Interactables = ["desk", "computer"];
+            Interactables = ["light switch", "desk", "computer"];
             Image = @"                                          
                                  ----------------------                                                   
                                  |####################|                                                   

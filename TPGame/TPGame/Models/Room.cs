@@ -10,11 +10,11 @@ namespace TPGame.Models
         public string Name { get; set; }
         public double EncounterChance { get; set; }
 
-        public List<string> GetItems { get; set; } = new List<string>();
+        public List<string> GetItems { get; set; } = [];
 
-        public List<string> UsableItems { get; set; } = new List<string>();
+        public string[] UsableItems { get; set; } = [];
 
-        public string[] Interactables { get; set; } = [];
+        public List<string> Interactables { get; set; } = [];
 
         public bool BossDefeated { get; set; } = false;
 
@@ -25,5 +25,9 @@ namespace TPGame.Models
         /// If the result is higher than 0.3, an encounter occurs
         /// </summary>
         public virtual bool RollEncounter() => (EncounterChance * new Random().NextDouble()) > 0.3;
+
+        public virtual void Unlock() { }
+
+        public virtual void DefeatBoss() { }
     }
 }

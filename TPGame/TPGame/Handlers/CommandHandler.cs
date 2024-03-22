@@ -1,4 +1,7 @@
-﻿namespace TPGame.Handlers
+﻿using System;
+using TPGame.Characters;
+
+namespace TPGame.Handlers
 {
     public static class CommandHandler
     {
@@ -10,7 +13,7 @@
         public static void StartGame()
         {
 #if RELEASE
-            Start.Title();
+            DialogueHandler.Title();
             DialogueHandler.OpeningMonologue();
             Console.ReadKey();
             Console.Clear();
@@ -21,6 +24,13 @@
                 InputHandler.HandleAction(UserInput.GetAction());
                 DialogueHandler.PrintLine("");
             }
+        }
+
+        public static void WinGame() 
+        {
+            GameOver = true;
+            DialogueHandler.PrintLine($"Congratulations! You have answered the age old question! It took {InputHandler.Character.GetLicks()} licks to get to the center of yourself.");
+            Console.Read();
         }
     }
 }

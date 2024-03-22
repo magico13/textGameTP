@@ -11,11 +11,12 @@ namespace TPGame.Commands
         public Player Player = new Player();
         public Enemy Enemy;
 
-        public void AttackEnemy(bool combat)
+        public bool AttackEnemy(bool combat)
         {
             if (!combat)
             {
                 DialogueHandler.PrintLine("Save your licks for the candies.");
+                return false;
             }
             else
             {
@@ -27,7 +28,7 @@ namespace TPGame.Commands
 
                 if (Enemy.Health < 1)
                 {
-                    DialogueHandler.PrintLine(Player.EatCandy()); //Writes end of battle text including sugar level and experience
+                    Player.EatCandy(); //Writes end of battle text including sugar level and experience
                     Room room = Array.Find(Collections.Rooms, room => room.Name ==
                         Enemy.Name switch
                         {
@@ -41,13 +42,17 @@ namespace TPGame.Commands
                     { 
                         room.BossDefeated = true;
                     }
+                    return false;
                 }
 
                 if (Player.SugarLevel > 99)
                 {
                     CommandHandler.GameOver = true;
+                    return false;
                 }
             }
+            
+            return true;
         }
 
         public void SpawnEnemy(string roomName)
@@ -87,5 +92,7 @@ namespace TPGame.Commands
                 Player.SugarLevel = 0;
             }
         }
+
+        public int GetLicks() => Player.Licks;
     }
 }

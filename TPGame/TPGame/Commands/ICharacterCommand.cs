@@ -2,8 +2,10 @@
 {
     public interface ICharacterCommand
     {
-        public void AttackEnemy(bool combat);
+        public bool AttackEnemy(bool combat);
         public void LowerSugar();
         public void SpawnEnemy(string roomName);
+
+        public int GetLicks();
     }
 }

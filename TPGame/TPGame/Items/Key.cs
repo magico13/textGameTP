@@ -1,4 +1,6 @@
-﻿using TPGame.Models;
+﻿using System;
+using TPGame.Dictionaries;
+using TPGame.Models;
 
 namespace TPGame.Items
 {
@@ -8,7 +10,12 @@ namespace TPGame.Items
         {
             Name = "key";
             Description = "A bronze key with a green rubber cap to identify it as the garage key. The rubber is worn down where you have picked at it.";
-            // GetLocation = "Living Room";
+            Uses = 999;
+        }
+
+        public override void GetItem()
+        {
+            Array.Find(Collections.Rooms, room => room.Name == "Garage").Unlock();
         }
     }
 }

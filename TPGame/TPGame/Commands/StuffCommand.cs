@@ -1,12 +1,11 @@
-﻿using System.Collections.Generic;
-using TPGame.Handlers;
+﻿using TPGame.Handlers;
 using TPGame.Models;
 using TPGame.Dictionaries;
 using System.Linq;
 
 namespace TPGame.Commands
 {
-    public class InventoryCommand
+    public class StuffCommand : IStuffCommand
     {
         /// <summary>
         /// Returns the description of an item
@@ -21,21 +20,6 @@ namespace TPGame.Commands
             }
 
             return $"You don't have a {target.Name.ToLower()}";
-        }
-
-        public void CheckInventory()
-        {
-            if (Collections.Inventory.Count > 0)
-            {
-                foreach (KeyValuePair<string, Item> item in Collections.Inventory)
-                {
-                    DialogueHandler.PrintLine(item.Value.Name);
-                }
-            }
-            else
-            {
-                DialogueHandler.PrintLine("You don't have anything on you right now");
-            }
         }
 
         public void CheckItem(string target)
@@ -72,7 +56,7 @@ namespace TPGame.Commands
                 {
                     interactable.UseInteractable();
                 }
-                else 
+                else
                 {
                     DialogueHandler.PrintLine($"You can't find a {interactable.Name} here.");
                 }
@@ -98,7 +82,7 @@ namespace TPGame.Commands
                 }
 
             }
-            else if (Collections.AllInteractables.ContainsKey(target)) 
+            else if (Collections.AllInteractables.ContainsKey(target))
             {
                 DialogueHandler.PrintLine($"You can't take the {target} with you.");
             }

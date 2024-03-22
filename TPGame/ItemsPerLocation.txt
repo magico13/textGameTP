@@ -2,7 +2,7 @@ Items per room
 
 #Attic - Camping Lantern, chest, workout equipment, insulation
 Backyard - lawn mower, Buried Switch (requires metal detector and shovel)
-#*Basement - Metal Detector (requires lantern to see)
+#*Basement - Metal Detector, furnace, water main, milk crates (requires lantern to see)
 *Bathroom - sink, bathtub, towel, medicine cabinet, toilet (Toilet Water) 
 Dining Room - dining table, candles, chairs
 #*Garage- tool bench (craft and items), Shovel (requires tool belt) (Boss battle can be beaten with belt sander)
@@ -45,9 +45,22 @@ Interactables
 -Guest Bedroom Bed
 -Buried Switch
 -Endgame Switch
+-sander
+-craft bench
+-car
+-candles
+-chair
+-DR table
+-furnace
+-water main
+-milk crates
+-bathtub
+-towel
+-medicine cabinet
 
 Power Ups (Included in Interactables)
 -False teeth
+-tongue guard
 
 * = Locked
 # = Boss fight
