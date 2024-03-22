@@ -9,6 +9,8 @@ namespace TPGame.MapLocations
             Name = "Kitchen";
             EncounterChance = 0.8;
             Description = "The kitchen seems disturbingly still.\nEverything seems to be neatly in its place.";
+            GetItems = ["knife"];
+            Interactables = ["sink", "cabinet", "fridge", "dog bowl"];
             Image = @"
                                          /------------\                                           
                                         /**************\                                          

@@ -35,6 +35,7 @@ namespace TPGame.Dictionaries
             ["knife"] = new Knife(),
             ["ladder"] = new Ladder(),
             ["metal detector"] = new MetalDetector(),
+            ["mints"] = new Mints(),
             ["shovel"] = new Shovel(),
             ["tool belt"] = new ToolBelt(),
             ["water bottle"] = new WaterBottle(),
@@ -44,10 +45,12 @@ namespace TPGame.Dictionaries
         {
             ["bed"] = new Bed(),
             ["buried switch"] = new BuriedSwitch(),
+            ["car"] = new Car(),
             ["chest"] = new Chest(),
             ["closet"] = new Closet(),
             ["computer"] = new Computer(),
             ["couch"] = new Couch(),
+            ["craft bench"] = new CraftBench(),
             ["desk"] = new Desk(),
             ["dresser"] = new Dresser(),
             ["false teeth"] = new FalseTeeth(),
@@ -55,8 +58,10 @@ namespace TPGame.Dictionaries
             ["lawn mower"] = new LawnMower(),
             ["lever"] = new EndGame(),
             ["nightstand"] = new Nightstand(),
+            ["sander"] = new Sander(),
             ["sink"] = new Sink(),
             ["toilet"] = new Toilet(),
+            ["tongue guard"] = new Guard(),
             ["water bowl"] = new WaterBowl(),
             ["workout equipment"] = new WorkoutEquipment()
         };

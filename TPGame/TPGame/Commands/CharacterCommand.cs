@@ -1,5 +1,8 @@
-﻿using TPGame.Characters;
+﻿using System;
+using TPGame.Characters;
+using TPGame.Dictionaries;
 using TPGame.Handlers;
+using TPGame.Models;
 
 namespace TPGame.Commands
 {
@@ -25,6 +28,19 @@ namespace TPGame.Commands
                 if (Enemy.Health < 1)
                 {
                     DialogueHandler.PrintLine(Player.EatCandy()); //Writes end of battle text including sugar level and experience
+                    Room room = Array.Find(Collections.Rooms, room => room.Name ==
+                        Enemy.Name switch
+                        {
+                            "Bishop" => "Garage",
+                            "Knight" => "Attic",
+                            "Rook" => "Basement",
+                            "King" => "Hidden Room",
+                            _ => ""
+                        });
+                    if (room != null)
+                    { 
+                        room.BossDefeated = true;
+                    }
                 }
 
                 if (Player.SugarLevel > 99)

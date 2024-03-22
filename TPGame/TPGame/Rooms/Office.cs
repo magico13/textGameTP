@@ -8,7 +8,9 @@ namespace TPGame.MapLocations
         {
             Name = "Office";
             EncounterChance = 0.4;
-            Description = "Small but cozy, you always feel at peace in your office.\nYour computer sits on a mahogany desk."; 
+            Description = "Small but cozy, you always feel at peace in your office.\nYour computer sits on a mahogany desk.";
+            GetItems = ["batteries"];
+            Interactables = ["desk", "computer"];
             Image = @"                                          
                                  ----------------------                                                   
                                  |####################|                                                   

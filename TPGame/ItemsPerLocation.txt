@@ -1,6 +1,6 @@
 Items per room
 
-#Attic - Camping Lantern, dusty chest, workout equipment, insulation
+#Attic - Camping Lantern, chest, workout equipment, insulation
 Backyard - lawn mower, Buried Switch (requires metal detector and shovel)
 #*Basement - Metal Detector (requires lantern to see)
 *Bathroom - sink, bathtub, towel, medicine cabinet, toilet (Toilet Water) 
@@ -8,7 +8,7 @@ Dining Room - dining table, candles, chairs
 #*Garage- tool bench (craft and items), Shovel (requires tool belt) (Boss battle can be beaten with belt sander)
 *Guest Bedroom- bed, nightstand
 *Hidden Room - Endgame switch (requires Buried switch)
-Kitchen- dog bowl, utility knife, sink, fridge, cabinet, Water from Dog Bowl
+Kitchen- dog bowl, utility knife, sink, fridge, cabinet
 Living Room- Couch, coffee table,  Key to garage (hidden in couch cushions) [Mints (Useless)]
 Master Bedroom - Tool belt, bed, dresser, closet [Item Checklist]
 *Office - computer, desk, Batteries (Locked drawer needs lockpicked)
@@ -39,10 +39,10 @@ Interactables
 -Craft Bench
 -Fridge
 -Lawn Mower
--Dusty Chest
+-Chest
 -Workout Equipment
 -Master Bedroom Bed
--Guest Bedroom
+-Guest Bedroom Bed
 -Buried Switch
 -Endgame Switch
 
