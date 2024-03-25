@@ -1,6 +1,6 @@
-﻿using System;
-using TPGame.Models;
+﻿using TPGame.Models;
 using TPGame.Dictionaries;
+using TPGame.Rooms;
 
 namespace TPGame.Interactables
 {
@@ -8,13 +8,15 @@ namespace TPGame.Interactables
     {
         public BuriedSwitch()
         {
-            Name = "Buried Switch";
+            Name = "switch";
             Description = "A metal plate with a blinking switch under a plastic plate. Where did this come from and what was it hiding?";
         }
 
+        public bool Hidden = true;
+
         public override void UseInteractable()
         {
-            Array.Find(Collections.Rooms, room => room.Name == "Hidden Room").Hidden = false;
+            Collections.Rooms.Add(new HiddenRoom());
         }
     }
 }

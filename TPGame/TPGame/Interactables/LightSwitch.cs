@@ -7,8 +7,8 @@ namespace TPGame.Interactables
     {
         public LightSwitch() 
         {
-            Name = "Light switch";
-            Description = "While the light may be fine enough for you to see";
+            Name = "light switch";
+            Description = "While the light may be fine enough for you to see, you can always adjust the text and background to help see better.";
         }
 
         private bool On = true;

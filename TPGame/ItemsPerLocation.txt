@@ -7,7 +7,7 @@ Backyard - lawn mower, Buried Switch (requires metal detector and shovel)
 Dining Room - dining table, candles, chairs
 #*Garage- tool bench (craft and items), Shovel (requires tool belt) (Boss battle can be beaten with belt sander)
 *Guest Bedroom- bed, nightstand
-*Hidden Room - Endgame switch (requires Buried switch)
+#*Hidden Room - Endgame switch (requires Buried switch)
 Kitchen- dog bowl, utility knife, sink, fridge, cabinet
 Living Room- Couch, coffee table,  Key to garage (hidden in couch cushions) [Mints (Useless)]
 Master Bedroom - Tool belt, bed, dresser, closet [Item Checklist]
@@ -45,18 +45,18 @@ Interactables
 -Guest Bedroom Bed
 -Buried Switch
 -Endgame Switch
--sander
--craft bench
--car
--candles
--chair
--DR table
--furnace
--water main
--milk crates
--bathtub
--towel
--medicine cabinet
+-Sander
+-Craft bench
+-Car
+-Candles
+-Chair
+-DR Table
+-Furnace
+-Water Main
+-Milk Crates
+-Bathtub
+-Towel
+-Medicine Cabinet
 
 Power Ups (Included in Interactables)
 -False teeth

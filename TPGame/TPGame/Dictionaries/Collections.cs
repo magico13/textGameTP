@@ -3,13 +3,13 @@ using TPGame.Interactables;
 using TPGame.Items;
 using TPGame.MapLocations;
 using TPGame.Models;
-using TPGame.Rooms;
 
 namespace TPGame.Dictionaries
 {
     public static class Collections
     {
-        public static readonly Room[] Rooms = [
+        public static readonly List<Room> Rooms = 
+            [
                 new Attic(),
                 new Backyard(),
                 new Basement(),
@@ -17,7 +17,6 @@ namespace TPGame.Dictionaries
                 new DiningRoom(),
                 new Garage(),
                 new GuestBedroom(),
-                new HiddenRoom(),
                 new Kitchen(),
                 new LivingRoom(),
                 new MasterBedroom(),
@@ -25,47 +24,56 @@ namespace TPGame.Dictionaries
                 new Pantry()
             ];
 
-        public static Dictionary<string, Item> Inventory = new Dictionary<string, Item>();
+        public static List<Item> Inventory = [];
 
-        public static readonly Dictionary<string, Item> AllItems = new()
-        {
-            ["batteries"] = new Batteries(),
-            ["camping lantern"] = new CampingLantern(),
-            ["key"] = new Key(),
-            ["knife"] = new Knife(),
-            ["ladder"] = new Ladder(),
-            ["metal detector"] = new MetalDetector(),
-            ["mints"] = new Mints(),
-            ["shovel"] = new Shovel(),
-            ["tool belt"] = new ToolBelt(),
-            ["water bottle"] = new WaterBottle(),
-        };
+        public static readonly List<Item> AllItems =
+            [
+                new Batteries(),
+                new CampingLantern(),
+                new Key(),
+                new Knife(),
+                new Ladder(),
+                new MetalDetector(),
+                new Mints(),
+                new Shovel(),
+                new ToolBelt(),
+                new WaterBottle()
+            ];
 
-        public static readonly Dictionary<string, Interactable> AllInteractables = new()
-        {
-            ["bed"] = new Bed(),
-            ["buried switch"] = new BuriedSwitch(),
-            ["car"] = new Car(),
-            ["chest"] = new Chest(),
-            ["closet"] = new Closet(),
-            ["computer"] = new Computer(),
-            ["couch"] = new Couch(),
-            ["craft bench"] = new CraftBench(),
-            ["desk"] = new Desk(),
-            ["dresser"] = new Dresser(),
-            ["false teeth"] = new FalseTeeth(),
-            ["fridge"] = new Fridge(),
-            ["lawn mower"] = new LawnMower(),
-            ["light switch"] = new LightSwitch(),
-            ["lever"] = new EndGame(),
-            ["nightstand"] = new Nightstand(),
-            ["sander"] = new Sander(),
-            ["sink"] = new Sink(),
-            ["toilet"] = new Toilet(),
-            ["tongue guard"] = new Guard(),
-            ["water bowl"] = new WaterBowl(),
-            ["workout equipment"] = new WorkoutEquipment()
-        };
+        public static readonly List<Interactable> AllInteractables =
+        [
+            new Bathtub(),
+            new Bed(),
+            new BuriedSwitch(),
+            new EndGame(),
+            new Candles(),
+            new Chair(),
+            new Car(),
+            new Chest(),
+            new Closet(),
+            new Computer(),
+            new Couch(),
+            new CraftBench(),
+            new Desk(),
+            new Dresser(),
+            new FalseTeeth(),
+            new Fridge(),
+            new Furnace(),
+            new LawnMower(),
+            new LightSwitch(),
+            new MedicineCabinet(),
+            new MilkCrates(),
+            new Nightstand(),
+            new Sander(),
+            new Sink(),
+            new Table(),
+            new Toilet(),
+            new Towel(),
+            new Guard(),
+            new WaterBowl(),
+            new WaterMain(),
+            new WorkoutEquipment()
+         ];
 
         public readonly static Dictionary<string, string> ValidInputs = new()
         {

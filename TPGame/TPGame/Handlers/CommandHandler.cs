@@ -31,6 +31,24 @@ namespace TPGame.Handlers
             GameOver = true;
             DialogueHandler.PrintLine($"Congratulations! You have answered the age old question! It took {InputHandler.Character.GetLicks()} licks to get to the center of yourself.");
             Console.Read();
+            StartGame();
         }
+
+        public static void LoseGame()
+        {
+            GameOver = true;
+            DialogueHandler.PrintLine("Your head aches.");
+            DialogueHandler.AddPause(300);
+            DialogueHandler.PrintLine("Your vision blurs.");
+            DialogueHandler.AddPause(300);
+            DialogueHandler.PrintLine("Every muscle in your body spasms and twitches.");
+            DialogueHandler.AddPause(300);
+            DialogueHandler.PrintLine("You collapse to the ground. Your sugar level is too high! It's a sugar crash!");
+            DialogueHandler.PrintLine("You can't go on. You'll have to start over and try again.");
+            DialogueHandler.AddPause(300);
+            DialogueHandler.PrintLine("Sorry, but your game is over.");
+            Console.Read();
+            StartGame();
+        }   
     }
 }

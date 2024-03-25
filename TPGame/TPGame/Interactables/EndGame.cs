@@ -7,7 +7,8 @@ namespace TPGame.Interactables
     {
         public EndGame() 
         {
-            Name = "Mysterious Lever";
+            Name = "button";
+            Description = "A mysterious button that seems to be the only thing in the room. It's glowing softly. A sign above says \"Win Game.\"";
         }
 
         public override void UseInteractable()

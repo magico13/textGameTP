@@ -15,7 +15,7 @@ namespace TPGame.Items
 
         public override void GetItem()
         {
-            Array.Find(Collections.Rooms, room => room.Name == "Garage").Unlock();
+            Collections.Rooms.Find(room => room.Name == "Garage").Unlock();
         }
     }
 }

@@ -1,13 +1,12 @@
 ﻿using System;
 using TPGame.Handlers;
+using TPGame.Dictionaries;
 
 namespace TPGame.Characters
 {
     public class Player : Character
     {
-        public Player() : base() {}
-
-        public int DamageMod = 1;
+        public Player() : base() { }
         public int SugarLevel { get; set; } //if sugar level = 100, player crashes (maybe enter "sugar rush" at 100?)
         private int Experience { get; set; } //Needs expanding
         public int Licks { get; set; } = 0;
@@ -17,13 +16,14 @@ namespace TPGame.Characters
         /// </summary>
         public int RollDamage()
         {
-            Random critical = new Random();
-            double criticalChance = critical.NextDouble();
+            double criticalChance = new Random().NextDouble();
             int criticalDamage = 0;
 
             if (criticalChance > 0.7) //Deals critical damage
             {
-                criticalDamage = (int)(10 * critical.NextDouble());
+                criticalDamage = (int)(
+                    (Collections.Inventory.Find(item => item.Name == "guard") != null ? 20 : 10)
+                    * new Random().NextDouble());
                 if (criticalDamage < 1)
                 {
                     criticalDamage = 1;
@@ -31,7 +31,7 @@ namespace TPGame.Characters
                 DialogueHandler.Print("Chomp! ");
             }
 
-            return criticalDamage + DamageMod;
+            return criticalDamage + (Collections.Inventory.Find(item => item.Name == "false teeth") != null ? 3 : 1);
 
         }
 
@@ -44,7 +44,7 @@ namespace TPGame.Characters
                 DialogueHandler.PrintLine("Careful! If you're sugar level gets to 100, you'll crash! Try drinking some water.");
             }
             Experience++;
-            DialogueHandler.PrintLine($"You now have {Experience} lolipop stick" + (Experience > 1?"s":"") + "!");
+            DialogueHandler.PrintLine($"You now have {Experience} lolipop stick" + (Experience > 1 ? "s" : "") + "!");
         }
     }
 }

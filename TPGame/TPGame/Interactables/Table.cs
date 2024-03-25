@@ -2,7 +2,7 @@
 
 namespace TPGame.Interactables
 {
-    public class FalseTeeth : Interactable
+    public class Table : Interactable
     {
     }
 }

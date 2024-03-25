@@ -6,7 +6,7 @@ namespace TPGame.Interactables
     {
         public Computer()
         {
-            Name = "Computer";
+            Name = "computer";
             Description = "The old girl is just as reliable as the day you got her, which is to say not very.";
         }
     }

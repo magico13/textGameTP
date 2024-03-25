@@ -69,14 +69,11 @@ namespace TPGame.Commands
         {
             foreach (Room room in Collections.Rooms)
             {
-                if (!room.Hidden)
+                if (room.Name == CurrentLocation.Name)
                 {
-                    if (room.Name == CurrentLocation.Name)
-                    {
-                        room.Name += " - Current Location";
-                    }
-                    DialogueHandler.PrintLine($"{room.Name}");
+                    room.Name += " - Current Location";
                 }
+                DialogueHandler.PrintLine($"{room.Name}");
             }
         }
 

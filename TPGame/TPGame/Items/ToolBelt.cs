@@ -30,11 +30,11 @@ namespace TPGame.Items
 
             if (Collections.Inventory.Count > 0)
             {
-                foreach (KeyValuePair<string, Item> item in Collections.Inventory)
+                foreach (Item item in Collections.Inventory)
                 {
-                    if (item.Key != "tool belt" && item.Value.Uses > 0) 
+                    if (item.Name.ToLower() != "tool belt" && item.Uses > 0) 
                     { 
-                        DialogueHandler.PrintLine($"{item.Key}");
+                        DialogueHandler.PrintLine($"{item.Name}");
                     }
                 }
             }

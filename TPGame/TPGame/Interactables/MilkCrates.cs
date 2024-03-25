@@ -2,7 +2,7 @@
 
 namespace TPGame.Interactables
 {
-    public class Guard : Interactable
+    public class MilkCrates : Interactable
     {
     }
 }

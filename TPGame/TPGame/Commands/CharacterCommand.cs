@@ -29,7 +29,7 @@ namespace TPGame.Commands
                 if (Enemy.Health < 1)
                 {
                     Player.EatCandy(); //Writes end of battle text including sugar level and experience
-                    Room room = Array.Find(Collections.Rooms, room => room.Name ==
+                    Room room = Collections.Rooms.Find(room => room.Name ==
                         Enemy.Name switch
                         {
                             "Bishop" => "Garage",
@@ -40,14 +40,14 @@ namespace TPGame.Commands
                         });
                     if (room != null)
                     { 
-                        room.BossDefeated = true;
+                        room.DefeatBoss();
                     }
                     return false;
                 }
 
                 if (Player.SugarLevel > 99)
                 {
-                    CommandHandler.GameOver = true;
+                    CommandHandler.LoseGame();
                     return false;
                 }
             }
