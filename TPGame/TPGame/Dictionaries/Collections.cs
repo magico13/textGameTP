@@ -8,7 +8,7 @@ namespace TPGame.Dictionaries
 {
     public static class Collections
     {
-        public static readonly List<Room> Rooms = 
+        public static readonly List<Room> Rooms =
             [
                 new Attic(),
                 new Backyard(),
@@ -30,6 +30,8 @@ namespace TPGame.Dictionaries
             [
                 new Batteries(),
                 new CampingLantern(),
+                new FalseTeeth(),
+                new Guard(),
                 new Key(),
                 new Knife(),
                 new Ladder(),
@@ -43,7 +45,8 @@ namespace TPGame.Dictionaries
         public static readonly List<Interactable> AllInteractables =
         [
             new Bathtub(),
-            new Bed(),
+            new Bed("master bedroom"),
+            new Bed("guest bedroom"),
             new BuriedSwitch(),
             new EndGame(),
             new Candles(),
@@ -56,7 +59,6 @@ namespace TPGame.Dictionaries
             new CraftBench(),
             new Desk(),
             new Dresser(),
-            new FalseTeeth(),
             new Fridge(),
             new Furnace(),
             new LawnMower(),
@@ -65,11 +67,11 @@ namespace TPGame.Dictionaries
             new MilkCrates(),
             new Nightstand(),
             new Sander(),
-            new Sink(),
+            new Sink("kitchen sink"),
+            new Sink("bathroom sink"),
             new Table(),
             new Toilet(),
             new Towel(),
-            new Guard(),
             new WaterBowl(),
             new WaterMain(),
             new WorkoutEquipment()

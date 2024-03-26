@@ -7,8 +7,9 @@ namespace TPGame.Characters
     public class Player : Character
     {
         public Player() : base() { }
-        public int SugarLevel { get; set; } //if sugar level = 100, player crashes (maybe enter "sugar rush" at 100?)
-        private int Experience { get; set; } //Needs expanding
+        public static int SugarLevel { get; set; } //if sugar level = 100, player crashes
+        public int Experience { get; set; }
+        public double CriticalThreshhold = 0.7;
         public int Licks { get; set; } = 0;
 
         /// <summary>
@@ -19,7 +20,7 @@ namespace TPGame.Characters
             double criticalChance = new Random().NextDouble();
             int criticalDamage = 0;
 
-            if (criticalChance > 0.7) //Deals critical damage
+            if (criticalChance > CriticalThreshhold) //Deals critical damage
             {
                 criticalDamage = (int)(
                     (Collections.Inventory.Find(item => item.Name == "guard") != null ? 20 : 10)

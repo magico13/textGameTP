@@ -76,9 +76,10 @@ namespace TPGame.Handlers
                         |__|   \___/  \___/   |__|    \___||____||_____|    |__|    \___/ |__|        
 
 ";
+
             Console.BackgroundColor = ConsoleColor.Yellow;
-            Console.Clear();
             Console.ForegroundColor = ConsoleColor.Red;
+            Console.Clear();
             PrintLine(String.Format("{0," + ((Console.WindowWidth / 2) + (gameTitle.Length / 2)) + "}", gameTitle), 0);
             Console.ResetColor();
             Console.ForegroundColor = ConsoleColor.Black;

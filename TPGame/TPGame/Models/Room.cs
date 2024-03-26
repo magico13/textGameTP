@@ -5,8 +5,8 @@ namespace TPGame.Models
 {
     public class Room
     {
-        public string Description { get; set; }
-        public string Image { get; set; }
+        public string Description { get; set; } = "";
+        public string Image { get; set; } = "";
         public string Name { get; set; }
         public double EncounterChance { get; set; }
 

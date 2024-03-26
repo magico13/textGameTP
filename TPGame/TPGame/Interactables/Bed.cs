@@ -1,10 +1,11 @@
-﻿using TPGame.Models;
+﻿using TPGame.Handlers;
+using TPGame.Models;
 
 namespace TPGame.Interactables
 {
     public class Bed : Interactable
     {
-        public Bed(string roomName) 
+        public Bed(string roomName)
         {
             switch (roomName)
             {
@@ -20,7 +21,22 @@ namespace TPGame.Interactables
                 default:
                     Description = "";
                     break;
-            }   
+            }
+        }
+
+        public bool Made = false;
+
+        public override void UseInteractable()
+        {
+            if (Made)
+            {
+                DialogueHandler.PrintLine("Tightly made and neat as can be. You straighten the pillows slightly. You just can't quite get them right.");
+            }
+            else
+            {
+                DialogueHandler.PrintLine("Embarassed at the sight of the unmade bed, you quickly tidy the sheets and covers. The pillows are placed meticulously, though you're not quite happy with the layout.");
+                Made = true;
+            }
         }
     }
 }
