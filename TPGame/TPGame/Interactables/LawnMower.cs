@@ -1,4 +1,5 @@
-﻿using TPGame.Models;
+﻿using TPGame.Handlers;
+using TPGame.Models;
 
 namespace TPGame.Interactables
 {
@@ -8,6 +9,11 @@ namespace TPGame.Interactables
         {
             Name = "lawnmower";
             Description = "An older push mower you got from your grandfather after he repaired it. It runs reliably but it doesn't have any gas right now. You could siphon from the car but then you wouldn't be able to go get more gas.";
+        }
+
+        public override void UseInteractable()
+        {
+            DialogueHandler.PrintLine("You yank on the starter cord but can't seem to get the engine to do anything more than sputter.");
         }
     }
 }

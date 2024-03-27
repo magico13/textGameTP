@@ -25,6 +25,10 @@ namespace TPGame.Handlers
                 Console.Write(c);
                 System.Threading.Thread.Sleep(delay);
             }
+            if (!(text.EndsWith(".") || text.EndsWith("!") || text.EndsWith("?")))
+            {
+                Console.Write(".");
+            }
             Console.WriteLine();
         }
 

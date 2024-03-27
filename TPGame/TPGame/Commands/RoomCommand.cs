@@ -1,4 +1,4 @@
-﻿using TPGame.MapLocations;
+﻿using TPGame.Rooms;
 using TPGame.Handlers;
 using TPGame.Models;
 using TPGame.Dictionaries;
@@ -78,5 +78,13 @@ namespace TPGame.Commands
         }
 
         public bool CheckCombat() => InCombat;
+
+        public void SearchRoom() 
+        {
+            foreach (string i in CurrentLocation.Interactables)
+            {
+                DialogueHandler.PrintLine(i);
+            }
+        }
     }
 }

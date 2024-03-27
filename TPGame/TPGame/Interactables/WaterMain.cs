@@ -9,7 +9,7 @@ namespace TPGame.Interactables
         public WaterMain() 
         {
             Name = "water main";
-            Description = "";
+            Description = "THIS NEEDS CHANGED";
         }
 
         public bool On = false;
@@ -20,9 +20,9 @@ namespace TPGame.Interactables
             {
                 On = true;
                 DialogueHandler.PrintLine("You turn the handle, which results in the pipes gently rumbling. You can hear a short burst of water running through the pipes.\n" +
-                    "The pipes quickly go water. It seems there wasn't much water left.");
-                ((Sink)Collections.AllInteractables.Find(i => i.Name == "kitchen sink")).WaterLevel += 60;
-                ((Sink)Collections.AllInteractables.Find(i => i.Name == "bathroom sink")).WaterLevel += 60;
+                    "The pipes quickly go quiet. It seems there wasn't much water left.");
+                ((Sink)Collections.VerifyInteractable("kitchen sink")).WaterLevel += 60;
+                ((Sink)Collections.VerifyInteractable("bathroom sink")).WaterLevel += 60;
             }
             else 
             {

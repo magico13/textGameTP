@@ -1,7 +1,7 @@
 ﻿using TPGame.Handlers;
 using TPGame.Models;
 using TPGame.Dictionaries;
-using System.Linq;
+using System;
 
 namespace TPGame.Commands
 {
@@ -10,14 +10,22 @@ namespace TPGame.Commands
         public void CheckItem(string target)
         {
             target ??= UserInput.GetString("What item do you want to check?");
-            Item item = Collections.AllItems.Find(item => item.Name.ToLower() == target);
+            Item item = Collections.VerifyItem(target);
             if (item != null)
             {
                 item.CheckItem();
             }
             else
             {
-                DialogueHandler.PrintLine($"You don't have a {target}");
+                Interactable interactable = Collections.VerifyInteractable(target);
+                if (interactable != null)
+                {
+                    interactable.CheckInteractable();
+                }
+                else
+                {
+                    DialogueHandler.PrintLine($"You don't have a {target}");
+                }
             }
         }
 
@@ -25,59 +33,66 @@ namespace TPGame.Commands
         public void UseItem(string target, Room currentLocation)
         {
             target ??= UserInput.GetString("What item do you want to use?");
-            Item item = Collections.Inventory.Find(item => item.Name == target);
-            Interactable interactable = Collections.AllInteractables.Find(interactable => interactable.Name.ToLower() == target);
+            Item item = Collections.CheckInventory(target);
             if (item != null)
             {
                 if (currentLocation.UsableItems.Contains(target))
                 {
-                    item.HandleUse();
+                    item.UseItem();
                 }
                 else
                 {
                     DialogueHandler.PrintLine($"You can't use your {item.Name} here.");
                 }
             }
-            else if (interactable != null)
-            {
-                if (currentLocation.Interactables.Contains(target))
-                {
-                    interactable.UseInteractable();
-                }
-                else
-                {
-                    DialogueHandler.PrintLine($"You can't find a {interactable.Name} here.");
-                }
-            }
             else
             {
-                DialogueHandler.PrintLine($"You don't have a {target}");
+                Interactable interactable = Collections.VerifyInteractable(target);
+                if (interactable != null)
+                {
+                    if (currentLocation.Interactables.Contains(target))
+                    {
+                        interactable.UseInteractable();
+                    }
+                    else
+                    {
+                        DialogueHandler.PrintLine($"You can't find a {interactable.Name} here.");
+                    }
+                }
             }
+
+            DialogueHandler.PrintLine($"You don't have a {target}");
         }
 
         public void GetItem(string target, Room currentLocation)
         {
             target ??= UserInput.GetString("What item do you want to take?");
-            Item item = Collections.AllItems.Find(item => item.Name == target);
-            Interactable interactable = Collections.AllInteractables.Find(interactable => interactable.Name.ToLower() == target);
-            if (item != null && currentLocation.GetItems.Contains(target))
+            Item item = Collections.VerifyItem(target);
+            if (item != null)
             {
-                if (!Collections.Inventory.Contains(item))
+                if (currentLocation.GetItems.Contains(target))
                 {
-                    item.GetItem();
+                    if (!Collections.Inventory.Contains(item))
+                    {
+                        item.GetItem();
+                    }
+                    else
+                    {
+                        DialogueHandler.PrintLine($"You already have a {item.Name}");
+                    }
                 }
-                else
+                else 
                 {
-                    DialogueHandler.PrintLine($"You already have a {item.Name}");
+                    DialogueHandler.PrintLine($"The {currentLocation.Name.ToLower()} doesn't have a {target.ToLower()}");
                 }
-
-            }
-            else if (interactable != null)
-            {
-                DialogueHandler.PrintLine($"You can't take the {target} with you.");
             }
             else
             {
+                Interactable interactable = Collections.VerifyInteractable(target);
+                if (interactable != null)
+                {
+                    DialogueHandler.PrintLine($"You can't take the {target} with you.");
+                }
                 DialogueHandler.PrintLine($"The {currentLocation.Name.ToLower()} doesn't have a {target.ToLower()}");
             }
         }

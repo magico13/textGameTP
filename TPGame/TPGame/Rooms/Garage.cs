@@ -1,6 +1,7 @@
-﻿using TPGame.Models;
+﻿using System.ComponentModel;
+using TPGame.Models;
 
-namespace TPGame.MapLocations
+namespace TPGame.Rooms
 {
     public class Garage : Room
     {
@@ -8,8 +9,14 @@ namespace TPGame.MapLocations
         {
             Name = "Garage";
             EncounterChance = 900;
-            Description = "";
+            Description = "THIS NEEDS TO BE CHANGED";
             Image = "";
+            AddUsableItem();
+        }
+
+        private void AddUsableItem()
+        {
+            UsableItems.Add("key");
         }
 
         public bool Locked = true;

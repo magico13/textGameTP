@@ -1,5 +1,4 @@
-﻿using System.Collections.Generic;
-using TPGame.Dictionaries;
+﻿using TPGame.Dictionaries;
 using TPGame.Handlers;
 using TPGame.Models;
 
@@ -11,8 +10,6 @@ namespace TPGame.Items
         {
             Name = "tool belt";
             Description = "A modified utilty belt prepared to hold any items you find that seem useful, no matter how impratically sized.";
-            Uses = 999;
-            UsedDescription = Description;
         }
 
         public override void GetItem()
@@ -32,9 +29,9 @@ namespace TPGame.Items
             {
                 foreach (Item item in Collections.Inventory)
                 {
-                    if (item.Name.ToLower() != "tool belt" && item.Uses > 0) 
+                    if (item.Name != "tool belt") 
                     { 
-                        DialogueHandler.PrintLine($"{item.Name}");
+                        DialogueHandler.PrintLine($" -{item.Name}");
                     }
                 }
             }

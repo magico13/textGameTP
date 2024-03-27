@@ -23,7 +23,7 @@ namespace TPGame.Characters
             if (criticalChance > CriticalThreshhold) //Deals critical damage
             {
                 criticalDamage = (int)(
-                    (Collections.Inventory.Find(item => item.Name == "guard") != null ? 20 : 10)
+                    (Collections.VerifyInventory("guard") ? 20 : 10)
                     * new Random().NextDouble());
                 if (criticalDamage < 1)
                 {
@@ -32,7 +32,7 @@ namespace TPGame.Characters
                 DialogueHandler.Print("Chomp! ");
             }
 
-            return criticalDamage + (Collections.Inventory.Find(item => item.Name == "false teeth") != null ? 3 : 1);
+            return criticalDamage + (Collections.VerifyInventory("dentures") ? 3 : 1);
 
         }
 

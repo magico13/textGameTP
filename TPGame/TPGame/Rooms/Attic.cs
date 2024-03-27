@@ -1,6 +1,6 @@
 ﻿using TPGame.Models;
 
-namespace TPGame.MapLocations
+namespace TPGame.Rooms
 {
     public class Attic : Room
     {
@@ -9,7 +9,8 @@ namespace TPGame.MapLocations
             Name = "Attic";
             EncounterChance = 0.5;
             Description = "The attic hatch is open but out of reach. You see where you could hook a LADDER if you had one.";
-            Interactables = ["light switch"];
+            UsableItems = Locked ? ["ladder"] : [];
+            Interactables = ["light switch", "home gym"];
         }
 
         public bool Locked = true;
@@ -46,7 +47,6 @@ namespace TPGame.MapLocations
         {
             GetItems = ["camping lantern"];
             Interactables.Add("chest");
-            Interactables.Add("workout equipment");
         }
     }
 }

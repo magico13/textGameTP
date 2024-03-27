@@ -26,7 +26,7 @@ namespace TPGame.Interactables
                 DialogueHandler.AddPause(300);
                 DialogueHandler.PrintLine("You decide that you cleaned it recently enough and scoop up as much water as you can manage.");
             }
-            else
+            else if (WaterLevel == 0)
             {
                 DialogueHandler.PrintLine("The bowl doesn't have enough water in it...");
                 DialogueHandler.AddPause(500);
@@ -35,6 +35,10 @@ namespace TPGame.Interactables
                 DialogueHandler.PrintLine("You're not are you?");
                 DialogueHandler.AddPause(250);
                 DialogueHandler.PrintLine("You know what, I just decided you're not. Don't think about it anymore.");
+            }
+            else
+            {
+                DialogueHandler.PrintLine("You lift the seat to see water in the bowl. Jiggling the handle doesn't seem to do anything. You check the tank to see that it is empty.");
             }
         }
     }

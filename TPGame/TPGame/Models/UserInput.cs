@@ -1,7 +1,7 @@
 ﻿using System;
-using TPGame.Models;
+using TPGame.Handlers;
 
-namespace TPGame.Handlers
+namespace TPGame.Models
 {
     public static class UserInput
     {

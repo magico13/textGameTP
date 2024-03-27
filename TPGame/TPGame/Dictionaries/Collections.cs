@@ -1,8 +1,9 @@
 ﻿using System.Collections.Generic;
 using TPGame.Interactables;
 using TPGame.Items;
-using TPGame.MapLocations;
+using TPGame.Rooms;
 using TPGame.Models;
+using System;
 
 namespace TPGame.Dictionaries
 {
@@ -26,11 +27,11 @@ namespace TPGame.Dictionaries
 
         public static List<Item> Inventory = [];
 
-        public static readonly List<Item> AllItems =
+        public static readonly Item[] AllItems =
             [
                 new Batteries(),
                 new CampingLantern(),
-                new FalseTeeth(),
+                new Dentures(),
                 new Guard(),
                 new Key(),
                 new Knife(),
@@ -42,7 +43,7 @@ namespace TPGame.Dictionaries
                 new WaterBottle()
             ];
 
-        public static readonly List<Interactable> AllInteractables =
+        public static readonly Interactable[] AllInteractables =
         [
             new Bathtub(),
             new Bed("master bedroom"),
@@ -74,7 +75,7 @@ namespace TPGame.Dictionaries
             new Towel(),
             new WaterBowl(),
             new WaterMain(),
-            new WorkoutEquipment()
+            new HomeGym()
          ];
 
         public readonly static Dictionary<string, string> ValidInputs = new()
@@ -89,5 +90,23 @@ namespace TPGame.Dictionaries
             ["Quit"] = "Yeah, so this game doesn't have an ending yet. Quitting is not always the best option, but, for now, it's the only option.",
             ["Hint"] = "In the stress and surprise, you may have forgotten your master plan. That's fine. You can scan your mind for bits of the plan."
         };
+
+        public static Item VerifyItem(string itemName) => Array.Find(Collections.AllItems, i => i.Name == itemName);
+
+        public static Item CheckInventory(string itemName)
+        {
+            Item item = VerifyItem(itemName);
+            if (Inventory.Contains(item))
+            {
+                return item;
+            }
+            return null;
+        }
+
+        public static Interactable VerifyInteractable(string interactableName) => Array.Find(Collections.AllInteractables, i => i.Name == interactableName);
+
+        public static Room VerifyRoom(string roomName) => Collections.Rooms.Find(r => r.Name == roomName);
+
+        public static bool VerifyInventory(string itemName) => CheckInventory(itemName) != null;
     }
 }

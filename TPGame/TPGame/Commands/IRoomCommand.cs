@@ -10,5 +10,7 @@ namespace TPGame.Commands
         bool ChangeRoom(string target);
         bool CheckCombat();
         void ViewMap();
+
+        void SearchRoom();
     }
 }

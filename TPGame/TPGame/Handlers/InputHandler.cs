@@ -53,6 +53,9 @@ namespace TPGame.Handlers
                 case "quit":
                     CommandHandler.GameOver = QuitGame();
                     break;
+                case "search":
+                    Map.SearchRoom();
+                    break;
 
                 default: //Handles unrecognized inputs
                     DialogueHandler.PrintLine("Sorry. Please try again.");

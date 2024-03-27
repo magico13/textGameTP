@@ -37,7 +37,7 @@ namespace TPGame.Commands
                         return false;
                     }
 
-                    Room room = Collections.Rooms.Find(room => room.Name ==
+                    Room room = Collections.VerifyRoom(
                             Lolipop.Name switch
                             {
                                 "Bishop" => "Garage",

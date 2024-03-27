@@ -1,6 +1,6 @@
 ﻿using TPGame.Models;
 
-namespace TPGame.MapLocations
+namespace TPGame.Rooms
 {
     public class LivingRoom : Room 
     {
