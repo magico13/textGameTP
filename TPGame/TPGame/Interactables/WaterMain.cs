@@ -26,7 +26,7 @@ namespace TPGame.Interactables
             }
             else 
             {
-                DialogueHandler.PrintLine("Turning the handle of and on doesn't seem to be having any further effect.");
+                DialogueHandler.PrintLine("Turning the handle off and on doesn't seem to be having any further effect.");
             }
         }
     }
