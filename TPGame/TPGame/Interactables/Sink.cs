@@ -1,4 +1,6 @@
-﻿using TPGame.Models;
+﻿using TPGame.Handlers;
+using TPGame.Items;
+using TPGame.Models;
 
 namespace TPGame.Interactables
 {
@@ -11,15 +13,33 @@ namespace TPGame.Interactables
             switch (roomName)
             {
                 case "Bathroom":
-                    Description = "A sink with a mirror above it.";
+                    Name = "bathroom sink";
+                    Description = "A small sink with a mirror above it. Your toothbrush sits in a cup next to a mostly empty tube of toothpaste.";
                     break;
                 case "Kitchen":
-                    Description = "A sink with a faucet.";
+                    Name = "kitchen sink";
+                    Description = "A single-chambered metal sink that is currently empty. You cleaned all of your dishes the night before.";
                     break;
                 default:
-                    Name = "Sink";
+                    Name = "sink";
                     Description = "A sink.";
                     break;
+            }
+        }
+
+        public int WaterLevel = 0;
+
+        public override void UseInteractable()
+        {
+            if (WaterLevel > 0)
+            {
+                WaterBottle.WaterLevel += WaterLevel;
+                WaterLevel = 0;
+                DialogueHandler.PrintLine("You're able to get a little bit of water out of the sink.");
+            }
+            else
+            {
+                DialogueHandler.PrintLine("No matter how hard you try, you can't get any water out of the sink.");
             }
         }
     }

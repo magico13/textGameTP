@@ -1,4 +1,5 @@
 ﻿using TPGame.Dictionaries;
+using TPGame.Handlers;
 using TPGame.Models;
 
 namespace TPGame.Interactables
@@ -8,17 +9,19 @@ namespace TPGame.Interactables
         public Desk()
         {
             Name = "desk";
-            Description = "A white wooden desk where you do all of your vaguely defined work. You pull out the drawer and see 4 BATTERIES. They're size C.";
+            Description = "A white wooden desk where you do all of your vaguely defined work.";
         }
 
         public override void UseInteractable()
         {
-            Collections.Inventory.Add(new Items.Batteries());
-            Item lantern = Collections.Inventory.Find(item => item.Name == "camping lantern");
-            if (lantern != null)
+            if (Collections.Inventory.Find(item => item.Name == "batteries") == null)
             {
-                lantern.UseItem();
-            }   
+                DialogueHandler.PrintLine("You pull out the drawer and see 4 BATTERIES.They're size C.");
+            }
+            else
+            {
+                DialogueHandler.PrintLine("You can't find anything else of use and would rather not get back to work on your project just yet.");
+            }
         }
     }
 }

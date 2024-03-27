@@ -1,5 +1,4 @@
 ﻿using TPGame.Models;
-using TPGame.Characters;
 
 namespace TPGame.Items
 {

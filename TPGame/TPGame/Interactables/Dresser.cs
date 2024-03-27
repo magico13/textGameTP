@@ -8,7 +8,7 @@ namespace TPGame.Interactables
         {
             Name = "dresser";
             Description = "A long mahogany dresser with a mirror on top. You check each drawer but only find neatly folded clothes.\n" +
-                "You've been on top of your laundry lately. A refreshing change of pace.";
+                "You've been on top of your laundry lately, a refreshing change of pace. There's nothing of real use here.";
         }
     }
 }

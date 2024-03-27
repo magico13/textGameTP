@@ -9,8 +9,7 @@ namespace TPGame.MapLocations
             Name = "Basement";
             Description = "You open the door to the basement and creep down the steps.\nThe basement is pitch black.\nYou can't see your own hands.\nThe light switch clicks uselessly." +
                           "\n...\nYou need to find a light source to explore further.";
-            GetItems = ["metal detector"];
-            Interactables = ["furnace", "water main", "milk crates"];
+
             Image = @"
 
 
@@ -49,6 +48,13 @@ namespace TPGame.MapLocations
 ";
             IsDark = false;
             Description = "THIS NEEDS TO BE CHANGED";
+            
+        }
+
+        public override void DefeatBoss()
+        {
+            GetItems = ["metal detector"];
+            Interactables = ["furnace", "water main", "milk crates"];
         }
     }
 }

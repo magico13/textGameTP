@@ -1,5 +1,4 @@
 ﻿using System;
-using TPGame.Characters;
 
 namespace TPGame.Handlers
 {

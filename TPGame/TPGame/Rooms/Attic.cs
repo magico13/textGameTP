@@ -8,9 +8,15 @@ namespace TPGame.MapLocations
         {
             Name = "Attic";
             EncounterChance = 0.5;
-            Description = "You pull down the ladder to the attic.\nThe stairs creak beneath your feet as you climb.";
-            GetItems = ["camping lantern"];
-            Interactables = ["light switch", "chest", "workout equipment"];
+            Description = "The attic hatch is open but out of reach. You see where you could hook a LADDER if you had one.";
+            Interactables = ["light switch"];
+        }
+
+        public bool Locked = true;
+
+        public override void Unlock() 
+        {
+            Description = "You attach the ladder to the attic. The rungs creak beneath your feet as you climb.";
             Image = @"
                                     
                                  //,,&&&&&&&&&&&&&&&&,,\\                               
@@ -34,6 +40,13 @@ namespace TPGame.MapLocations
     &&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&";
         }
 
-        public override bool RollEncounter() => true;
+        public override bool RollEncounter() => !Locked;
+
+        public override void DefeatBoss()
+        {
+            GetItems = ["camping lantern"];
+            Interactables.Add("chest");
+            Interactables.Add("workout equipment");
+        }
     }
 }
