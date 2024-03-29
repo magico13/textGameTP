@@ -33,7 +33,7 @@ namespace TPGame.Interactables
         {
             if (WaterLevel > 0)
             {
-                WaterBottle.WaterLevel += WaterLevel;
+                WaterBottle.AddWater(WaterLevel);
                 WaterLevel = 0;
                 DialogueHandler.PrintLine("You're able to get a little bit of water out of the sink.");
             }

@@ -7,9 +7,7 @@ namespace TPGame.Rooms
         public HiddenRoom() : base()
         { 
             Name= "Hidden Room";
-            EncounterChance = 1000;
-            Description = "";
-            Hidden = true;
+            Description = "THIS NEEDS TO BE CHANGED";
             Interactables = ["light switch"];
         }
 
@@ -17,7 +15,8 @@ namespace TPGame.Rooms
 
         public override void DefeatBoss()
         {
-            Interactables.Add("lever");
+            Interactables.Add("button");
+            BossDefeated = true;
         }
     }
 }

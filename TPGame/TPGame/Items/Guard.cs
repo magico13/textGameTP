@@ -19,7 +19,7 @@ namespace TPGame.Items
 
         public override void UseItem()
         {
-            string message = new Random().Next(1) switch
+            string message = new Random().Next(2) switch
             {
                 0 => "You dislodge the guard with your tongue and chew gently on the rubber. It doesn't do much but seems to make you feel a little better.",
                 1 => "You reach in and adjust the guard in your mouth, relieving some oral discomfort.",

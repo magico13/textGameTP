@@ -13,7 +13,7 @@ namespace TPGame.Interactables
 
         public override void UseInteractable()
         {
-            DialogueHandler.PrintLine("Behind the mirror are three shelves. Most of what's on them is not helpful, except for the FALSE TEETH. You might be able to do some damage with them");
+            DialogueHandler.PrintLine("Behind the mirror are three shelves. Most of what's on them is not helpful, except for the DENTURES. You might be able to do some damage with them");
         }
     }
 }

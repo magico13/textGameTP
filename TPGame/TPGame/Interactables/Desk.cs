@@ -14,7 +14,7 @@ namespace TPGame.Interactables
 
         public override void UseInteractable()
         {
-            if (Collections.Inventory.Find(item => item.Name == "batteries") == null)
+            if (!Collections.VerifyInventory("batteries"))
             {
                 DialogueHandler.PrintLine("You pull out the drawer and see 4 BATTERIES.They're size C.");
             }

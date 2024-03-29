@@ -7,5 +7,6 @@
         public void SpawnEnemy(string roomName);
         public void SetCriticalThreshhold(double crit);
         public int GetLicks();
+        public int GetSticks();
     }
 }

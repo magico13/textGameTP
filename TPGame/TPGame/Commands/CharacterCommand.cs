@@ -1,7 +1,6 @@
 ﻿using TPGame.Characters;
 using TPGame.Dictionaries;
 using TPGame.Handlers;
-using TPGame.Models;
 
 namespace TPGame.Commands
 {
@@ -37,7 +36,7 @@ namespace TPGame.Commands
                         return false;
                     }
 
-                    Room room = Collections.VerifyRoom(
+                    Collections.VerifyRoom(
                             Lolipop.Name switch
                             {
                                 "Bishop" => "Garage",
@@ -45,11 +44,7 @@ namespace TPGame.Commands
                                 "Rook" => "Basement",
                                 "King" => "Hidden Room",
                                 _ => ""
-                            });
-                    if (room != null)
-                    {
-                        room.DefeatBoss();
-                    }
+                            })?.DefeatBoss();
                     return false;
 
                 }
@@ -76,9 +71,9 @@ namespace TPGame.Commands
                     DialogueHandler.PrintLine($"Oh, no! It's the {Lolipop.Name}!");
                     break;
                 case "King":
-                    DialogueHandler.PrintLine($"The legends are true...", 80);
-                    DialogueHandler.AddPause(500);
-                    DialogueHandler.PrintLine($"It's the {Lolipop.Name}!");
+                    DialogueHandler.PrintLine($"The legends are true...", 65);
+                    DialogueHandler.AddPause(300);
+                    DialogueHandler.PrintLine($"It's the {Lolipop.Name}!", 40);
                     break;
                 default:
                     DialogueHandler.PrintLine($"Oh, no! A" + (Lolipop.Name == "orange" ? "n" : "") + $" {Lolipop.Name} pop has appeared!");
@@ -96,6 +91,8 @@ namespace TPGame.Commands
         }
 
         public int GetLicks() => Player.Licks;
+
+        public int GetSticks() => Player.Experience;
 
         public static void AttackBoss(string message)
         {

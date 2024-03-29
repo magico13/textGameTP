@@ -9,7 +9,7 @@ namespace TPGame.Interactables
         public Sander() 
         {
             Name = "sander";
-            Description = "A belt sander that looks like it could do some real damage. If the cord wasn't so short, you might be able to really do some damage to these lolipops.";
+            Description = "A belt sander that looks like it could do some real damage. If the cord wasn't so short, you might be able to really put the hurt on some lolipops.";
         }
 
         public override void UseInteractable()

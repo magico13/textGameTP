@@ -19,7 +19,7 @@ namespace TPGame.Interactables
         {
             if (Collections.Inventory.Find(item => item.Name == "water bottle") != null && WaterLevel > 0)
             {
-                WaterBottle.WaterLevel += WaterLevel;
+                WaterBottle.AddWater(WaterLevel);
                 WaterLevel = 0;
                 DialogueHandler.PrintLine("You kneel down and inspect the water briefly. Desperate times...");
                 DialogueHandler.AddPause(300);

@@ -7,13 +7,18 @@ namespace TPGame.Models
         public string Name;
         public string Description;
 
-        public virtual void CheckItem() => DialogueHandler.PrintLine(Description);
+        // <summary>
+        /// Displays generic get text if not overwritten
+        /// </summary>
+        public virtual void GetItem() => DialogueHandler.PrintLine($"You strap the {Name} to your tool belt.");
 
-        public virtual void GetItem()
-        {
-            DialogueHandler.PrintLine($"You strap the {Name.ToLower()} to your tool belt.");
-        }
+        public virtual void GetItem(string message) => DialogueHandler.PrintLine(message);
 
+        /// <summary>
+        /// Handles item specific use functions
+        /// </summary>
         public virtual void UseItem() { }
+
+        public virtual void UseItem(string message) => DialogueHandler.PrintLine(message);
     }
 }

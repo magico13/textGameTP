@@ -25,7 +25,7 @@ namespace TPGame.Items
         {
             DialogueHandler.PrintLine("You look at your belt to see what all you've collected.");
 
-            if (Collections.Inventory.Count > 0)
+            if (Collections.Inventory.Count > 1)
             {
                 foreach (Item item in Collections.Inventory)
                 {
@@ -37,7 +37,7 @@ namespace TPGame.Items
             }
             else
             {
-                DialogueHandler.PrintLine("Just a bunch of empty pockets, holsters, and straps.");
+                base.GetItem("Just a bunch of empty pockets, holsters, and straps.");
             }
         }
     }

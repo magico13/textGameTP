@@ -1,6 +1,7 @@
 ﻿using TPGame.Characters;
 using TPGame.Handlers;
 using TPGame.Models;
+using TPGame.Dictionaries;
 
 namespace TPGame.Items
 {
@@ -13,7 +14,12 @@ namespace TPGame.Items
                 (WaterLevel > 0 ? $"You estimate that it has enough water to reduce your sugar level by about {WaterLevel}%" : "The bottle is empty. You should see if there's any water around.");
         }
 
-        public static int WaterLevel = 0;
+        public int WaterLevel = 0;
+
+        public static void AddWater(int waterLevel)
+        {
+            ((WaterBottle)Collections.CheckInventory("water bottle")).WaterLevel += waterLevel;
+        }
 
         public override void UseItem()
         {

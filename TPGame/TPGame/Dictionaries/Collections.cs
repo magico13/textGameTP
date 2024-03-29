@@ -33,6 +33,7 @@ namespace TPGame.Dictionaries
                 new CampingLantern(),
                 new Dentures(),
                 new Guard(),
+                new HintList(),
                 new Key(),
                 new Knife(),
                 new Ladder(),

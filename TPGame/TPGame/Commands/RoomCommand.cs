@@ -19,7 +19,7 @@ namespace TPGame.Commands
         {
             foreach (Room room in Collections.Rooms)
             {
-                if (room.Name.ToLower() == target)
+                if (room.Name.Equals(target, System.StringComparison.CurrentCultureIgnoreCase))
                 {
                     if (room.Name == CurrentLocation.Name)
                     {
@@ -69,6 +69,29 @@ namespace TPGame.Commands
         {
             foreach (Room room in Collections.Rooms)
             {
+                switch (room.Name)
+                {
+                    case "Garage":
+                        if (((Garage)room).Locked)
+                        {
+                            room.Name += " (Locked)";
+                        }
+                        break;
+                    case "Attic":
+                        if (((Attic)room).Locked)
+                        {
+                            room.Name += " (Locked)";
+                        }
+                        break;
+                    case "Basement":
+                        if (((Basement)room).IsDark)
+                        {
+                            room.Name += " (Dark)";
+                        }
+                        break;
+                    default:
+                        break;
+                }
                 if (room.Name == CurrentLocation.Name)
                 {
                     room.Name += " - Current Location";
@@ -79,7 +102,7 @@ namespace TPGame.Commands
 
         public bool CheckCombat() => InCombat;
 
-        public void SearchRoom() 
+        public void SearchRoom()
         {
             foreach (string i in CurrentLocation.Interactables)
             {

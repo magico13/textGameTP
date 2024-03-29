@@ -8,8 +8,8 @@ namespace TPGame.Rooms
         {
             Name = "Kitchen";
             EncounterChance = 0.8;
-            Description = "The kitchen seems disturbingly still.\nEverything seems to be neatly in its place.";
-            GetItems = ["knife"];
+            Description = "The kitchen seems disturbingly still. Everything seems to be neatly in its place.\nExcept for your utility KNIFE, which you seem to have left on the counter near the sink.";
+            GetItems = ["knife", "water bottle"];
             Interactables = ["light switch", "sink", "cabinet", "fridge", "dog bowl"];
             Image = @"
                                          /------------\                                           

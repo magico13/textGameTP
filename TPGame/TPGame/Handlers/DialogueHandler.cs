@@ -4,6 +4,9 @@ namespace TPGame.Handlers
 {
     public static class DialogueHandler
     {
+        /// <summary>
+        /// Displays text narrating start of game
+        /// </summary>
         public static void OpeningMonologue()
         {
             Print( "You awaken to a bright new day as the sunshine pours through your window.\n\"What a beautiful day!\" you think to yourself." +
@@ -16,8 +19,8 @@ namespace TPGame.Handlers
         /// <summary>
         /// Writes the text at a delay, simulating a typewriter effect and starts a new line
         /// </summary>
-        /// <param name="text"></param>
-        /// <param name="delay"></param>
+        /// <param name="text">string to be written</param>
+        /// <param name="delay"># of milliseconds between each letter</param>
         public static void PrintLine(string text, int delay = 20)
         {
             foreach (char c in text)
@@ -25,18 +28,14 @@ namespace TPGame.Handlers
                 Console.Write(c);
                 System.Threading.Thread.Sleep(delay);
             }
-            if (!(text.EndsWith(".") || text.EndsWith("!") || text.EndsWith("?")))
-            {
-                Console.Write(".");
-            }
             Console.WriteLine();
         }
 
         /// <summary>
         /// Writes the text at a delay, simulating a typewriter effect
         /// </summary>
-        /// <param name="text"></param>
-        /// <param name="delay"></param>
+        /// <param name="text">string to be written</param>
+        /// <param name="delay"># of milliseconds between each letter</param>
         public static void Print(string text, int delay = 20) //Causes text to be written at a delay simulating a typewriter effect
         {
             foreach (char c in text)
@@ -46,6 +45,10 @@ namespace TPGame.Handlers
             }
         }
 
+        /// <summary>
+        /// Creates a delay before writing next line or clearing console
+        /// </summary>
+        /// <param name="delay"># of milliseconds to wait</param>
         public static void AddPause(int delay = 100) 
         {
             System.Threading.Thread.Sleep(delay);

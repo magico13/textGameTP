@@ -15,8 +15,8 @@ namespace TPGame.Items
 
         public override void UseItem()
         {
-            ((Backyard)(Collections.Rooms.Find(r => r.Name == "backyard"))).Interactables.Add("lever");
-            DialogueHandler.PrintLine("MESSAGE NEEDED");
+            ((Backyard)(Collections.Rooms.Find(r => r.Name == "backyard"))).UsableItems.Add("shovel");
+            base.UseItem("THIS NEEDS TO BE CHANGED");
         }
     }
 }

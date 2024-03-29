@@ -15,15 +15,15 @@ Master Bedroom - Tool belt, bed, dresser, closet [Item Checklist]
 *Pantry - Guaranteed encounter
 
 Items
--Tool Belt
--Water Bottle
--Knife
--Key to Garage
--Shovel
--Camping Lantern
--Batteries
--Metal Detector
--Ladder to Attic
+-Tool BeltX
+-Water BottleX
+-KnifeX
+-Key to GarageX
+-ShovelX
+-Camping LanternX
+-BatteriesX
+-Metal DetectorX
+-Ladder to AtticX
 
 Interactables
 -Computer

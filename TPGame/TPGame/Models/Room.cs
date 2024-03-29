@@ -12,13 +12,11 @@ namespace TPGame.Models
 
         public List<string> GetItems { get; set; } = [];
 
-        public List<string> UsableItems { get; set; } = ["water bottle", "guard", "dentures", "mints"];
+        public List<string> UsableItems { get; set; } = ["tool belt", "water bottle", "guard", "dentures", "mints"];
 
         public List<string> Interactables { get; set; } = [];
 
         public bool BossDefeated { get; set; } = false;
-
-        public bool Hidden { get; set; } = false;
 
         /// <summary>
         /// Gets a random number and checks it agains the current locations encounter chance

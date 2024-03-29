@@ -1,4 +1,5 @@
-﻿using TPGame.Models;
+﻿using TPGame.Handlers;
+using TPGame.Models;
 
 namespace TPGame.Interactables
 {
@@ -7,7 +8,12 @@ namespace TPGame.Interactables
         public Closet()
         {
             Name = "closet";
-            Description = "A modest sized closet where you hang your work clothes and fashionable outfits.\nYou also have a hanger where you hang your belts, including your TOOL BELT.";
+            Description = "A modest sized closet where you hang your work clothes and fashionable outfits.";
+        }
+
+        public override void UseInteractable()
+        {
+            DialogueHandler.PrintLine("THIS NEEDS TO BE CHANGED");
         }
     }
 }

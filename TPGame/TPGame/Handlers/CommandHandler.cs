@@ -8,7 +8,7 @@ namespace TPGame.Handlers
         public static bool GameOver = false;
 
         /// <summary>
-        /// Displays the title, creates the map, prompts the user for a player name, and displays opnening monologue
+        /// Displays the title, displays opnening monologue, prompts user for tutorial, and handles main gameplay loop
         /// </summary>
         public static void StartGame()
         {
@@ -18,6 +18,18 @@ namespace TPGame.Handlers
             Console.ReadKey();
             Console.Clear();
 #endif
+            if (UserInput.GetBool("Do you want a tutorial?: "))
+            {
+                TutorialHandler.Teach();
+            }
+            else
+            {
+                DialogueHandler.PrintLine("I understand. Let's just drop you right into it.");
+                DialogueHandler.AddPause(600);
+                Console.Clear();
+                DialogueHandler.PrintLine("You hop out of your bed. You're in your master bedroom.");
+                Console.WriteLine();
+            }
 
             while (!GameOver)
             {
@@ -26,6 +38,10 @@ namespace TPGame.Handlers
             }
         }
 
+        /// <summary>
+        /// Display win game text and end game
+        /// Returns player to start screen
+        /// </summary>
         public static void WinGame() 
         {
             GameOver = true;
@@ -34,6 +50,10 @@ namespace TPGame.Handlers
             StartGame();
         }
 
+        /// <summary>
+        /// Display fail condition text and end game
+        /// Returns player to start screen
+        /// </summary>
         public static void LoseGame()
         {
             GameOver = true;

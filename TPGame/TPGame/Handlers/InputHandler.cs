@@ -13,8 +13,9 @@ namespace TPGame.Handlers
         private readonly static IStuffCommand Stuff = new StuffCommand();
 
         /// <summary>
-        /// Checks action command and redirects to appropriate command
+        /// Checks action and redirects to appropriate command
         /// </summary>
+        /// <param name="action">command and target to be redirected</param>
         public static void HandleAction(InputAction action)
         {
             switch (action.Command)
@@ -44,11 +45,7 @@ namespace TPGame.Handlers
                     ListHelp();
                     break;
                 case "hint":
-                    DialogueHandler.PrintLine("Umm...", 250);
-                    DialogueHandler.AddPause(500);
-                    DialogueHandler.PrintLine("I haven't actually built out the hint system yet...", 50);
-                    DialogueHandler.AddPause(1000);
-                    DialogueHandler.PrintLine("Sorry.", 150);
+                    Hints.DisplayHints();
                     break;
                 case "quit":
                     CommandHandler.GameOver = QuitGame();
@@ -58,13 +55,13 @@ namespace TPGame.Handlers
                     break;
 
                 default: //Handles unrecognized inputs
-                    DialogueHandler.PrintLine("Sorry. Please try again.");
+                    DialogueHandler.PrintLine("Sorry. I didn't catch that. Please try again.");
                     break;
             }
         }
 
         /// <summary>
-        /// Lists the possible help commands
+        /// Lists the possible action commands
         /// </summary>
         private static void ListHelp()
         {
@@ -72,6 +69,13 @@ namespace TPGame.Handlers
             {
                 DialogueHandler.PrintLine($"({item.Key}) {item.Value}");
             }
+        }
+
+        public static void EnterRoom(string roomName) 
+        {
+            DialogueHandler.PrintLine(Map.CurrentLocation.Description);
+            Character.SpawnEnemy(roomName);
+            Map.InCombat = true;
         }
 
         /// <summary>

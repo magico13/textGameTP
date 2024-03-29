@@ -9,11 +9,14 @@ namespace TPGame.Interactables
         public WaterMain() 
         {
             Name = "water main";
-            Description = "THIS NEEDS CHANGED";
+            Description = "A pipe with a bright yellow handle that controls the flow of water to the entire house. It's currently " + (On ? "on":"off") + ".";
         }
 
         public bool On = false;
 
+        /// <summary>
+        /// Adds water to both sinks
+        /// </summary>
         public override void UseInteractable()
         {
             if (!On)
