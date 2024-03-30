@@ -15,16 +15,18 @@ namespace TPGame.Interactables
 
         public override void UseInteractable()
         {
+            string message;
             if (!Used)
             {
-                DialogueHandler.PrintLine("You use the towel to wipe off your accumulated sweat. It's been rough going and taking a break to towel off has reinvigorated you.");
+                message = "You use the towel to wipe off your accumulated sweat. It's been rough going and taking a break to towel off has reinvigorated you.";
                 Used = true;
                 Description += "The towel is slightly damp from your sweat.";
             }
             else
             {
-                DialogueHandler.PrintLine("The towel is still damp and smells slightly. Probably best to not use it until you can wash it.");
+                message = "The towel is still damp and smells slightly. Probably best to not use it until you can wash it.";
             }
+            base.UseInteractable(message);
         }
     }
 }

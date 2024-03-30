@@ -31,16 +31,18 @@ namespace TPGame.Interactables
 
         public override void UseInteractable()
         {
+            string message;
             if (WaterLevel > 0)
             {
                 WaterBottle.AddWater(WaterLevel);
                 WaterLevel = 0;
-                DialogueHandler.PrintLine("You're able to get a little bit of water out of the sink.");
+                message = "You're able to get a little bit of water out of the sink.";
             }
             else
             {
-                DialogueHandler.PrintLine("No matter how hard you try, you can't get any water out of the sink.");
+                message = "No matter how hard you try, you can't get any water out of the sink.";
             }
+            base.UseInteractable(message);
         }
     }
 }

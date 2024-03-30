@@ -44,6 +44,27 @@ namespace TPGame.Models
             return action;
         }
 
+        public static InputAction GetAction(string message)
+        {
+
+            DialogueHandler.Print(message);
+            string input = Console.ReadLine().ToLower();
+            string[] inputSplit = input.Split(" ");
+            InputAction action = new InputAction
+            {
+                Command = inputSplit[0].ToLower(),
+            };
+            if (inputSplit.Length > 1)
+            {
+                for (int i = 1; i < 3 && i < inputSplit.Length; i++)
+                {
+                    action.Target += inputSplit[i].ToLower() + " ";
+                }
+                action.Target = action.Target.Trim();
+            }
+            return action;
+        }
+
         /// <summary>
         /// Displays message and prompts user for yes or no repsonse
         /// </summary>

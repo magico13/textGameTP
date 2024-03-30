@@ -8,7 +8,7 @@ namespace TPGame.Rooms
         {
             Name = "Living Room";
             EncounterChance = 0.6;
-            Description = "The sofa in your living room looks like lolipops have been jumping on it. The TV has been knocked off the entertainment stand.";
+            Description = "The COUCH in your living room looks like lolipops have been jumping on it. The TV has been knocked off the entertainment stand. Your mail is scattered all across you COFFEE TABLE.";
             GetItems = ["key", "mints"];
             Interactables = ["light switch", "couch", "coffee table"];
             Image = @"

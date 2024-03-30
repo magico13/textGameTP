@@ -15,10 +15,10 @@ namespace TPGame.Items
         public override void GetItem()
         {
             DialogueHandler.PrintLine("You strap your tool belt around your waist and adjust the size to acccount for your recent weight loss.");
-            DialogueHandler.AddPause();
+            DialogueHandler.AddPause(200);
             DialogueHandler.PrintLine("You look great.");
-            DialogueHandler.AddPause();
-            DialogueHandler.PrintLine("You feel great.");
+            DialogueHandler.AddPause(100);
+            base.GetItem("You feel great.");
         }
 
         public override void UseItem()
@@ -37,7 +37,7 @@ namespace TPGame.Items
             }
             else
             {
-                base.GetItem("Just a bunch of empty pockets, holsters, and straps.");
+                base.UseItem("Just a bunch of empty pockets, holsters, and straps.");
             }
         }
     }

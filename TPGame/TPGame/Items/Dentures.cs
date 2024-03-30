@@ -14,18 +14,19 @@ namespace TPGame.Items
 
         public override void GetItem()
         {
-            DialogueHandler.PrintLine("You grab the false teeth. Are they dentures? What's the difference?");
+            InputHandler.Character.SetCriticalThreshhold(0.5);
+            string message = "You grab the false teeth. Are they dentures? What's the difference? ";
             if (Collections.VerifyInventory("guard"))
             {
-                DialogueHandler.Print("You pop out your mouth guard while considering that maybe there isn't a difference. Maybe it has to do with they're made of? ");
+                message += "\nYou pop out your mouth guard while considering that maybe there isn't a difference. Maybe it has to do with they're made of?\n";
             }
-            DialogueHandler.PrintLine("You're so distracted that you put them over your teeth without thinking about the fact that you don't own any false teeth. Too late now.");
-            InputHandler.Character.SetCriticalThreshhold(0.5);
+            message += "You're so distracted that you put them over your teeth without thinking about the fact that you don't own any false teeth. Too late now.";
+            base.GetItem(message);
         }
 
         public override void UseItem()
         {
-            DialogueHandler.PrintLine("You pick at the false teeth. You don't know whose these were, and you hope they've been cleaned at some point...");
+            base.UseItem("You pick at the false teeth. You don't know whose these were, and you hope they've been cleaned at some point...");
         }
     }
 }

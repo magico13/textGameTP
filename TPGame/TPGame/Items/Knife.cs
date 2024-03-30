@@ -16,22 +16,24 @@ namespace TPGame.Items
 
         public override void GetItem()
         {
-            base.GetItem();
             Kitchen kitchen = ((Kitchen)Collections.VerifyRoom("Kitchen"));
             kitchen.Description = kitchen.Description.Split("\n")[0];
+            base.GetItem();
         }
 
         public override void UseItem()
         {
+            string message;
             if (InputHandler.Character.GetSticks() >= 10)
             {
-                DialogueHandler.PrintLine("You shave down and cut the stick into various shapes, removing bits of candy left behind. To your amazement, you can definitely GET a LADDER out of the parts on the CRAFT BENCH now.\nThen again, are you really surprised? You have been practicing very hard recently for something, well not quite exactly like this, but not too dissimilar.");
                 Collections.Inventory.Add(new Ladder());
+                message = "You shave down and cut the stick into various shapes, removing bits of candy left behind. To your amazement, you can definitely GET a LADDER out of the parts on the CRAFT BENCH now.\nThen again, are you really surprised? You have been practicing very hard recently for something, well not quite exactly like this, but not too dissimilar.";
             }
             else
             {
-                DialogueHandler.PrintLine("You have all of the tools you need but just aren't able to visualize in your mind how all of this could be used together.\nMaybe with " + (10 - InputHandler.Character.GetSticks()) + " more sticks the picture might become clearer.");
+                message = "You have all of the tools you need but just aren't able to visualize in your mind how all of this could be used together.\nMaybe with " + (10 - InputHandler.Character.GetSticks()) + " more sticks the picture might become clearer.";
             }
+            base.UseItem(message);
         }
     }
 }

@@ -1,5 +1,4 @@
 ﻿using TPGame.Dictionaries;
-using TPGame.Handlers;
 using TPGame.Models;
 using TPGame.Rooms;
 
@@ -26,7 +25,7 @@ namespace TPGame.Items
             {
                 message = "As impressed as you are by your craftmanship, you decide not to tempt fate and leave the ladder in place.";
             }
-                base.UseItem(message);
+            base.UseItem(message);
         }
 
         public override void GetItem()

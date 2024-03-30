@@ -30,7 +30,7 @@ namespace TPGame.Rooms
         public override void Unlock() 
         {
             DialogueHandler.PrintLine("You attach the ladder to the attic. The rungs creak beneath your feet as you climb.");
-            Description = "THIS NEEDS TO BE CHANGED";
+            Description = "The light pours in through large windows on the far side of the attic. The shine gleams off of your HOME GYM equipment that you put here after converting the guest bedroom.";
             Image = @"
                                     
                                  //,,&&&&&&&&&&&&&&&&,,\\                               
@@ -68,6 +68,9 @@ namespace TPGame.Rooms
         /// </summary>
         public override void DefeatBoss()
         {
+            string message = "You see the small gilded CHEST your grandmother bequeathed you, just as you left it.\nYour CAMPING LANTERN rests on some boxes of halloween decorations.";
+            DialogueHandler.PrintLine(message);
+            Description += " " + message;
             GetItems.Add("camping lantern");
             Interactables.Add("chest");
             BossDefeated = true;

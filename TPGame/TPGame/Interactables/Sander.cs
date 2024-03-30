@@ -20,7 +20,7 @@ namespace TPGame.Interactables
             }
             else
             {
-                DialogueHandler.PrintLine("The sander doesn't seem to have much use right now.");
+                base.UseInteractable("The sander doesn't seem to have much use right now.");
             }
         }
     }

@@ -1,4 +1,5 @@
-﻿using TPGame.Models;
+﻿using TPGame.Handlers;
+using TPGame.Models;
 
 namespace TPGame.Rooms
 {
@@ -7,7 +8,7 @@ namespace TPGame.Rooms
         public HiddenRoom() : base()
         { 
             Name= "Hidden Room";
-            Description = "THIS NEEDS TO BE CHANGED";
+            Description = "The spiral staircase stretches on and on, down deeper and deeper below your house. Your feet finally find a landing on a solid concrete floor. A bright light blinds you before your eyes can adjust.";
             Interactables = ["light switch"];
         }
 
@@ -17,6 +18,9 @@ namespace TPGame.Rooms
         {
             Interactables.Add("button");
             BossDefeated = true;
+            string message = "\nYou see a BUTTON on the far wall with a sign over it that says, \n\"Evil Plan Abort Button\nDo Not Press Unless King Has Been Defeated\".";
+            Description += message;
+            DialogueHandler.PrintLine(message);
         }
     }
 }

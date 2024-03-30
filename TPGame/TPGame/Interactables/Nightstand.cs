@@ -1,4 +1,5 @@
-﻿using TPGame.Handlers;
+﻿using TPGame.Dictionaries;
+using TPGame.Handlers;
 using TPGame.Models;
 
 namespace TPGame.Interactables
@@ -13,7 +14,16 @@ namespace TPGame.Interactables
 
         public override void UseInteractable()
         {
-            DialogueHandler.PrintLine("You open the draw to discover a familiar case. It's your mouth GUARD that you left behind when this nightstand used to be in your room. It should still fit your mouth.");
+            string message;
+            if (!Collections.VerifyInventory("guard"))
+            {
+                message = "You open the draw to discover a familiar case. It's your mouth GUARD that you left behind when this nightstand used to be in your room. It should still fit your mouth.";
+            }
+            else 
+            {
+                message = "You open each drawer but find nothing that could be of any assistance.";
+            }
+            base.UseInteractable(message);
         }
     }
 }

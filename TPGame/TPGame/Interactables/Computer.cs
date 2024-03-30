@@ -15,15 +15,17 @@ namespace TPGame.Interactables
 
         public override void UseInteractable()
         {
+            string message;
             if (!Collections.VerifyInventory("hints"))
             {
-                DialogueHandler.PrintLine("You dig through your folders to find your emergency plan. With that printed out, you'll be able to reference your plan whenever you forget it.");
+                message = "You dig through your folders to find your emergency plan. With that printed out, you'll be able to reference your plan whenever you forget it.";
                 Collections.Inventory.Add(new HintList());
             }
             else 
             {
-                DialogueHandler.PrintLine("You spot a folder of unfinished projects that were started and abandoned. You don't have the time right now. Just definitely don't forget to work on them when things calm down...");
+                message = "You spot a folder of unfinished projects that were started and abandoned. You don't have the time right now. Just definitely don't forget to work on them when things calm down...";
             }
+            base.UseInteractable(message);
         }
     }
 }

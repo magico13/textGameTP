@@ -21,7 +21,7 @@ namespace TPGame.Characters
                 "Bishop" => 20,
                 "Knight" => 40,
                 "Rook" => 60,
-                "King" => 100,
+                "King" => 180,
                 _ => 0
             };
         }

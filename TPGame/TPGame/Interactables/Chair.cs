@@ -1,5 +1,4 @@
-﻿using TPGame.Handlers;
-using TPGame.Models;
+﻿using TPGame.Models;
 
 namespace TPGame.Interactables
 {
@@ -13,7 +12,7 @@ namespace TPGame.Interactables
 
         public override void UseInteractable()
         {
-            DialogueHandler.PrintLine("You consider standing on the chairs but decide against it. The cushions are in great shape, and you don't want to risk falling and ending the game prematurely.");
+            base.UseInteractable("You consider standing on the chairs but decide against it. The cushions are in great shape, and you don't want to risk falling and ending the game prematurely.");
         }
     }
 }

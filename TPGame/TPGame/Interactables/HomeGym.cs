@@ -20,7 +20,7 @@ namespace TPGame.Interactables
             }
             else
             {
-                DialogueHandler.PrintLine("Your muscles are sore and exhausted from your adventures so far. It's nice you want to work out more, but now is not the time.");
+                base.UseInteractable("Your muscles are sore and exhausted from your adventures so far. It's nice you want to work out more, but now is not the time.");
             }
         }
     }

@@ -13,22 +13,24 @@ namespace TPGame.Interactables
             Description = "A small bowl with \"Domino\" across the front. The pet dish glistens with fresh water. You don't have any pets which gives you pause but that seems like an issue for another time.";
         }
 
-        private int WaterLevel = 60;
+        private int WaterLevel = 100;
 
         public override void UseInteractable()
         {
-            if (Collections.Inventory.Find(item => item.Name == "water bottle") != null && WaterLevel > 0)
+            string message;
+            if (Collections.VerifyInventory("water bottle") && WaterLevel > 0)
             {
                 WaterBottle.AddWater(WaterLevel);
                 WaterLevel = 0;
                 DialogueHandler.PrintLine("You kneel down and inspect the water briefly. Desperate times...");
                 DialogueHandler.AddPause(300);
-                DialogueHandler.PrintLine("You gently pour as much of the water as you can into your water bottle");
+                message = "You gently pour as much of the water as you can into your water bottle";
             }
             else
             {
-                DialogueHandler.PrintLine("The bowl seems to be in pristine condition. Where did it come from? How did it get filled with water? You move on without thinking too hard about it.");
+                message = "The bowl seems to be in pristine condition. Where did it come from? How did it get filled with water? You move on without thinking too hard about it.";
             }
+            base.UseInteractable(message);
         }
     }
 }

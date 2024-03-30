@@ -13,7 +13,7 @@ namespace TPGame.Interactables
 
         public override void UseInteractable()
         {
-            DialogueHandler.PrintLine("Until you can figure out why the fridge has no power, it's better to leave it shut.");
+            base.UseInteractable("Until you can figure out why the fridge has no power, it's better to leave it shut.");
         }
     }
 }

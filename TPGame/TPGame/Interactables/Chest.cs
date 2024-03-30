@@ -1,5 +1,4 @@
-﻿using TPGame.Handlers;
-using TPGame.Models;
+﻿using TPGame.Models;
 
 namespace TPGame.Interactables
 {
@@ -15,7 +14,7 @@ namespace TPGame.Interactables
 
         public override void UseInteractable()
         {
-            DialogueHandler.PrintLine("You haven't been able to open this chest without damaging it until now, when you continue to be unable to open it. The chest is probably more important than anything inside.");
+            base.UseInteractable("You haven't been able to open this chest without damaging it until now, when you continue to be unable to open it. The chest is probably more important than anything inside.");
         }
     }
 }

@@ -22,7 +22,6 @@ namespace TPGame.Interactables
                 Console.ForegroundColor = ConsoleColor.White;
                 Console.Clear();
                 On = false;
-                DialogueHandler.PrintLine("You flick the lights off.");
             }
             else
             {
@@ -30,8 +29,8 @@ namespace TPGame.Interactables
                 Console.BackgroundColor = ConsoleColor.White;
                 Console.Clear();
                 On = true;
-                DialogueHandler.PrintLine("You flick the lights on.");
             }
+            base.UseInteractable($"*Click* You flick the lights " + (On ? "on" : "off") + ".");
         }
     }
 }

@@ -13,7 +13,7 @@ namespace TPGame.Interactables
 
         public override void UseInteractable()
         {
-            DialogueHandler.PrintLine("You yank on the starter cord but can't seem to get the engine to do anything more than sputter.");
+            base.UseInteractable("You yank on the starter cord but can't seem to get the engine to do anything more than sputter.");
         }
     }
 }

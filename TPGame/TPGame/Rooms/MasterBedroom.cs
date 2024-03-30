@@ -8,7 +8,7 @@ namespace TPGame.Rooms
         {
             Name = "Master Bedroom";
             EncounterChance = 0.6;
-            Description = "You return to the Master Bedroom. Perhaps, you missed something before. Better safe than sorry.";
+            Description = "You return to the Master Bedroom. Perhaps, you missed something before. Better safe than sorry. Couldn't hurt to check under the BED, through the DRESSER, or in the CLOSET.";
             GetItems = ["tool belt"];
             Interactables = ["light switch", "bed", "dresser", "closet"];
             Image = @"

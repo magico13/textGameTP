@@ -1,5 +1,4 @@
-﻿using TPGame.Handlers;
-using TPGame.Models;
+﻿using TPGame.Models;
 
 namespace TPGame.Interactables
 {
@@ -28,15 +27,17 @@ namespace TPGame.Interactables
 
         public override void UseInteractable()
         {
+            string message;
             if (Made)
             {
-                DialogueHandler.PrintLine("Tightly made and neat as can be. You straighten the pillows slightly. You just can't quite get them right.");
+                message = "Tightly made and neat as can be. You straighten the pillows slightly. You just can't quite get them right.";
             }
             else
             {
-                DialogueHandler.PrintLine("Embarassed at the sight of the unmade bed, you quickly tidy the sheets and covers. The pillows are placed meticulously, though you're not quite happy with the layout.");
+                message = "Embarassed at the sight of the unmade bed, you quickly tidy the sheets and covers. The pillows are placed meticulously, though you're not quite happy with the layout.";
                 Made = true;
             }
+            base.UseInteractable(message);
         }
     }
 }

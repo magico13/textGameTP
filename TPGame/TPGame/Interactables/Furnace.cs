@@ -13,7 +13,7 @@ namespace TPGame.Interactables
 
         public override void UseInteractable()
         {
-            DialogueHandler.PrintLine("You touch the furnace haphazardly. It's cool to the touch. The weather has been warm and sunny recently, so there's been no need to run the furnace.");
+            base.UseInteractable("You touch the furnace haphazardly. It's cool to the touch. The weather has been warm and sunny recently, so there's been no need to run the furnace.");
         }
     }
 }

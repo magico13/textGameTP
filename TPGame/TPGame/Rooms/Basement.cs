@@ -48,7 +48,8 @@ namespace TPGame.Rooms
                               .....................
 ";
             IsDark = false;
-            Description = "THIS NEEDS TO BE CHANGED";
+            string message = "In the dim light of the basement, you can see a stack of MILK CRATES and a vague silhouette.";
+            Description = Description.Split("\n")[0] + "\n" + message;
             Interactables.Add("milk crates");
             InputHandler.EnterRoom(Name);
         }
@@ -60,6 +61,9 @@ namespace TPGame.Rooms
             Interactables.Add("furnace");
             Interactables.Add("water main");
             BossDefeated = true;
+            string message = "The pale glow of the camping lantern illuminates the FURNACE and the WATER MAIN.\n On a wall rack, you see your METAL DETECTOR and SHOVEL.";
+            DialogueHandler.PrintLine(message);
+            Description = Description.Split("\n")[0] + message;
         }
     }
 }

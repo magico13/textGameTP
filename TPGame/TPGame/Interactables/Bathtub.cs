@@ -1,5 +1,4 @@
-﻿using TPGame.Handlers;
-using TPGame.Models;
+﻿using TPGame.Models;
 
 namespace TPGame.Interactables
 {
@@ -13,7 +12,7 @@ namespace TPGame.Interactables
 
         public override void UseInteractable()
         {
-            DialogueHandler.PrintLine("You can't seem to get any water from it. There doesn't seem to be anything else that would help you right now.");
+            base.UseInteractable("You can't seem to get any water from it. There doesn't seem to be anything else that would help you right now.");
         }
     }
 }

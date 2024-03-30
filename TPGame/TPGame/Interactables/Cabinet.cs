@@ -1,4 +1,4 @@
-﻿using TPGame.Handlers;
+﻿using TPGame.Dictionaries;
 using TPGame.Models;
 
 namespace TPGame.Interactables
@@ -13,7 +13,16 @@ namespace TPGame.Interactables
 
         public override void UseInteractable()
         {
-            DialogueHandler.PrintLine("You open the cabinet doors. On one shelf is a WATER BOTTLE that looks like it's been cleaned recently.");
+            string message = "You open the cabinet doors.";
+            if (!Collections.VerifyInventory("water bottle"))
+            {
+                message += " On one shelf is a WATER BOTTLE that looks like it's been cleaned recently.";
+            }
+            else
+            {
+                message += " You see clean pots and pans. You start wondering what to make for dinner before your stomach rumbles. Maybe just a slice of bread to soak up some of the sugar.";
+            }
+            base.UseInteractable(message);
         }
     }
 }

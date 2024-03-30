@@ -8,7 +8,7 @@ namespace TPGame.Rooms
         {
             Name = "Office";
             EncounterChance = 0.4;
-            Description = "Small but cozy, you always feel at peace in your office.\nYour computer sits on a mahogany desk.";
+            Description = "Small but cozy, you always feel at peace in your office. Your COMPUTER sits on a mahogany DESK.";
             GetItems = ["batteries", "hints"];
             Interactables = ["light switch", "desk", "computer"];
             Image = @"                                          

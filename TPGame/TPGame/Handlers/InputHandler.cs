@@ -8,9 +8,9 @@ namespace TPGame.Handlers
 {
     public static class InputHandler
     {
-        private readonly static IRoomCommand Map = new RoomCommand();
+        public readonly static IRoomCommand Map = new RoomCommand();
         public readonly static ICharacterCommand Character = new CharacterCommand();
-        private readonly static IStuffCommand Stuff = new StuffCommand();
+        public readonly static IStuffCommand Stuff = new StuffCommand();
 
         /// <summary>
         /// Checks action and redirects to appropriate command
@@ -53,7 +53,6 @@ namespace TPGame.Handlers
                 case "search":
                     Map.SearchRoom();
                     break;
-
                 default: //Handles unrecognized inputs
                     DialogueHandler.PrintLine("Sorry. I didn't catch that. Please try again.");
                     break;
@@ -73,6 +72,7 @@ namespace TPGame.Handlers
 
         public static void EnterRoom(string roomName) 
         {
+            DialogueHandler.PrintLine(Map.CurrentLocation.Image);
             DialogueHandler.PrintLine(Map.CurrentLocation.Description);
             Character.SpawnEnemy(roomName);
             Map.InCombat = true;

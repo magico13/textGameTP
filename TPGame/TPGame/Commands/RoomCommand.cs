@@ -44,7 +44,6 @@ namespace TPGame.Commands
             {
                 if (!UserInput.GetBool("Do you want to run? (Y/N) "))
                 {
-                    InCombat = false;
                     return false;
                 }
             }
@@ -104,9 +103,17 @@ namespace TPGame.Commands
 
         public void SearchRoom()
         {
-            foreach (string i in CurrentLocation.Interactables)
+            if (CurrentLocation.Name == "Pantry")
             {
-                DialogueHandler.PrintLine(i);
+                InCombat = true;
+                InputHandler.Character.SpawnEnemy(CurrentLocation.Name);
+            }
+            else
+            {
+                foreach (string i in CurrentLocation.Interactables)
+                {
+                    DialogueHandler.PrintLine(i);
+                }
             }
         }
     }

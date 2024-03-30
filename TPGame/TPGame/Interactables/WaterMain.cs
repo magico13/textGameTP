@@ -19,18 +19,20 @@ namespace TPGame.Interactables
         /// </summary>
         public override void UseInteractable()
         {
+            string message;
             if (!On)
             {
                 On = true;
-                DialogueHandler.PrintLine("You turn the handle, which results in the pipes gently rumbling. You can hear a short burst of water running through the pipes.\n" +
-                    "The pipes quickly go quiet. It seems there wasn't much water left.");
-                ((Sink)Collections.VerifyInteractable("kitchen sink")).WaterLevel += 60;
-                ((Sink)Collections.VerifyInteractable("bathroom sink")).WaterLevel += 60;
+                message = "You turn the handle, which results in the pipes gently rumbling. You can hear a short burst of water running through the pipes.\n" +
+                    "The pipes quickly go quiet. It seems there wasn't much water left.";
+                ((Sink)Collections.VerifyInteractable("kitchen sink")).WaterLevel += 50;
+                ((Sink)Collections.VerifyInteractable("bathroom sink")).WaterLevel += 50;
             }
             else 
             {
-                DialogueHandler.PrintLine("Turning the handle off and on doesn't seem to be having any further effect.");
+                message = "Turning the handle off and on doesn't seem to be having any further effect.";
             }
+            base.UseInteractable(message);
         }
     }
 }

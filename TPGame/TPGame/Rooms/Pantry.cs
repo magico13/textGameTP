@@ -8,7 +8,7 @@ namespace TPGame.Rooms
         {
             Name = "Pantry";
             EncounterChance = 0.95;
-            Description = "As you open the doors to the pantry, you hear rustling all over. There are almost certainly lolipops here.";
+            Description = "As you open the doors to the pantry, you hear rustling all over. There are almost certainly lolipops here. Of course, they're easy to find with a simple SEARCH.";
             Image = @"
  ||--------------------------------------||                                
  ||         |               |            ||                                     
