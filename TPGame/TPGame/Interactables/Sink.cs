@@ -1,5 +1,4 @@
-﻿using TPGame.Handlers;
-using TPGame.Items;
+﻿using TPGame.Items;
 using TPGame.Models;
 
 namespace TPGame.Interactables

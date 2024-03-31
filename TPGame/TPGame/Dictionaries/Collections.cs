@@ -47,8 +47,8 @@ namespace TPGame.Dictionaries
         public static readonly Interactable[] AllInteractables =
         [
             new Bathtub(),
-            new Bed("master bedroom"),
-            new Bed("guest bedroom"),
+            new Bed("Master Bedroom"),
+            new Bed("Guest Bedroom"),
             new BuriedSwitch(),
             new EndGame(),
             new Candles(),
@@ -69,8 +69,8 @@ namespace TPGame.Dictionaries
             new MilkCrates(),
             new Nightstand(),
             new Sander(),
-            new Sink("kitchen sink"),
-            new Sink("bathroom sink"),
+            new Sink("Kitchen"),
+            new Sink("Bathroom"),
             new Table(),
             new Toilet(),
             new Towel(),

@@ -1,6 +1,7 @@
 ﻿using TPGame.Handlers;
 using TPGame.Models;
 using TPGame.Dictionaries;
+using TPGame.Rooms;
 
 namespace TPGame.Commands
 {
@@ -20,14 +21,22 @@ namespace TPGame.Commands
             }
             else
             {
+                if (target == "bed")
+                {
+                    target = InputHandler.Map.CurrentLocation.Name.ToLower().Split(" ")[0] + " " + target;
+                }
+                if (target == "sink")
+                {
+                    target = InputHandler.Map.CurrentLocation.Name.ToLower() + " " + target;
+                }
                 Interactable interactable = Collections.VerifyInteractable(target);
-                if (interactable != null)
+                if (interactable != null && InputHandler.Map.CurrentLocation.Interactables.Contains(target))
                 {
                     DialogueHandler.PrintLine(interactable.Description);
                 }
                 else
                 {
-                    DialogueHandler.PrintLine($"You don't have a {target}");
+                    DialogueHandler.PrintLine($"You don't have a {target}.");
                 }
             }
         }
@@ -47,6 +56,14 @@ namespace TPGame.Commands
                 {
                     item.UseItem();
                 }
+                else if ((InputHandler.Map.CurrentLocation.Name == "Garage" && ((Garage)InputHandler.Map.CurrentLocation).Locked) || (InputHandler.Map.CurrentLocation.Name == "Attic" && ((Attic)InputHandler.Map.CurrentLocation).Locked))
+                {
+                    DialogueHandler.PrintLine("You need to get in the room first.");
+                }
+                else if (InputHandler.Map.CurrentLocation.Name == "Basement" && ((Basement)InputHandler.Map.CurrentLocation).IsDark)
+                {
+                    DialogueHandler.PrintLine("It's too dark to see anything. You need to find a light source.");
+                }
                 else
                 {
                     DialogueHandler.PrintLine($"You can't use your {item.Name} here.");
@@ -54,6 +71,14 @@ namespace TPGame.Commands
             }
             else
             {
+                if (target == "bed")
+                {
+                    target = InputHandler.Map.CurrentLocation.Name.ToLower().Split(" ")[0] + " " + target;
+                }
+                if (target == "sink")
+                {
+                    target = InputHandler.Map.CurrentLocation.Name.ToLower() + " " + target;
+                }
                 Interactable interactable = Collections.VerifyInteractable(target);
                 if (interactable != null)
                 {
@@ -66,9 +91,9 @@ namespace TPGame.Commands
                         DialogueHandler.PrintLine($"You can't find a {interactable.Name} here.");
                     }
                 }
-                else 
+                else
                 {
-                    DialogueHandler.PrintLine($"You don't have a {target}");
+                    DialogueHandler.PrintLine($"You don't have a {target}.");
                 }
             }
         }
@@ -94,26 +119,42 @@ namespace TPGame.Commands
                     }
                     else
                     {
-                        DialogueHandler.PrintLine("You forgot to get your tool belt. Without it, you won't be able to manage all of the stuuf you need");
+                        DialogueHandler.PrintLine("You forgot to get your tool belt. Without it, you won't be able to manage all of the stuuf you need.");
                     }
                 }
                 else if (Collections.VerifyInventory(item.Name))
                 {
-                    DialogueHandler.PrintLine($"You already have a {item.Name}");
+                    DialogueHandler.PrintLine($"You already have a {item.Name}.");
+                }
+                else if ((InputHandler.Map.CurrentLocation.Name == "Garage" &&  ((Garage)InputHandler.Map.CurrentLocation).Locked) || (InputHandler.Map.CurrentLocation.Name == "Attic" && ((Attic)InputHandler.Map.CurrentLocation).Locked))
+                {
+                    DialogueHandler.PrintLine("You need to get in the room first.");
+                }
+                else if (InputHandler.Map.CurrentLocation.Name == "Basement" && ((Basement)InputHandler.Map.CurrentLocation).IsDark)
+                {
+                    DialogueHandler.PrintLine("It's too dark to see anything. You need to find a light source.");
                 }
                 else
                 {
-                    DialogueHandler.PrintLine($"The {currentLocation.Name.ToLower()} doesn't have a {item.Name}");
+                    DialogueHandler.PrintLine($"The {currentLocation.Name.ToLower()} doesn't have a {item.Name}.");
                 }
             }
             else
             {
+                if (target == "bed")
+                {
+                    target = InputHandler.Map.CurrentLocation.Name.ToLower().Split(" ")[0] + " " + target;
+                }
+                if (target == "sink")
+                {
+                    target = InputHandler.Map.CurrentLocation.Name.ToLower() + " " + target;
+                }
                 Interactable interactable = Collections.VerifyInteractable(target);
                 if (interactable != null)
                 {
                     DialogueHandler.PrintLine($"You can't take the {interactable.Name} with you.");
                 }
-                DialogueHandler.PrintLine($"The {currentLocation.Name.ToLower()} doesn't have a {target.ToLower()}");
+                DialogueHandler.PrintLine($"The {currentLocation.Name.ToLower()} doesn't have a {target.ToLower()}.");
             }
         }
     }
