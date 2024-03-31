@@ -2,12 +2,17 @@
 
   <PropertyGroup>
     <OutputType>Exe</OutputType>
-    <TargetFramework>net8</TargetFramework>
+    <TargetFramework>net8.0</TargetFramework>
     <PackageId>TootsiePopText</PackageId>
+    <ApplicationIcon>TP.ico</ApplicationIcon>
   </PropertyGroup>
 
   <ItemGroup>
     <Compile Remove="IMap.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="TP.ico" />
   </ItemGroup>
 
   <ItemGroup>
