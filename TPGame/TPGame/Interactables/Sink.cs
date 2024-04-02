@@ -1,4 +1,5 @@
-﻿using TPGame.Items;
+﻿using TPGame.Dictionaries;
+using TPGame.Items;
 using TPGame.Models;
 
 namespace TPGame.Interactables
@@ -33,7 +34,7 @@ namespace TPGame.Interactables
             string message;
             if (WaterLevel > 0)
             {
-                WaterBottle.AddWater(WaterLevel);
+                ((WaterBottle)Collections.CheckInventory("water bottle")).AddWater(WaterLevel);
                 WaterLevel = 0;
                 message = "You're able to get a little bit of water out of the sink.";
             }

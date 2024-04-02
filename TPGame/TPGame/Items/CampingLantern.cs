@@ -16,24 +16,22 @@ namespace TPGame.Items
 
         public override void GetItem()
         {
-            Attic attic = (Attic)Collections.Rooms.Find(r => r.Name == "attic");
+            Attic attic = (Attic)Collections.Rooms.Find(r => r.Name == "Attic");
             attic.Description = attic.Description.Split("\n")[0];
             base.GetItem("You attach the handle to a strap on your tool belt. You'll need to add batteries when you have a chance.");
         }
 
         public override void UseItem()
         {
-            string message;
             if (HasBatteries)
             {
-                ((Basement)(Collections.Rooms.Find(r => r.Name == "basement"))).IsDark = false;
-                message = "You click the switch on the lantern, creating a slightly blue glow.";
+                base.UseItem("You click the switch on the lantern, creating a slightly blue glow.");
+                ((Basement)(Collections.Rooms.Find(r => r.Name == "Basement"))).Light();
             }
             else
             {
-                message = "You click the switch on the lantern, but nothing seems to be happening. The lantern needs batteries.";
+                base.UseItem("You click the switch on the lantern, but nothing seems to be happening. The lantern needs batteries.");
             }
-            base.UseItem(message);
         }
     }
 }

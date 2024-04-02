@@ -5,13 +5,13 @@ using TPGame.Rooms;
 
 namespace TPGame.Commands
 {
-    public class StuffCommand : IStuffCommand
+    public static class StuffCommand
     {
         /// <summary>
         /// Verifies target and item before displaying item description
         /// </summary>
         /// <param name="target"></param>
-        public void CheckItem(string target)
+        public static void CheckItem(string target)
         {
             target ??= UserInput.GetString("What item do you want to check?");
             Item item = Collections.CheckInventory(target);
@@ -36,7 +36,7 @@ namespace TPGame.Commands
                 }
                 else
                 {
-                    DialogueHandler.PrintLine($"You don't have a {target}.");
+                    DialogueHandler.PrintLine($"You don't have {(target.EndsWith('s') ? "any" : "a")} {target}.");
                 }
             }
         }
@@ -46,7 +46,7 @@ namespace TPGame.Commands
         /// </summary>
         /// <param name="target">action target</param>
         /// <param name="currentLocation">room item is being used</param>
-        public void UseItem(string target, Room currentLocation)
+        public static void UseItem(string target, Room currentLocation)
         {
             target ??= UserInput.GetString("What item do you want to use?");
             Item item = Collections.CheckInventory(target);
@@ -93,7 +93,7 @@ namespace TPGame.Commands
                 }
                 else
                 {
-                    DialogueHandler.PrintLine($"You don't have a {target}.");
+                    DialogueHandler.PrintLine($"You don't have {(target.EndsWith('s') ? "any" : "a")} {target}.");
                 }
             }
         }
@@ -103,7 +103,7 @@ namespace TPGame.Commands
         /// </summary>
         /// <param name="target"></param>
         /// <param name="currentLocation"></param>
-        public void GetItem(string target, Room currentLocation)
+        public static void GetItem(string target, Room currentLocation)
         {
             target ??= UserInput.GetString("What item do you want to take?");
             Item item = Collections.VerifyItem(target);
@@ -111,22 +111,39 @@ namespace TPGame.Commands
             {
                 if (currentLocation.GetItems.Contains(item.Name))
                 {
-                    if (item.Name == "tool belt" || Collections.VerifyInventory("tool belt") || item.Name == "hints")
+                    if (!Collections.VerifyInventory("tool belt"))
                     {
-                        item.GetItem();
-                        Collections.Inventory.Add(item);
-                        currentLocation.GetItems.Remove(item.Name);
+                        if (item.Name == "tool belt" || (item.Name == "hints" && !Collections.VerifyInventory("hints")))
+                        {
+                            item.GetItem();
+                            Collections.Inventory.Add(item);
+                            currentLocation.GetItems.Remove(item.Name);
+                        }
+                        else
+                        {
+                            DialogueHandler.PrintLine("You forgot to get your tool belt. Without it, you won't be able to manage all of the stuuf you need.");
+
+                        }
                     }
                     else
                     {
-                        DialogueHandler.PrintLine("You forgot to get your tool belt. Without it, you won't be able to manage all of the stuuf you need.");
+                        if (item.Name == "hints" && Collections.VerifyInventory("hints"))
+                        {
+                            DialogueHandler.PrintLine("You already have all of the help I can give you. If you forget the commands, use HELP. If you just wanted one hint, just type HINT. No need for USE or CHECK.");
+                        }
+                        else
+                        {
+                            item.GetItem();
+                            Collections.Inventory.Add(item);
+                            currentLocation.GetItems.Remove(item.Name);
+                        }
                     }
                 }
                 else if (Collections.VerifyInventory(item.Name))
                 {
-                    DialogueHandler.PrintLine($"You already have a {item.Name}.");
+                    DialogueHandler.PrintLine($"You already have {(item.Name.EndsWith('s') ? "" : "a ")}{item.Name}.");
                 }
-                else if ((InputHandler.Map.CurrentLocation.Name == "Garage" &&  ((Garage)InputHandler.Map.CurrentLocation).Locked) || (InputHandler.Map.CurrentLocation.Name == "Attic" && ((Attic)InputHandler.Map.CurrentLocation).Locked))
+                else if ((InputHandler.Map.CurrentLocation.Name == "Garage" && ((Garage)InputHandler.Map.CurrentLocation).Locked) || (InputHandler.Map.CurrentLocation.Name == "Attic" && ((Attic)InputHandler.Map.CurrentLocation).Locked))
                 {
                     DialogueHandler.PrintLine("You need to get in the room first.");
                 }
@@ -136,7 +153,7 @@ namespace TPGame.Commands
                 }
                 else
                 {
-                    DialogueHandler.PrintLine($"The {currentLocation.Name.ToLower()} doesn't have a {item.Name}.");
+                    DialogueHandler.PrintLine($"The {currentLocation.Name.ToLower()} doesn't have {(item.Name.EndsWith('s') ? "any" : "a")} {item.Name}.");
                 }
             }
             else
@@ -152,9 +169,22 @@ namespace TPGame.Commands
                 Interactable interactable = Collections.VerifyInteractable(target);
                 if (interactable != null)
                 {
-                    DialogueHandler.PrintLine($"You can't take the {interactable.Name} with you.");
+                    string message = interactable.Name switch
+                    {
+                        "towel" => "It's sweaty and gross. Just leave it here to dry.",
+                        "candles" => "You think about grabbing them, but then you'd have to reset them, and, if you burn one, they'll be uneven. It's just not worth it.",
+                        "chair" => "There's weirdly no strap on your tool belt for the chair. You can fit some wild stuff on your belt so this must mean that you don't need it for the plan.",
+                        "home gym" => "If you take it out of here, it will just sit around wherever you move it to until you eventually bring it back. Best to just leave it.",
+                        "sander" => "It's been through enough taking out the bishop. It doesn't seem like it would do much more from here anyway.",
+                        "chest" => "You can't even open it yet. Best to just leave it be.",
+                        _ => $"You can't take the {interactable.Name} with you."
+                    };
+                    DialogueHandler.PrintLine(message);
                 }
-                DialogueHandler.PrintLine($"The {currentLocation.Name.ToLower()} doesn't have a {target.ToLower()}.");
+                else
+                {
+                    DialogueHandler.PrintLine($"The {currentLocation.Name.ToLower()} doesn't have {(target.EndsWith('s') ? "any" : "a")} {target.ToLower()}.");
+                }
             }
         }
     }

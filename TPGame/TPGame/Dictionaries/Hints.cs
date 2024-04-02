@@ -16,13 +16,13 @@ namespace TPGame.Dictionaries
             if (!Collections.VerifyInventory("hints"))
             {
                 DialogueHandler.PrintLine("Don't panic. Just stick to the plan.");
-                DialogueHandler.AddPause(500);
+                DialogueHandler.AddPause(800);
                 DialogueHandler.PrintLine("You forgot the plan?");
-                DialogueHandler.AddPause(200);
+                DialogueHandler.AddPause(400);
                 DialogueHandler.PrintLine("...");
-                DialogueHandler.AddPause(500);
+                DialogueHandler.AddPause(800);
                 DialogueHandler.PrintLine("That's fine...");
-                DialogueHandler.AddPause(200);
+                DialogueHandler.AddPause(400);
                 DialogueHandler.PrintLine("I'm sure you wrote it down somewhere. In fact, I'm sure you typed it up. Go USE the COMPUTER in your OFFICE to see if you saved it.");
             }
             else
@@ -78,9 +78,13 @@ namespace TPGame.Dictionaries
                         }
                         break;
                     case 4: //ladder in garage
-                        if (InputHandler.Character.GetSticks() < 10)
+                        if (((Garage)Collections.VerifyRoom("Garage")).Locked)
                         {
-                            DialogueHandler.PrintLine("You need " + (10 - InputHandler.Character.GetSticks()) + " more sticks. The PANTRY is full of lolipops. Go start some trouble there for some extra sticks.");
+                            DialogueHandler.PrintLine("Don't forget to USE the KEY on the GARAGE door.");
+                        }
+                        else if (InputHandler.Character.Player.GetSticks() < 10)
+                        {
+                            DialogueHandler.PrintLine("You need " + (10 - InputHandler.Character.Player.GetSticks()) + " more sticks. The PANTRY is full of lolipops. Go start some trouble there for some extra sticks.");
                         }
                         else 
                         {

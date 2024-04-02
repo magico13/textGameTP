@@ -2,10 +2,11 @@
 using TPGame.Handlers;
 using TPGame.Models;
 using TPGame.Dictionaries;
+using System.ComponentModel.Design;
 
 namespace TPGame.Commands
 {
-    public class RoomCommand : IRoomCommand
+    public class RoomCommand
     {
         public Room CurrentLocation { get; set; } = new MasterBedroom();
         public bool InCombat { get; set; } = false;
@@ -49,7 +50,7 @@ namespace TPGame.Commands
             }
             if (VerifyRoom(target))
             {
-                DialogueHandler.PrintLine($"{CurrentLocation.Image}", 0);
+                DialogueHandler.PrintCentered($"{CurrentLocation.Image}");
                 DialogueHandler.PrintLine($"You are now in the {CurrentLocation.Name}");
                 DialogueHandler.PrintLine($"{CurrentLocation.Description}");
                 InCombat = CurrentLocation.RollEncounter(); //Rolls to see if a combat encounter begins
@@ -68,24 +69,25 @@ namespace TPGame.Commands
         {
             foreach (Room room in Collections.Rooms)
             {
+                string roomName = room.Name;
                 switch (room.Name)
                 {
                     case "Garage":
                         if (((Garage)room).Locked)
                         {
-                            room.Name += " (Locked)";
+                            roomName += " (Locked)";
                         }
                         break;
                     case "Attic":
                         if (((Attic)room).Locked)
                         {
-                            room.Name += " (Locked)";
+                            roomName += " (Locked)";
                         }
                         break;
                     case "Basement":
                         if (((Basement)room).IsDark)
                         {
-                            room.Name += " (Dark)";
+                            roomName += " (Dark)";
                         }
                         break;
                     default:
@@ -93,9 +95,9 @@ namespace TPGame.Commands
                 }
                 if (room.Name == CurrentLocation.Name)
                 {
-                    room.Name += " - Current Location";
+                    roomName += " - Current Location";
                 }
-                DialogueHandler.PrintLine($"{room.Name}");
+                DialogueHandler.PrintLine($"{roomName}");
             }
         }
 
@@ -105,14 +107,25 @@ namespace TPGame.Commands
         {
             if (CurrentLocation.Name == "Pantry")
             {
-                InCombat = true;
-                InputHandler.Character.SpawnEnemy(CurrentLocation.Name);
+                if (InCombat)
+                {
+                    DialogueHandler.PrintLine("You've already got trouble. Take it one at a time, cowboy.");
+                }
+                else
+                {
+                    InCombat = true;
+                    InputHandler.Character.SpawnEnemy(CurrentLocation.Name);
+                }
             }
             else
             {
                 foreach (string i in CurrentLocation.Interactables)
                 {
                     DialogueHandler.PrintLine(i);
+                }
+                if (CurrentLocation.Interactables.Count < 1)
+                {
+                    DialogueHandler.PrintLine("There's nothing you can interact with here. Try using you TOOL BELT to see if there is an item you can USE here.");
                 }
             }
         }

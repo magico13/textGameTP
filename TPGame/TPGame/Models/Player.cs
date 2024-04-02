@@ -2,28 +2,30 @@
 using TPGame.Handlers;
 using TPGame.Dictionaries;
 
-namespace TPGame.Characters
+namespace TPGame.Models
 {
-    public class Player : Character
+    public class Player
     {
-        public Player() : base() { }
-        public static int SugarLevel { get; set; } //if sugar level = 100, player crashes
-        public int Experience { get; set; }
-        public double CriticalThreshhold = 0.7;
-        public int Licks { get; set; } = 0;
+        public Player() 
+        {
+            SugarLevel = 0;
+        }
+
+        private int SugarLevel; //if sugar level = 100, player crashes
+        private int Experience;
+        private int Licks;
+        private double CriticalThreshhold = 0.95;
 
         /// <summary>
         ///Rolls for critical and applies damage to enemy and increases player sugar level 
         /// </summary>
         public int RollDamage()
         {
-            double criticalChance = new Random().NextDouble();
             int criticalDamage = 0;
-
-            if (criticalChance > CriticalThreshhold) //Deals critical damage
+            if (new Random().NextDouble() > CriticalThreshhold) //Deals critical damage
             {
                 criticalDamage = (int)(
-                    (Collections.VerifyInventory("guard") ? 20 : 10)
+                    (Collections.VerifyInventory("dentures") ? 20 : 10)
                     * new Random().NextDouble());
                 if (criticalDamage < 1)
                 {
@@ -32,7 +34,7 @@ namespace TPGame.Characters
                 DialogueHandler.Print("Chomp! ");
             }
 
-            return criticalDamage + (Collections.VerifyInventory("dentures") ? 3 : 1);
+            return criticalDamage + (Collections.VerifyInventory("guard") ? 3 : 1);
 
         }
 
@@ -47,5 +49,14 @@ namespace TPGame.Characters
             Experience++;
             DialogueHandler.PrintLine($"You now have {Experience} lolipop stick" + (Experience > 1 ? "s" : "") + "!");
         }
+
+        public int GetLicks() => Licks;
+        public int GetSticks() => Experience;
+        public int GetSugar() => SugarLevel;
+        public void IncrementSugar() => SugarLevel++;
+        public void IncrementLicks() => Licks++;
+        public void SetSugar(int change) => SugarLevel = change;
+        public void SetCrit(double crit) => CriticalThreshhold = crit;
+        public int RemoveSticks() => Experience -= 10;
     }
 }

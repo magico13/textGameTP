@@ -1,4 +1,5 @@
 ﻿using System;
+using System.ComponentModel;
 using TPGame.Handlers;
 using TPGame.Models;
 
@@ -18,15 +19,31 @@ namespace TPGame.Interactables
         public override void UseInteractable()
         {
             base.UseInteractable("You approach the button reverently. The solution to all of your problems lay before you. Do you trust the sign? Is this a trap?\nYou push the button enthusiastically.");
-            DialogueHandler.AddPause(600);
-            Enum currentBC = Console.BackgroundColor;
-            Enum currentFC = Console.ForegroundColor;
-            Console.BackgroundColor = ConsoleColor.White;
-            Console.ForegroundColor = ConsoleColor.White;
-            DialogueHandler.AddPause(1000);
+            DialogueHandler.AddPause(800);
+            ConsoleColor currentBC = Console.BackgroundColor;
+            ConsoleColor currentFC = Console.ForegroundColor;
+            if (currentBC == ConsoleColor.Black)
+            {
+                Console.BackgroundColor = ConsoleColor.White;
+                Console.ForegroundColor = ConsoleColor.Black;
+                Console.Clear();
+                DialogueHandler.AddPause(750);
+                DialogueHandler.PrintLine("Everything goes white for a few seconds.");
+                DialogueHandler.AddPause(750);
+            }
+            else
+            {
+                Console.BackgroundColor = ConsoleColor.Black;
+                Console.ForegroundColor = ConsoleColor.White;
+                Console.Clear();
+                DialogueHandler.AddPause(750);
+                DialogueHandler.PrintLine("Everything goes black for a few seconds.");
+                DialogueHandler.AddPause(750);
+            }
             Console.BackgroundColor = (ConsoleColor)currentBC;
             Console.ForegroundColor = (ConsoleColor)currentFC;
-            DialogueHandler.PrintLine("Everything goes white for a few seconds. When it fades, you see that you are back in your yard. The dirt piles are gone. Your tool belt is gone. All of the stuff you collected is gone.");
+            Console.Clear();
+            DialogueHandler.PrintLine("When it fades, you see that you are back in your yard. The dirt piles are gone. Your tool belt is gone. All of the stuff you collected is gone.");
             DialogueHandler.AddPause(500);
             DialogueHandler.PrintLine("It's over. Great job!", 40);
             CommandHandler.WinGame();

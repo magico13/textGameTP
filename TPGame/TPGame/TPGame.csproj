@@ -5,6 +5,7 @@
     <TargetFramework>net8.0</TargetFramework>
     <PackageId>TootsiePopText</PackageId>
     <ApplicationIcon>TP.ico</ApplicationIcon>
+    <AssemblyName>Quest to the Center of a Tootsie Pop</AssemblyName>
   </PropertyGroup>
 
   <ItemGroup>

@@ -1,5 +1,6 @@
 ﻿using TPGame.Models;
 using TPGame.Commands;
+using TPGame.Handlers;
 
 namespace TPGame.Interactables
 {
@@ -13,9 +14,9 @@ namespace TPGame.Interactables
 
         public override void UseInteractable()
         {
-            if (CharacterCommand.Lolipop.Health > 0)
+            if (InputHandler.Character.Lolipop.Health > 0)
             {
-                CharacterCommand.AttackBoss("You grab the sander and grind the bishop down to a thin shell. One more lick ought to reach the core.");
+                InputHandler.Character.AttackBoss("You grab the sander and grind the bishop down to a thin shell. One more lick ought to reach the core.");
             }
             else
             {

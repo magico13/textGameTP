@@ -16,7 +16,7 @@ namespace TPGame.Interactables
             string message;
             if (!Collections.VerifyInventory("batteries"))
             {
-                message = "You pull out the drawer and see 4 BATTERIES.They're size C.";
+                message = "You pull out the drawer and see 4 BATTERIES. They're size C.";
             }
             else
             {

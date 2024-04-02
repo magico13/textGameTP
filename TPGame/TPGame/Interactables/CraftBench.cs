@@ -21,11 +21,11 @@ namespace TPGame.Interactables
             }
             else
             {
-                if (InputHandler.Character.GetSticks() < 10)
+                if (InputHandler.Character.Player.GetSticks() < 10)
                 {
                     DialogueHandler.PrintLine("You can build a LADDER to reach the ATTIC. Except, you don't seem to have anything you could use to build it with...");
                     DialogueHandler.AddPause(200);
-                    DialogueHandler.PrintLine("The LOLIPOP STICKS! They would be perfect! You need at least 10 though. That means you need " + (10 - InputHandler.Character.GetSticks()) + " more sticks.");
+                    DialogueHandler.PrintLine("The LOLIPOP STICKS! They would be perfect! You need at least 10 though. That means you need " + (10 - InputHandler.Character.Player.GetSticks()) + " more sticks.");
                 }
                 else
                 {

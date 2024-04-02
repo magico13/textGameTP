@@ -1,19 +1,19 @@
 ﻿using System;
 
-namespace TPGame.Characters
+namespace TPGame.Models
 {
-    public class Enemy : Character
+    public class Enemy
     {
         private readonly string[] Flavors = ["cherry", "chocolate", "orange", "grape", "raspberry"];
-        
-        public Enemy() : base()
+        public string Name;
+        public int Health = 10;
+
+        public Enemy()
         {
-            string flavor = Flavors[new Random().Next(0, 5)];
-            Name = flavor;
-            Health = 10;
+            Name = Flavors[new Random().Next(0, 5)];
         }
 
-        public Enemy(string bossName) 
+        public Enemy(string bossName)
         {
             Name = bossName;
             Health = bossName switch
@@ -22,7 +22,7 @@ namespace TPGame.Characters
                 "Knight" => 40,
                 "Rook" => 60,
                 "King" => 180,
-                _ => 0
+                _ => 999
             };
         }
 

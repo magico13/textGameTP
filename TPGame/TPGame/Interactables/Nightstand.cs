@@ -7,7 +7,7 @@ namespace TPGame.Interactables
     {
         public Nightstand()
         {
-            Name = "Nightstand";
+            Name = "nightstand";
             Description = "A small cherry nightstand with a reading lamp on top. The bulb has burned out, which you make a note to replace, intending to actually follow through this time.";
         }
 

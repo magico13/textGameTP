@@ -12,7 +12,7 @@ namespace TPGame.Models
 
         public List<string> GetItems { get; set; } = [];
 
-        public List<string> UsableItems { get; set; } = ["tool belt", "water bottle", "guard", "dentures", "mints"];
+        public List<string> UsableItems { get; set; } = ["tool belt", "water bottle", "guard", "dentures", "mints", "batteries"];
 
         public List<string> Interactables { get; set; } = [];
 

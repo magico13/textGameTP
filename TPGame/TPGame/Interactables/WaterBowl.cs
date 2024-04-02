@@ -10,21 +10,21 @@ namespace TPGame.Interactables
         public WaterBowl()
         {
             Name = "water bowl";
-            Description = "A small bowl with \"Domino\" across the front. The pet dish glistens with fresh water. You don't have any pets which gives you pause but that seems like an issue for another time.";
+            Description = "A small bowl with \"Domino\" across the front. The water dish glistens with fresh water. You don't have any pets which gives you pause but that seems like an issue for another time.";
         }
 
-        private int WaterLevel = 100;
+        private int WaterLevel = 50;
 
         public override void UseInteractable()
         {
             string message;
             if (Collections.VerifyInventory("water bottle") && WaterLevel > 0)
             {
-                WaterBottle.AddWater(WaterLevel);
+                ((WaterBottle)Collections.CheckInventory("water bottle")).AddWater(WaterLevel);
                 WaterLevel = 0;
                 DialogueHandler.PrintLine("You kneel down and inspect the water briefly. Desperate times...");
                 DialogueHandler.AddPause(300);
-                message = "You gently pour as much of the water as you can into your water bottle";
+                message = "You gently pour as much of the water as you can into your water bottle.";
             }
             else
             {

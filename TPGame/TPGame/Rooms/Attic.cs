@@ -54,6 +54,7 @@ namespace TPGame.Rooms
     &&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&";
             UsableItems.Remove("ladder");
             Interactables.Add("home gym");
+            Locked = false;
             InputHandler.EnterRoom(Name);
         }
 
@@ -61,7 +62,7 @@ namespace TPGame.Rooms
         /// Spawn boss if room is accessible
         /// </summary>
         /// <returns>true if room is unlocked</returns>
-        public override bool RollEncounter() => !Locked;
+        public override bool RollEncounter() => !Locked && !BossDefeated;
 
         /// <summary>
         /// Adds items and interactables to room

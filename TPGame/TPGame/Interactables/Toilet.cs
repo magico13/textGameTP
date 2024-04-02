@@ -14,14 +14,14 @@ namespace TPGame.Interactables
                 (WaterLevel > 0 ? "\nThe bowl has some water in it." : "");
         }
 
-        private int WaterLevel = 100;
+        private int WaterLevel = 50;
 
         public override void UseInteractable()
         {
             string message;
             if (Collections.VerifyInventory("water bottle") && WaterLevel > 0)
             {
-                WaterBottle.AddWater(WaterLevel);
+                ((WaterBottle)Collections.CheckInventory("water bottle")).AddWater(WaterLevel);
                 WaterLevel = 0;
                 DialogueHandler.PrintLine("You kneel down and inspect the bowl intensely. Desperate times...");
                 DialogueHandler.AddPause(300);
@@ -30,11 +30,11 @@ namespace TPGame.Interactables
             else if (WaterLevel == 0)
             {
                 DialogueHandler.PrintLine("The bowl doesn't have enough water in it...");
-                DialogueHandler.AddPause(500);
+                DialogueHandler.AddPause(200);
                 DialogueHandler.PrintLine("Unless you're willing to shove your head in and lick the drain...");
-                DialogueHandler.AddPause(500);
+                DialogueHandler.AddPause(800);
                 DialogueHandler.PrintLine("You're not are you?");
-                DialogueHandler.AddPause(250);
+                DialogueHandler.AddPause(400);
                 message = "You know what, I just decided you're not. Don't think about it anymore.";
             }
             else

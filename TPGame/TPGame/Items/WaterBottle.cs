@@ -1,5 +1,4 @@
-﻿using TPGame.Characters;
-using TPGame.Handlers;
+﻿using TPGame.Handlers;
 using TPGame.Models;
 using TPGame.Dictionaries;
 
@@ -16,9 +15,9 @@ namespace TPGame.Items
 
         public int WaterLevel = 0;
 
-        public static void AddWater(int waterLevel)
+        public void AddWater(int waterLevel)
         {
-            ((WaterBottle)Collections.CheckInventory("water bottle")).WaterLevel += waterLevel;
+            WaterLevel += waterLevel;
         }
 
         public override void UseItem()
@@ -26,17 +25,24 @@ namespace TPGame.Items
             string message;
             if (WaterLevel > 0)
             {
-                if (Player.SugarLevel > 0)
+                int sugar = InputHandler.Character.Player.GetSugar();
+                if (sugar > 0)
                 {
-                    while (Player.SugarLevel > 0 && WaterLevel > 0)
+                    if (WaterLevel > sugar)
                     {
-                        Player.SugarLevel--;
-                        WaterLevel--;
+                        WaterLevel -= sugar;
+                        sugar = 0;
                     }
-                    DialogueHandler.PrintLine("Your hands shake from the sugar as you press the bottle to your lips. With a heave, you throw back your head as the water rushes down your throat." +
+                    else
+                    {
+                        sugar -= WaterLevel;
+                        WaterLevel = 0;
+                    }
+                    InputHandler.Character.Player.SetSugar(sugar);
+                    DialogueHandler.PrintLine("Your hands shake from the sugar as you press the bottle to your lips. With a heave, you throw back your head as the water rushes down your throat. " +
                         "You feel the water absorbing the sugar and easing your shakes. You're not sure if that's how it works, but this has been a slightly unorthodox day already.");
-                    DialogueHandler.PrintLine((Player.SugarLevel > 0 ? $"Your sugar level is now {Player.SugarLevel}%." : "You're now feeling sugar-free."));
-                    message = (WaterLevel > 0 ? $"Your the bottle still has some water left, about {WaterLevel}%." : "The bottle is now empty.");
+                    DialogueHandler.PrintLine(sugar > 0 ? $"Your sugar level is now {sugar}%." : "You're now feeling sugar-free.");
+                    message = (WaterLevel > 0 ? $"The bottle still has some water left, about {WaterLevel}%." : "The bottle is now empty.");
                 }
                 else
                 {

@@ -52,6 +52,6 @@ namespace TPGame.Rooms
             BossDefeated = true;
         }
 
-        public override bool RollEncounter() => !Locked;
+        public override bool RollEncounter() => !Locked && !BossDefeated;
     }
 }

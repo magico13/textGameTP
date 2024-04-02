@@ -1,13 +1,13 @@
-﻿using TPGame.Characters;
-using TPGame.Dictionaries;
+﻿using TPGame.Dictionaries;
 using TPGame.Handlers;
+using TPGame.Models;
 
 namespace TPGame.Commands
 {
-    public class CharacterCommand : ICharacterCommand
+    public class CharacterCommand
     {
-        public Player Player = new Player();
-        public static Enemy Lolipop;
+        public Player Player = new();
+        public Enemy Lolipop = new();
 
         public bool AttackEnemy(bool combat)
         {
@@ -18,11 +18,11 @@ namespace TPGame.Commands
             }
             else
             {
-                Player.Licks++;
+                Player.IncrementLicks();
                 int damage = Player.RollDamage(); //Rolls for chance to critical. Writes "Chomp" if critical
                 DialogueHandler.PrintLine($"You managed to get in {damage} licks!");
                 Lolipop.Health -= damage; //Reduces enemy health
-                Player.SugarLevel++; //Increments sugar level after every attack
+                Player.IncrementSugar(); //Increments sugar level after every attack
 
                 if (Lolipop.Health < 1)
                 {
@@ -30,7 +30,7 @@ namespace TPGame.Commands
 
 
 
-                    if (Player.SugarLevel > 99)
+                    if (Player.GetSugar() > 99)
                     {
                         CommandHandler.LoseGame();
                         return false;
@@ -54,7 +54,7 @@ namespace TPGame.Commands
 
         public void SpawnEnemy(string roomName)
         {
-            Lolipop = roomName switch
+            InputHandler.Character.Lolipop = roomName switch
             {
                 "Garage" => new Enemy("Bishop"),
                 "Attic" => new Enemy("Knight"),
@@ -63,43 +63,28 @@ namespace TPGame.Commands
                 _ => new Enemy(),
             };
             DialogueHandler.PrintLine("");
-            switch (Lolipop.Name)
+            switch (InputHandler.Character.Lolipop.Name)
             {
                 case "Bishop":
                 case "Knight":
                 case "Rook":
-                    DialogueHandler.PrintLine($"Oh, no! It's the {Lolipop.Name}!");
+                    DialogueHandler.PrintLine($"Oh, no! It's the {InputHandler.Character.Lolipop.Name}!");
                     break;
                 case "King":
                     DialogueHandler.PrintLine($"The legends are true...", 65);
                     DialogueHandler.AddPause(300);
-                    DialogueHandler.PrintLine($"It's the {Lolipop.Name}!", 40);
+                    DialogueHandler.PrintLine($"It's the {InputHandler.Character.Lolipop.Name}!", 40);
                     break;
                 default:
-                    DialogueHandler.PrintLine($"Oh, no! A" + (Lolipop.Name == "orange" ? "n" : "") + $" {Lolipop.Name} pop has appeared!");
+                    DialogueHandler.PrintLine($"Oh, no! A" + (InputHandler.Character.Lolipop.Name == "orange" ? "n" : "") + $" {InputHandler.Character.Lolipop.Name} pop has appeared!");
                     break;
             }
         }
 
-        public void LowerSugar()
-        {
-            Player.SugarLevel -= 30;
-            if (Player.SugarLevel < 0)
-            {
-                Player.SugarLevel = 0;
-            }
-        }
-
-        public int GetLicks() => Player.Licks;
-
-        public int GetSticks() => Player.Experience;
-
-        public static void AttackBoss(string message)
+        public void AttackBoss(string message)
         {
             DialogueHandler.PrintLine(message);
-            Lolipop.Health = 0;
+            InputHandler.Character.Lolipop.Health = 0;
         }
-
-        public void SetCriticalThreshhold(double crit) => Player.CriticalThreshhold = crit;
     }
 }

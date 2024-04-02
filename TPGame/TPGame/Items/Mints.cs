@@ -54,7 +54,7 @@ namespace TPGame.Items
             }
             else
             {
-                message = "You think about popping one or two of these bad boys into the old car crusher but can't help but wonder if that long hair is yours. It's not the same color as yours. Is it even human? What else with hair that long has been sitting on your couch?\nBetter to just say no to these mints. Maybe once you've defeated the lolipops, you can have one as a celebratory snack.";
+                message = "You think about popping one or two of these bad boys into the old car crusher but can't help but wonder if that long hair is yours. It's not the same color as yours. Is it even human? What else with hair that long has been sitting on\nyour couch? Better to just say no to these mints. Maybe once you've defeated the lolipops, you can have one as a celebratory snack.";
             }
             base.UseItem(message);
         }

@@ -31,5 +31,9 @@ namespace TPGame.Items
             base.UseItem(message);
         }
 
+        public override void GetItem()
+        {
+            base.GetItem("You drop the batteries into a pocket on your belt until they are needed.");
+        }
     }
 }

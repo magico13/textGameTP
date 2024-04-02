@@ -14,7 +14,7 @@ namespace TPGame.Items
 
         public override void GetItem()
         {
-            InputHandler.Character.SetCriticalThreshhold(0.5);
+            InputHandler.Character.Player.SetCrit(0.85);
             string message = "You grab the false teeth. Are they dentures? What's the difference? ";
             if (Collections.VerifyInventory("guard"))
             {

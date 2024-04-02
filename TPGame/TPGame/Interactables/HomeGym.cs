@@ -1,4 +1,5 @@
 ﻿using TPGame.Commands;
+using TPGame.Handlers;
 using TPGame.Models;
 
 namespace TPGame.Interactables
@@ -13,9 +14,9 @@ namespace TPGame.Interactables
 
         public override void UseInteractable()
         {
-            if (CharacterCommand.Lolipop.Health > 0)
+            if (InputHandler.Character.Lolipop.Health > 0)
             {
-                CharacterCommand.AttackBoss("You grab the knight and lift as much weight as you can manage. You force the knight between the weights and ignore all of your gym etiquette, smashing the knight to pieces. One more lick ought to reach the core.");
+                InputHandler.Character.AttackBoss("You grab the knight and lift as much weight as you can manage. You force the knight between the weights and ignore all of your gym etiquette, smashing the knight to pieces. One more lick ought to reach the core.");
             }
             else
             {

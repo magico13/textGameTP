@@ -1,4 +1,5 @@
 ﻿using TPGame.Commands;
+using TPGame.Handlers;
 using TPGame.Models;
 
 namespace TPGame.Interactables
@@ -17,9 +18,9 @@ namespace TPGame.Interactables
         /// </summary>
         public override void UseInteractable()
         {
-            if (CharacterCommand.Lolipop.Health > 0)
+            if (InputHandler.Character.Lolipop.Health > 0)
             {
-                CharacterCommand.AttackBoss("You grab one of the milk crates and vault from one to a stack of two and leap toward the knight. With a thunderous force, you smash into it's thick candy shell, thinning it significantly.");
+                InputHandler.Character.AttackBoss("You grab one of the milk crates and vault from one to a stack of two and leap toward the knight. With a thunderous force, you smash into it's thick candy shell, thinning it significantly.");
             }
             else
             {

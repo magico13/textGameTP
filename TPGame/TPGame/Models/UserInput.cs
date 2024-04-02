@@ -27,19 +27,25 @@ namespace TPGame.Models
         {
 
             DialogueHandler.Print("What do you do?: ");
-            string input = Console.ReadLine().ToLower();
+            string input = Console.ReadLine().ToLower().Trim();
             string[] inputSplit = input.Split(" ");
-            InputAction action = new InputAction
+            InputAction action = new()
             {
                 Command = inputSplit[0].ToLower(),
             };
             if (inputSplit.Length > 1)
             {
-                for (int i = 1; i < 3 && i < inputSplit.Length; i++)
+                for (int i = 1; i < inputSplit.Length; i++)
                 {
+                    if (inputSplit[i] == "" && (action.Target == null || action.Target[i - 1] == ' '))
+                    {
+                        continue;
+                    }
+
                     action.Target += inputSplit[i].ToLower() + " ";
                 }
-                action.Target = action.Target.Trim();
+                action.Target = action.Target.Trim(' ', '\\', '|', '[', ']', '}', '\"', '\'');
+         
             }
             return action;
         }
@@ -48,9 +54,9 @@ namespace TPGame.Models
         {
 
             DialogueHandler.Print(message);
-            string input = Console.ReadLine().ToLower();
+            string input = Console.ReadLine().ToLower().Trim();
             string[] inputSplit = input.Split(" ");
-            InputAction action = new InputAction
+            InputAction action = new()
             {
                 Command = inputSplit[0].ToLower(),
             };
@@ -58,9 +64,13 @@ namespace TPGame.Models
             {
                 for (int i = 1; i < 3 && i < inputSplit.Length; i++)
                 {
+                    if (action.Target[i - 1] == ' ' && inputSplit[i] == "")
+                    {
+                        break;
+                    }
                     action.Target += inputSplit[i].ToLower() + " ";
                 }
-                action.Target = action.Target.Trim();
+                action.Target = action.Target.Trim(' ', '\\', '|', '[', ']', '}', '\"', '\'');
             }
             return action;
         }
@@ -76,7 +86,7 @@ namespace TPGame.Models
             while (!validInput)
             {
                 DialogueHandler.Print(message);
-                string input = Console.ReadLine().ToLower();
+                string input = Console.ReadLine().ToLower().Trim();
                 if (input == "y" || input == "yes")
                 {
                     return true;

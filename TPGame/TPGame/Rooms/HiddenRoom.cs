@@ -12,7 +12,7 @@ namespace TPGame.Rooms
             Interactables = ["light switch"];
         }
 
-        public override bool RollEncounter() => true;
+        public override bool RollEncounter() => !BossDefeated;
 
         public override void DefeatBoss()
         {

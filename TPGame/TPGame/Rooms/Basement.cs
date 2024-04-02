@@ -26,11 +26,11 @@ namespace TPGame.Rooms
 
         public bool IsDark = true;
 
-        public override bool RollEncounter() => !IsDark;
+        public override bool RollEncounter() => !IsDark && !BossDefeated;
 
         public void Light() 
         {
-            Image += @"
+            Image = @"
                                       |||||              |   |        
                                       |||||              |   |                             
                                       |||||              |   |                             
