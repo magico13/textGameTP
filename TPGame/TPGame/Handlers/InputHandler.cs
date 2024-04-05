@@ -53,7 +53,7 @@ namespace TPGame.Handlers
                     Map.SearchRoom();
                     break;
                 case "sugar":
-                    DialogueHandler.PrintLine($"Your sugar level is currently ${Character.Player.GetSugar()}");
+                    DialogueHandler.PrintLine($"Your sugar level is currently {Character.Player.GetSugar()}%");
                     break;
 #if DEBUG
                 case "gimme":

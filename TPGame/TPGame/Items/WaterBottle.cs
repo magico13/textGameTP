@@ -9,8 +9,7 @@ namespace TPGame.Items
         public WaterBottle()
         {
             Name = "water bottle";
-            Description = "A tall, large, green water bottle you stored for an emergency like this. " +
-                (WaterLevel > 0 ? $"You estimate that it has enough water to reduce your sugar level by about {WaterLevel}%" : "The bottle is empty. You should see if there's any water around.");
+            Description = "A tall, large, green water bottle you stored for an emergency like this.";
         }
 
         public int WaterLevel = 0;

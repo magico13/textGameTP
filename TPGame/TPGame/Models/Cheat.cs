@@ -47,10 +47,10 @@ namespace TPGame.Models
             {
                 CreateSendAction("lick", "");
             }
-            CreateSendAction("get", "camping lantern");
+            CreateSendAction("get", "lantern");
             CreateSendAction("use", "batteries");
             CreateSendAction("move", "basement");
-            CreateSendAction("use", "camping lantern");
+            CreateSendAction("use", "lantern");
             while (!InputHandler.Map.CurrentLocation.BossDefeated && InputHandler.Character.Player.GetSugar() < 100)
             {
                 CreateSendAction("lick", "");

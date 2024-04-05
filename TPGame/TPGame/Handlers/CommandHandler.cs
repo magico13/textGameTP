@@ -19,30 +19,35 @@ namespace TPGame.Handlers
         public static void StartGame()
         {
             GameOver = false;
+            Enum defaultCBG = Console.BackgroundColor;
+            Enum defaultCFG = Console.ForegroundColor;
 #if RELEASE
             DialogueHandler.Title();
             DialogueHandler.OpeningMonologue();
             Console.ReadKey();
             Console.Clear();
 #endif
+            if (UserInput.GetBool("Do you want a tutorial?: "))
+            {
+                TutorialHandler.Teach();
+            }
+            else
+            {
+                DialogueHandler.PrintLine("I understand. Let's just drop you right into it.");
+                DialogueHandler.AddPause(600);
+                Console.Clear();
+                DialogueHandler.PrintLine("You hop out of your bed. You're in your master bedroom.");
+                Console.WriteLine();
+            }
+
             while (!GameOver)
             {
-                if (UserInput.GetBool("Do you want a tutorial?: "))
-                {
-                    TutorialHandler.Teach();
-                }
-                else
-                {
-                    DialogueHandler.PrintLine("I understand. Let's just drop you right into it.");
-                    DialogueHandler.AddPause(600);
-                    Console.Clear();
-                    DialogueHandler.PrintLine("You hop out of your bed. You're in your master bedroom.");
-                    Console.WriteLine();
-                }
-
                 InputHandler.HandleAction(UserInput.GetAction());
                 DialogueHandler.PrintLine("");
             }
+
+            Console.BackgroundColor = (ConsoleColor)defaultCBG;
+            Console.ForegroundColor = (ConsoleColor)defaultCFG;
         }
 
         /// <summary>

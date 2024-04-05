@@ -64,7 +64,7 @@ namespace TPGame.Models
             {
                 for (int i = 1; i < 3 && i < inputSplit.Length; i++)
                 {
-                    if (action.Target[i - 1] == ' ' && inputSplit[i] == "")
+                    if (inputSplit[i] == "" && (action.Target == null || action.Target[i - 1] == ' '))
                     {
                         break;
                     }

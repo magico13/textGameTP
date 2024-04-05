@@ -69,10 +69,10 @@ namespace TPGame.Rooms
         /// </summary>
         public override void DefeatBoss()
         {
-            string message = "You see the small gilded CHEST your grandmother bequeathed you, just as you left it.\nYour CAMPING LANTERN rests on some boxes of halloween decorations.";
+            string message = "You see the small gilded CHEST your grandmother bequeathed you, just as you left it.\nYour camping LANTERN rests on some boxes of halloween decorations.";
             DialogueHandler.PrintLine(message);
             Description += " " + message;
-            GetItems.Add("camping lantern");
+            GetItems.Add("lantern");
             Interactables.Add("chest");
             BossDefeated = true;
         }

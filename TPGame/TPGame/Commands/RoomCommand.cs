@@ -43,7 +43,7 @@ namespace TPGame.Commands
         {
             if (InCombat)
             {
-                if (!UserInput.GetBool("Do you want to run? (Y/N) "))
+                if (!UserInput.GetBool("Do you want to flee combat? (Y/N) "))
                 {
                     return false;
                 }

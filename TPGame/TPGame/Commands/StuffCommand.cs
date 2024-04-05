@@ -2,6 +2,7 @@
 using TPGame.Models;
 using TPGame.Dictionaries;
 using TPGame.Rooms;
+using TPGame.Items;
 
 namespace TPGame.Commands
 {
@@ -18,6 +19,11 @@ namespace TPGame.Commands
             if (item != null)
             {
                 DialogueHandler.PrintLine(item.Description);
+                if (item.Name == "water bottle")
+                {
+                    DialogueHandler.PrintLine(((WaterBottle)item).WaterLevel > 0 ? $"You estimate that it has enough water to reduce your sugar level by about {((WaterBottle)item).WaterLevel}%" : "The bottle is empty. You should see if there's any water around.");
+
+                }
             }
             else
             {

@@ -10,7 +10,7 @@ namespace TPGame.Rooms
             Name = "Basement";
             Description = "You open the door to the basement and creep down the steps.\nThe basement is pitch black. You can't see your own hands.\nThe light switch clicks uselessly." +
                           "\n...\nYou need to find a light source to explore further.";
-            UsableItems = ["camping lantern"];
+            UsableItems = ["lantern"];
             Image = @"
 
 
@@ -61,7 +61,7 @@ namespace TPGame.Rooms
             Interactables.Add("furnace");
             Interactables.Add("water main");
             BossDefeated = true;
-            string message = "The pale glow of the camping lantern illuminates the FURNACE and the WATER MAIN.\n On a wall rack, you see your METAL DETECTOR and SHOVEL.";
+            string message = "The pale glow of the lantern illuminates the FURNACE and the WATER MAIN.\n On a wall rack, you see your METAL DETECTOR and SHOVEL.";
             DialogueHandler.PrintLine(message);
             Description = Description.Split("\n")[0] + message;
         }

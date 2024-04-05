@@ -8,7 +8,7 @@ namespace TPGame.Rooms
         {
             Name = "Dining Room";
             EncounterChance = 0.7;
-            Description = "The dining room is ornately decorated. The TABLE is set with silver CANDLE holders and empty dishes. The CHAIRs are all pushed in curteously.";
+            Description = "The dining room is ornately decorated. The TABLE is set with silver candle holders with long white CANDLES and empty dishes. The CHAIRs are all pushed in curteously.";
             Interactables = ["light switch", "candles", "chair", "table"];
             Image = @"
    \\                             /           /       /                               //  

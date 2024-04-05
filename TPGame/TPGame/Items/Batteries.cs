@@ -8,13 +8,13 @@ namespace TPGame.Items
         public Batteries() 
         {
             Name = "batteries";
-            Description = "Four C batteries that should have enough juice to power the camping lantern for as long as you need.";
+            Description = "Four C batteries that should have enough juice to power the lantern for as long as you need.";
         }
 
         public override void UseItem()
         {
             string message;
-            CampingLantern campingLantern = (CampingLantern)Collections.CheckInventory("camping lantern");
+            CampingLantern campingLantern = (CampingLantern)Collections.CheckInventory("lantern");
             if (campingLantern != null && !campingLantern.HasBatteries)
             {
                 campingLantern.HasBatteries = true;

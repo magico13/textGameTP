@@ -28,7 +28,7 @@ namespace TPGame.Dictionaries
             else
             {
 
-                string[] itemOrder = ["tool belt", "water bottle", "key", "knife", "ladder", "camping lantern", "batteries", "metal detector", "shovel", "dentures", "guard"];
+                string[] itemOrder = ["tool belt", "water bottle", "key", "knife", "ladder", "lantern", "batteries", "metal detector", "shovel", "dentures", "guard"];
                 List<string> missing = [];
                 int firstMissing = -1;
 
@@ -91,7 +91,7 @@ namespace TPGame.Dictionaries
                             DialogueHandler.PrintLine("Now, you have everything you need for the CRAFT BENCH. You should be able to somehow fashion a LADDER to the ATTIC.\nThe CRAFT BENCH in the GARAGE should be able to help you GET your LADDER.");
                         }
                         break;
-                    case 5: //camping lantern in attic
+                    case 5: //lantern in attic
                         if (((Attic)Collections.VerifyRoom("Attic")).Locked)
                         {
                             DialogueHandler.PrintLine("Don't forget to USE the LADDER to climb to the ATTIC.");
@@ -99,12 +99,12 @@ namespace TPGame.Dictionaries
                         DialogueHandler.PrintLine("The BASEMENT is way too dark to see anything. You need some kind of light source.\nYou finally moved all of that gear from your camping trip to the ATTIC last week. Maybe there's something useful there.");
                         break;
                     case 6: //batteries in office
-                        DialogueHandler.PrintLine("The camping lantern won't light itself... Well, not without BATTERIES at least.\nYou have that junk drawer in your OFFICE. Maybe there are BATTERIES in there.");
+                        DialogueHandler.PrintLine("The lantern won't light itself... Well, not without BATTERIES at least.\nYou have that junk drawer in your OFFICE. Maybe there are BATTERIES in there.");
                         break;
                     case 7: //metal detector in basement
                         if (((Basement)Collections.VerifyRoom("Basement")).IsDark)
                         {
-                            DialogueHandler.PrintLine("Don't forget to USE the CAMPING LANTERN in the BASEMENT.");
+                            DialogueHandler.PrintLine("Don't forget to USE the LANTERN in the BASEMENT.");
                         }
                         else
                         {
