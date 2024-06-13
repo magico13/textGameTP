@@ -1,4 +1,6 @@
-﻿using TPGame.Dictionaries;
+﻿using TPGame.Commands;
+using TPGame.Dictionaries;
+using TPGame.Handlers;
 using TPGame.Interactables;
 using TPGame.Models;
 using TPGame.Rooms;
@@ -21,6 +23,11 @@ namespace TPGame.Items
                 ((Backyard)(Collections.Rooms.Find(r => r.Name == "Backyard"))).Interactables.Add("switch");
                 ((BuriedSwitch)(Collections.VerifyInteractable("switch"))).Hidden = false;
                 message = "You scoop up the loose dirt with ease. It's not long before you uncover a strange metal plate with a SWITCH covered in a plastic case.";
+            }
+            else if (InputHandler.Map.CurrentLocation.Name == "Hidden Room")
+            {
+                message = "You unstrap your trusty shovel. With a barbaric shout, you wallop the king, bashing layer after layer from it's shell. You smash until the wooden handle on your shovel cracks and splinters in two. " + InputHandler.Character.AttackKing(25);
+                Collections.RemoveUsedItem(Name);
             }
             else
             {

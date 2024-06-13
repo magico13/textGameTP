@@ -26,6 +26,7 @@ namespace TPGame.Items
             if (HasBatteries)
             {
                 base.UseItem("You click the switch on the lantern, creating a slightly blue glow.");
+                Collections.RemoveUsedItem(Name);
                 ((Basement)(Collections.Rooms.Find(r => r.Name == "Basement"))).Light();
             }
             else

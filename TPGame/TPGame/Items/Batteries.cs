@@ -19,6 +19,7 @@ namespace TPGame.Items
             {
                 campingLantern.HasBatteries = true;
                 message = "You remove the pack to the lantern and insert the batteries. You test the lantern to see that it does turn on now. To preserve batteries, you switch the lantern back off.";
+                Collections.RemoveUsedItem(Name);
             }
             else if (campingLantern.HasBatteries)
             {

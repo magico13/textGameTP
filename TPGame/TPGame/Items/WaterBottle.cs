@@ -1,6 +1,7 @@
 ﻿using TPGame.Handlers;
 using TPGame.Models;
 using TPGame.Dictionaries;
+using TPGame.Commands;
 
 namespace TPGame.Items
 {
@@ -51,6 +52,11 @@ namespace TPGame.Items
             else
             {
                 message = "The bottle is empty. No matter how hard you try, you can't get so much as a drop.";
+            }
+            if (InputHandler.Map.CurrentLocation.Name == "Hidden Room" && WaterLevel > 0)
+            {
+                message = "Knowing this is your last chance to use it, you spray all of your remaining water over the king. The powerful spray wears down his thick outer shell. " + InputHandler.Character.AttackKing(WaterLevel);
+                Collections.RemoveUsedItem(Name);
             }
             base.UseItem(message);
         }

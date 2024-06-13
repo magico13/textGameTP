@@ -56,10 +56,10 @@ namespace TPGame.Handlers
                     DialogueHandler.PrintLine($"Your sugar level is currently {Character.Player.GetSugar()}%");
                     break;
 #if DEBUG
-                case "gimme":
+                case "gimmee":
                     Cheat.PlayGameForMe();
                     break;
-#endif         
+#endif
                 default: //Handles unrecognized inputs
                     DialogueHandler.PrintLine("Sorry. I didn't catch that. Please try again.");
                     break;

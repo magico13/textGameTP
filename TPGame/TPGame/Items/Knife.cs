@@ -1,4 +1,5 @@
-﻿using TPGame.Dictionaries;
+﻿using TPGame.Commands;
+using TPGame.Dictionaries;
 using TPGame.Handlers;
 using TPGame.Models;
 using TPGame.Rooms;
@@ -28,6 +29,11 @@ namespace TPGame.Items
             {
                 ((Garage)Collections.VerifyRoom("Garage")).GetItems.Add("ladder");
                 message = "You shave down and cut the sticks into various shapes, removing bits of candy left behind. To your amazement, you can definitely GET a LADDER out of the parts on the CRAFT BENCH now.\nThen again, are you really surprised? You have been practicing very hard recently for something, well not quite exactly like this, but not too dissimilar.";
+            }
+            else if (InputHandler.Map.CurrentLocation.Name == "Hidden Room")
+            {
+                message = "You flick out your knife and frantically whittle away at the king's candy shell, removing layer after layer of candy coating until your knife is dull and useless. " + InputHandler.Character.AttackKing(25);
+                Collections.RemoveUsedItem(Name);
             }
             else
             {

@@ -10,7 +10,6 @@ namespace TPGame.Models
         public static void PlayGameForMe()
         {
             CreateSendAction("use", "light switch");
-            GrindXP();
             CreateSendAction("get", "tool belt");
             CreateSendAction("move", "kitchen");
             CreateSendAction("get", "knife");
@@ -23,7 +22,7 @@ namespace TPGame.Models
             CreateSendAction("get", "key");
             InputHandler.Map.InCombat = false;
             CreateSendAction("move", "guest bedroom");
-            //CreateSendAction("get", "guard");
+            CreateSendAction("get", "guard");
             InputHandler.Map.InCombat = false;
             CreateSendAction("move", "bathroom");
             CreateSendAction("get", "dentures");
@@ -33,8 +32,10 @@ namespace TPGame.Models
             CreateSendAction("move", "office");
             CreateSendAction("get", "batteries");
             InputHandler.Map.InCombat = false;
+            GrindXP();
             CreateSendAction("move", "garage");
             CreateSendAction("use", "key");
+            CreateSendAction("use", "sander");
             while (!InputHandler.Map.CurrentLocation.BossDefeated && InputHandler.Character.Player.GetSugar() < 100)
             {
                 CreateSendAction("lick", "");
@@ -43,6 +44,7 @@ namespace TPGame.Models
             CreateSendAction("get", "ladder");
             CreateSendAction("move", "attic");
             CreateSendAction("use", "ladder");
+            CreateSendAction("use", "home gym");
             while (!InputHandler.Map.CurrentLocation.BossDefeated && InputHandler.Character.Player.GetSugar() < 100)
             {
                 CreateSendAction("lick", "");
@@ -51,25 +53,34 @@ namespace TPGame.Models
             CreateSendAction("use", "batteries");
             CreateSendAction("move", "basement");
             CreateSendAction("use", "lantern");
+            CreateSendAction("use", "milk crates");
             while (!InputHandler.Map.CurrentLocation.BossDefeated && InputHandler.Character.Player.GetSugar() < 100)
             {
                 CreateSendAction("lick", "");
             }
             CreateSendAction("get", "shovel");
             CreateSendAction("get", "metal detector");
+            CreateSendAction("use", "water main");
+            CreateSendAction("move", "kitchen");
+            CreateSendAction("use", "sink");
+            InputHandler.Map.InCombat = false;
+            CreateSendAction("move", "bathroom");
+            CreateSendAction("use", "sink");
+            InputHandler.Map.InCombat = false;
             CreateSendAction("move", "backyard");
             CreateSendAction("use", "metal detector");
             CreateSendAction("use", "shovel");
             CreateSendAction("use", "switch");
             CreateSendAction("move", "hidden room");
+            CreateSendAction("use", "knife");
+            CreateSendAction("use", "shovel");
+            CreateSendAction("use", "water bottle");
             while (!InputHandler.Map.CurrentLocation.BossDefeated && InputHandler.Character.Player.GetSugar() < 100)
             {
                 CreateSendAction("lick", "");
-                if (InputHandler.Character.Player.GetSugar() > 50 && ((WaterBottle)Collections.CheckInventory("water bottle")).WaterLevel > 0)
-                {
-                    CreateSendAction("use", "water bottle");
-                }
             }
+            CreateSendAction("use", "mints");
+            CreateSendAction("use", "mints");
             CreateSendAction("use", "button");
         }
 
@@ -85,7 +96,7 @@ namespace TPGame.Models
 
         private static void GrindXP()
         {
-            while (InputHandler.Character.Player.GetSticks() < 10)
+            while (InputHandler.Character.Player.GetSticks() < 9)
             {
                 bool combat = true;
                 InputHandler.Character.SpawnEnemy("Pantry");

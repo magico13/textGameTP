@@ -86,5 +86,19 @@ namespace TPGame.Commands
             DialogueHandler.PrintLine(message);
             InputHandler.Character.Lolipop.Health = 0;
         }
+
+        public string AttackKing(int damage)
+        {
+            if (InputHandler.Character.Lolipop.Health >= damage)
+            {
+                InputHandler.Character.Lolipop.Health -= damage;
+                return "The king still appears daunting and stoic.";
+            }
+            else 
+            {
+                InputHandler.Character.Lolipop.Health = 0;
+                return "The king is nothing but a fragile shell now.";
+            }
+        }
     }
 }
