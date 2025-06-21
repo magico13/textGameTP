@@ -9,7 +9,8 @@ namespace TPGame.Items
         public CampingLantern()
         {
             Name = "lantern";
-            Description = "\"For Use In Emergencies\" feels very appropriate right now. The lantern requires 4 'C' batteries, which are not included currently.";
+            Description = "\"For Use In Emergencies\" feels very appropriate right now. The lantern requires 4 'C' batteries, "
+                + (HasBatteries ? "which are currently installed." : "which are not included currently.");
         }
 
         public bool HasBatteries = false;
@@ -26,8 +27,8 @@ namespace TPGame.Items
             if (HasBatteries)
             {
                 base.UseItem("You click the switch on the lantern, creating a slightly blue glow.");
-                Collections.RemoveUsedItem(Name);
-                ((Basement)(Collections.Rooms.Find(r => r.Name == "Basement"))).Light();
+                //Collections.RemoveUsedItem(Name);
+                ((Basement)Collections.Rooms.Find(r => r.Name == "Basement")).Light();
             }
             else
             {

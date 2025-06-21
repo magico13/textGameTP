@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using TPGame.Models;
 using TPGame.Handlers;
 using TPGame.Rooms;
+using TPGame.Interactables;
+using System.Collections.ObjectModel;
 
 namespace TPGame.Dictionaries
 {
@@ -16,11 +18,11 @@ namespace TPGame.Dictionaries
             if (!Collections.VerifyInventory("hints"))
             {
                 DialogueHandler.PrintLine("Don't panic. Just stick to the plan.");
-                DialogueHandler.AddPause(800);
+                DialogueHandler.AddPause(400);
                 DialogueHandler.PrintLine("You forgot the plan?");
                 DialogueHandler.AddPause(400);
                 DialogueHandler.PrintLine("...");
-                DialogueHandler.AddPause(800);
+                DialogueHandler.AddPause(400);
                 DialogueHandler.PrintLine("That's fine...");
                 DialogueHandler.AddPause(400);
                 DialogueHandler.PrintLine("I'm sure you wrote it down somewhere. In fact, I'm sure you typed it up. Go USE the COMPUTER in your OFFICE to see if you saved it.");
@@ -31,6 +33,18 @@ namespace TPGame.Dictionaries
                 string[] itemOrder = ["tool belt", "water bottle", "key", "knife", "ladder", "lantern", "batteries", "metal detector", "shovel", "dentures", "guard"];
                 List<string> missing = [];
                 int firstMissing = -1;
+
+                var hiddenRoom = Collections.VerifyRoom("Hidden Room");
+                if (hiddenRoom?.HasBeenVisited == true && hiddenRoom?.BossDefeated == false)
+                {
+                    DialogueHandler.PrintLine("Prepare yourself for the final battle. You can do this! USE everything you have to defeat the King!");
+                    return;
+                }
+                else if (hiddenRoom?.BossDefeated == true)
+                {
+                    DialogueHandler.PrintLine("You have defeated the King! Maybe you should freshen your breath from all of the sugar you've been eating, or just press that big button.");
+                    return;
+                }
 
                 foreach (Item i in Array.FindAll(Collections.AllItems, i => !(Collections.VerifyInventory(i.Name))))
                 {

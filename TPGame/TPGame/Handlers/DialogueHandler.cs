@@ -13,7 +13,7 @@ namespace TPGame.Handlers
                     "\nIt's then that you hear suspicious rustling from the foot of your bed.\nAs you peer over the edge, you see wrappers strewn across your floor." +
                     "\nYou have always kept a stash of delicious Tootsie pops around,\nbut it seems they have gained sentience and are looking to get their revenge." +
                     "\nYou have trained for this moment so don't be scared.\nGather the supplies and figure out how your candies have turned so sour." +
-                    "\nIt's time to be a hero...\n\nThe journey of any good hero starts by pushing any key to continue.");
+                    "\nIt's time to be a hero...\n\nThe journey of any good hero starts by pushing any key to continue.", 1);
         }
 
         /// <summary>
@@ -21,7 +21,7 @@ namespace TPGame.Handlers
         /// </summary>
         /// <param name="text">string to be written</param>
         /// <param name="delay"># of milliseconds between each letter</param>
-        public static void PrintLine(string text, int delay = 20)
+        public static void PrintLine(string text, int delay = 1)
         {
             foreach (char c in text)
             {

@@ -18,6 +18,8 @@ namespace TPGame.Models
 
         public bool BossDefeated { get; set; } = false;
 
+        public bool HasBeenVisited { get; set; } = false;
+
         /// <summary>
         /// Gets a random number and checks it agains the current locations encounter chance
         /// If the result is higher than 0.3, an encounter occurs

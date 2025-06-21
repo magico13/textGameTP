@@ -23,7 +23,7 @@ namespace TPGame.Items
             if (garage.Locked)
             {
                 base.UseItem("You turn the key in the door lock. This may have been an effective way of keeping anyone who broke into your garage from accessing the rest of the house, but now, it just seems like a huge hassle.");
-                Collections.RemoveUsedItem(Name);
+                //Collections.RemoveUsedItem(Name); // Keep the key in the inventory, so the player isn't confused about where it went and so the couch doesn't show it again
                 garage.Unlock();
             }
             else

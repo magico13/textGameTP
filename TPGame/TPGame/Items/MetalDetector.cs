@@ -29,7 +29,7 @@ namespace TPGame.Items
                 DialogueHandler.PrintLine("You scan pile after pile, in search of something you hope is there. Your resolve weakens as you wonder if there is anything to find. What are the odds of it being metal?\n*BEEP BEEP*");
                 DialogueHandler.AddPause(300);
                 message = "Very good, apparently. You note the spot.";
-                Collections.RemoveUsedItem(Name);
+                //Collections.RemoveUsedItem(Name);
             }
             else
             {

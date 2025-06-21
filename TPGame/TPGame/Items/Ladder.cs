@@ -19,7 +19,7 @@ namespace TPGame.Items
             if (attic.Locked)
             {
                 base.UseItem("You hook the ends of the ladder into the slots on the attic hatch. After a quick integrity check, you confidently climb into the attic.");
-                Collections.RemoveUsedItem(Name);
+                //Collections.RemoveUsedItem(Name); // keep the ladder in the inventory, so the player isn't confused about where it went and so the hints work
                 attic.Unlock();
             }
             else 

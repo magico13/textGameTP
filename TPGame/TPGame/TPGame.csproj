@@ -5,7 +5,7 @@
     <TargetFramework>net8.0</TargetFramework>
     <PackageId>TootsiePopText</PackageId>
     <ApplicationIcon>TP.ico</ApplicationIcon>
-    <AssemblyName>Quest to the Center of a Tootsie Pop</AssemblyName>
+    <AssemblyName>tootsie</AssemblyName>
   </PropertyGroup>
 
   <ItemGroup>
@@ -14,11 +14,6 @@
 
   <ItemGroup>
     <Content Include="TP.ico" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <PackageReference Include="MSTest.TestAdapter" Version="2.2.7" />
-    <PackageReference Include="MSTest.TestFramework" Version="2.2.7" />
   </ItemGroup>
 
 </Project>

@@ -21,12 +21,12 @@ namespace TPGame.Handlers
             GameOver = false;
             Enum defaultCBG = Console.BackgroundColor;
             Enum defaultCFG = Console.ForegroundColor;
-#if RELEASE
+//#if RELEASE
             DialogueHandler.Title();
             DialogueHandler.OpeningMonologue();
             Console.ReadKey();
             Console.Clear();
-#endif
+//#endif
             if (UserInput.GetBool("Do you want a tutorial?: "))
             {
                 TutorialHandler.Teach();

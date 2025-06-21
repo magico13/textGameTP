@@ -54,6 +54,7 @@ namespace TPGame.Commands
                 DialogueHandler.PrintLine($"You are now in the {CurrentLocation.Name}");
                 DialogueHandler.PrintLine($"{CurrentLocation.Description}");
                 InCombat = CurrentLocation.RollEncounter(); //Rolls to see if a combat encounter begins
+                CurrentLocation.HasBeenVisited = true;
                 return true;
             }
             else
